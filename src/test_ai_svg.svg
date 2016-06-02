@@ -1,0 +1,9 @@
+<svg version="1.1" id="formes" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="595.3px" height="841.9px" viewBox="0 0 595.3 841.9" xml:space="preserve">
+<rect id="Rectangle" x="134" y="131" fill="#ED1F24" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="339" height="218"/>
+<g id="groupe1">
+	<ellipse id="Ovale" fill="#4451A3" cx="135" cy="374" rx="86" ry="134"/>
+	<polygon id="Etoile" fill="#ECE70D" stroke="#EC008C" stroke-width="8" stroke-miterlimit="10" points="127,367 262.1,381.1
+		350.2,277.8 378.6,410.6 504,462.5 386.5,530.5 375.9,665.9 274.9,575.1 142.9,606.8 198,482.8 	"/>
+</g>
+</svg>

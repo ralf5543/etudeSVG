@@ -1,0 +1,29 @@
+
+
+z : ferme le tracé
+
+
+arc de cercle :
+A (7 paramètres) :
+1/ rayon de x
+2/ rayon de y
+3/ axe de rotation de démarrage
+4/ large flag (0 (petit), ou 1 (grand))
+5/ sweep-flag (0 (sens anti-horaire), ou 1 (sens horaire)).
+6/ point d'arrivée x
+7/ point d'arrivée y
+
+a (miniscules) pour points relatifs
+
+<defs> crée un modèle (caché) de tout ce qu'il contient. On peut piocher dedans n'immporte quel élément avec un ID, et le repositionner, avec <use>, lui appliquer une classe.
+<use>dupplique aussi les éléments non cachés
+
+avec <use>, on peut pas surcharger des paramètres déjà définis. relou.
+
+
+
+Animation, via css, javascript, ou smil.
+modernizer smil pour fallback.
+
+SMIL :
+<animate> ciblant l'élément à animer, ou directement ntre ouverture et fermeture de l'élément.

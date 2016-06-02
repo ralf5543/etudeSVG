@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg viewBox="0 0 504 500" xml:lang="fr"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink">
+   <title>Pacman</title>
+   <desc>Etudes des courbes en SVG avec Pacman</desc>
+
+   <style type="text/css">
+	<![CDATA[
+
+
+	#pacmanProfile {
+		fill : yellow;
+		stroke : black;
+		stroke-width : 3;
+	}
+
+	.pacmanFace_eye {
+		transform: scale(0.15);
+		fill: black;
+	}
+
+	]]>
+   </style>
+
+
+   <g id="pacmanProfile">
+	<path id="camembert" class="pacmanProfile_head" d="M 490 150 a 245 245 0 1 0 0 200 l -245 -100 z"></path>
+	<circle class="pacmanProfile_eye" r="20" fill="black" cx="300" cy="140"/>
+   </g>
+
+
+<animate
+xlink:href="#camembert"
+attributeName="d"
+from="M 490 150 a 245 245 0 1 0 0 200 l -245 -100 z"
+to="M 490 245 a 235 225 0 1 0 0 1 l -245 0 Z"
+dur="0.3s"
+begin="click" />
+
+
+</svg>
