@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="fr">
+
 <html>
 <head>
     <meta charset='utf-8'>
@@ -292,13 +295,31 @@
         </li>
     </ol>
 
+    <h3 class="smallTitle">ViewBox et viewPort</h3>
+    <p></p>
+
+
+    <h3 class="smallTitle">preserveAspectRatio</h3>
+    <p>La seule utilité de le déclarer est si le viewport et la viewBox ont des valeurs différentes (ou pour être plus précis, pas le même ratio largeur et hauteur).</p>
+    <p>Dans ce cas, la propriété <code>preserveAspectRatio</code> permet de conserver une image entière, et non déformée.</p>
+
+    <h4 class="smallestTitle">L'alignement</h4>
+    <p>Il est déclaré avec une syntaxe de type <code>xMinYMid</code>.</p>
+    <p>Dans cet exemple, la viewBox est positionné au début de l'axe des abscisses (xMin) et centré sur l'axe des ordonnées (YMid) (<a href="https://www.w3.org/TR/SVG/coords.html#PreserveAspectRatioAttribute">Liste exhaustive des attributs</a>).</p>
+
+    <h4 class="smallestTitle">L'étirement</h4>
+    <p>En plus de l'alignement, on peut préciser comment va être interprété le ratio d'aspect. Par défaut, la valeur est fixée à <code>meet</code>.
+        La viewBox va être redimesnionnée pour remplir autant que possible le viewport. A <code>slice</code>, elle va l'afficher à sa taille déclarée, et couper ce qui dépasse du viewport.
+        Enfin, <code>none</code> essaie de remplir le viewport avec la viewPort, mais sans respecter le ratio hauteur/largeur, pouvant déformer le résultat obtenu.
+    </p>
 </section>
+
 
 
 <section class="etude">
     <h2 class="secondaryTitle" id="integration">Intégration</h2>
 
-    <p>Les exemples suivants utilisent le même code svg. La roue de <mark class="codeExergue codeExergue--alt">gauche</mark>, en bleu, utilise des styles internes. La roue de <mark class="codeExergue">droite</mark>, en rouge, appelle une css externe.</p>
+    <p>Les exemples suivants utilisent le même code svg. La roue de <mark class="codeExergue codeExergue--blue">gauche</mark>, en bleu, utilise des styles internes. La roue de <mark class="codeExergue">droite</mark>, en rouge, appelle une css externe.</p>
 
     <h3 class="smallTitle">via balise EMBED</h3>
 
@@ -429,6 +450,7 @@
         </object>
     </div>
 
+    <p>On peut intégrer une solution de fallback entre les balises d'ouverture et de fermeture.</p>
     <p>Cette solution ne semble avoir que des avantages.</p>
 
 
@@ -718,7 +740,7 @@
     <p>Retirer width et height du svg pour 100% du conteneur.</p>
 
     <p>les media queries peuvent être intégrées directement au svg, pour en modifier l'affichage.</p>
-    <p>La taille de référence n'est plus le navigateur, mais le SVG lui-même.</p>
+    <p>La taille de référence n'est plus le navigateur, mais le SVG lui-même (le viewport).</p>
 
     <code class="codeBlock">
         <span class="codeBlockElement">&lt;svg viewBox="0 0 184.252 112.089"&gt;</span>
