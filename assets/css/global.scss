@@ -18,6 +18,17 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .etude {
   padding: 0 20px;
   &:after {
@@ -261,6 +272,68 @@ table.support .no-support {
 #premium {
   transform-origin: 50% 50%;
 }
+
+.svgLink_list li {
+  margin: 30px 0;
+}
+
+.svgLink {
+  @include font-size(22);
+  margin-left:  60px;
+  color: #5e5e5e;
+  text-decoration: none;
+  position: relative;
+
+  &::after {
+    content: '';
+    left: 100%;
+    top: 50%;
+    margin-left: 20px;
+    position: absolute;
+    margin-top: -25px;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    background-size: cover;
+    background-position: 0 0;
+    background-image: url('../../../img/pictos_hover.svg');
+  }
+
+  &:hover,
+  &:focus {
+    border-bottom: 1px solid;
+    &::after {
+      background-position: 0 -100%;
+    }
+  }
+}
+
+.svgLink--validate {
+  &::after {
+    background-position: 0 -200%;
+  }
+
+  &:hover,
+  &:focus {
+    &::after {
+      background-position: 0 -300%;
+    }
+  }
+}
+
+.svgLink--delete {
+  &::after {
+    background-position: 0 -400%;
+  }
+
+  &:hover,
+  &:focus {
+    &::after {
+      background-position: 0 -500%;
+    }
+  }
+}
+
 
 
 /*======Listes=======*/
