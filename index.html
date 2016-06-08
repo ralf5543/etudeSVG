@@ -573,7 +573,8 @@
         xlink:href="#modele1" x="20" y="50" /&gt;
     </code>
 
-    <p>Une autre utilisation courante est la création d'un seul fichier SVG avec toutes les icones d'un site, et masquées. On les appelle selon les besoins, via <code>use</code>.</p>
+    <p>Une autre utilisation courante est la création d'un seul fichier SVG avec toutes les icones d'un site, et masquées. On les appelle selon les besoins,
+        via <code>use</code>, soit à la fin du svg, soit depuis le html. Dans ce dernier cas, Les styles internes ne seront pas embarqués.</p>
     <p>On peut aussi y stocker des "effets", comme des dégradés, ou des filtres SVG, prêts à être utilisés sur d'autres éléments</p>
 
 
@@ -692,7 +693,7 @@
     <h3 class="smallTitle">Les styles internes</h3>
 
     <p>Comme en html, on peut déclarer une feuille de style interne, via la balise <code>&lt;style&gt;</code></p>
-    <p>ils ne sont pas embarqués lors de l'intégration d'un <code>symbol</code> avec la balise <code>&lt;use&gt;</code>.</p>
+    <p>ils ne sont pas embarqués lors de l'intégration d'un <code>symbol</code> avec la balise <code>&lt;use&gt;</code> dans le html.</p>
 
     <code class="codeBlock">
         <span class="codeBlockElement">&lt;svg height="100px"&gt;</span>
@@ -708,20 +709,12 @@
 
     <h3 class="smallTitle">Les styles externes</h3>
 
-    <p>Comme html, le dernier des cas de figure, en théorie plus maintenable, est l'appel d'une feuille de style externe, via xml.</p>
+    <p>Comme en html, le dernier des cas de figure, en théorie plus maintenable, est l'appel d'une feuille de style externe, via xml.</p>
 
     <code class="codeBlock">
         <span class="codeBlockElement">&lt;?xml-stylesheet type="text/css" href="css/svg.css"?&gt;</span>
         <span class="codeBlockElement">&lt;svg&gt;...&lt;/svg&gt;</span>
     </code>
-
-    <h3 class="smallTitle">Cas pratique : changement de couleurs au survol</h3>
-
-    <ul class="svgLink_list">
-        <li><a href="#" class="svgLink svgLink--image">Hover me</a></li>
-        <li><a href="#" class="svgLink svgLink--validate">Hover me</a></li>
-        <li><a href="#" class="svgLink svgLink--delete">Hover me</a></li>
-    </ul>
 
 
     <h3 class="smallTitle">Les dégradés en SVG</h3>
@@ -792,6 +785,69 @@
         <img class="svgExemple" src="img/bike-light.svg">
     </div>
 
+</section>
+
+
+<section class="etude">
+    <h2 class="secondaryTitle" id="">Modifier l'apparence en css</h2>
+
+    <h3 class="smallTitle">Cas pratique : changement de couleurs au survol</h3>
+
+    <p>On crée simplement un sprite, de préférence sur une seule ligne verticale. Chaque dessin, ainsi que sa variante colorée, est un <code>symbol</code>, appelé
+        via <code>use</code>, et positionné sur l'axe des ordonnées l'un sous l'autre.</p>
+    <p>Ils sont ensuite intégrés en css sous forme d'arrière plan.</p>
+
+    <img src="img/pictos_hover.svg">
+
+    <ul class="svgLink_list">
+        <li><a href="#" class="svgLink svgLink--image">Hover me</a></li>
+        <li><a href="#" class="svgLink svgLink--validate">Hover me</a></li>
+        <li><a href="#" class="svgLink svgLink--delete">Hover me</a></li>
+    </ul>
+
+    <p>Dans le svg :</p>
+    <code class="codeBlock">
+        <span class="codeBlockElement">&lt;svg viewBox="<mark class="codeExergue">0 0 32 192</mark>" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;stylel&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab2"><mark class="codeExergue">.icon1_hover</mark> {</span>
+        <span class="codeBlockElement codeBlockElement--tab3">fill: red;</span>
+        <span class="codeBlockElement codeBlockElement--tab2">}</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;/stylel&gt;</span>
+        <br>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="<mark class="codeExergue">icon1</mark>">...&lt;/symbol&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon2">...&lt;/symbol&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon3">...&lt;/symbol&gt;</span>
+        <br>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon1"/&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="<mark class="codeExergue">#icon1</mark>" y="<mark class="codeExergue">32</mark>" class="<mark class="codeExergue">icon1_hover</mark>"/&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon2" y="64" /&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon2" y="96" class="icon2_hover"/&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon3" y="128" /&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon3" y="160" class="icon3_hover"/&gt;</span>
+        <span class="codeBlockElement">&lt;/svg&gt;</span>
+    </code>
+
+    <p>Dans la css de la page :</p>
+    <code class="codeBlock">
+        <span class="codeBlockElement">.icon1 {</span>
+        <span class="codeBlockElement codeBlockElement--tab1">background-image: url(icons.svg);</span>
+        <span class="codeBlockElement codeBlockElement--tab1">background-size: <mark class="codeExergue">cover;</mark></span>
+        <span class="codeBlockElement codeBlockElement--tab1">background-position: 0 <mark class="codeExergue">0</mark></span>
+        <span class="codeBlockElement">}</span>
+        <br>
+        <span class="codeBlockElement">.icon1:hover {</span>
+        <span class="codeBlockElement codeBlockElement--tab1">background-position: 0 <mark class="codeExergue">-100%</mark></span>
+        <span class="codeBlockElement">}</span>
+        <br>
+        <span class="codeBlockElement">.icon2 {</span>
+        <span class="codeBlockElement codeBlockElement--tab1">background-position: 0 <mark class="codeExergue">-200%</mark></span>
+        <span class="codeBlockElement">}</span>
+        <br>
+        <span class="codeBlockElement">.icon2:hover {</span>
+        <span class="codeBlockElement codeBlockElement--tab1">background-position: 0 <mark class="codeExergue">-300%</mark></span>
+        <span class="codeBlockElement">}</span>
+        etc.
+    </code>
 </section>
 
 
