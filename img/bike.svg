@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/css" href="../assets/css/styleSVG-bike.css"?>
 
-<svg version="1.1" id="velo" xmlns="http://www.w3.org/2000/svg"
-	viewBox="0 244.1 595.3 354" xml:space="preserve">
+<svg version="1.1" id="velo" xmlns="http://www.w3.org/2000/svg" viewBox="0 244.1 595.3 354" xml:space="preserve">
 
 <style type="text/css">
 	#roue_gauche {

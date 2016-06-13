@@ -5,157 +5,154 @@ $red: #e42518;
 $blue: #00f;
 $green: #37ff7e;
 
-
 /*===========-------mixins--------==========*/
 
 /* ------------------------------------------------- */
 /* ==from http://codepen.io/jakob-e/pen/doMoML       */
 /* ------------------------------------------------- */
-@function svg-url($svg){
-  //
-  //  Chunk up string in order to avoid
-  //  "stack level too deep" error
-  //
-  $encoded:'';
-  $slice: 2000;
-  $index: 0;
-  $loops: ceil(str-length($svg)/$slice);
-  @for $i from 1 through $loops {
-    $chunk: str-slice($svg, $index, $index + $slice - 1);
+@function svg-url($svg) {
     //
-    //   Encode (may need a few extra replacements)
+    //  Chunk up string in order to avoid
+    //  "stack level too deep" error
     //
-    $chunk: str-replace($chunk,'"','\'');
-    $chunk: str-replace($chunk,'<','%3C');
-    $chunk: str-replace($chunk,'>','%3E');
-    $chunk: str-replace($chunk,'&','%26');
-    $chunk: str-replace($chunk,'#','%23');
-    $encoded: #{$encoded}#{$chunk};
-    $index: $index + $slice;
-  }
-  @return url("data:image/svg+xml;charset=utf8,#{$encoded}");
+    $encoded: '';
+    $slice: 2000;
+    $index: 0;
+    $loops: ceil(str-length($svg)/$slice);
+    @for $i from 1 through $loops {
+        $chunk: str-slice($svg, $index, $index + $slice - 1);
+        //
+        //   Encode (may need a few extra replacements)
+        //
+        $chunk: str-replace($chunk, '"', '\'');
+        $chunk: str-replace($chunk, '<', '%3C');
+        $chunk: str-replace($chunk, '>', '%3E');
+        $chunk: str-replace($chunk, '&', '%26');
+        $chunk: str-replace($chunk, '#', '%23');
+        $encoded: #{$encoded}#{$chunk};
+        $index: $index + $slice;
+    }
+    @return url("data:image/svg+xml;charset=utf8,#{$encoded}");
 }
 
 //  Helper function to replace characters in a string
 @function str-replace($string, $search, $replace: '') {
-  $index: str-index($string, $search);
-  @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace +
+    $index: str-index($string, $search);
+    @if $index {
+        @return str-slice($string, 1, $index - 1) + $replace +
             str-replace(str-slice($string, $index +
             str-length($search)), $search, $replace);
-  }
-  @return $string;
+    }
+    @return $string;
 }
 
 /* ------------- */
 /* ==end         */
 /* ------------- */
 
-
-
 /* custom mixin to replace a defined fill color with another one */
 @function svg-replace-fill($svg, $fill-to-replace, $new-fill...) {
-  $replaced-svg: str-replace($svg, $fill-to-replace, $new-fill);
-  $replaced-svg-url: svg-url('#{$replaced-svg}');
-  @return $replaced-svg-url;
+    $replaced-svg: str-replace($svg, $fill-to-replace, $new-fill);
+    $replaced-svg-url: svg-url('#{$replaced-svg}');
+    @return $replaced-svg-url;
 }
 
 @mixin font-size($sizeValue: 1.6) {
-  font-size: ($sizeValue) + px;
-  font-size: $sizeValue / 10 + rem;
+    font-size: ($sizeValue) + px;
+    font-size: $sizeValue / 10 + rem;
 }
 
 html {
-  font-size: 62.5%;
+    font-size: 62.5%;
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 ul {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 li {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .etude {
-  padding: 0 20px;
-  &:after {
-    content: '';
-    display: block;
-    width: 50%;
-    border-bottom: 1px solid grey;
-    margin: 80px auto;
-  }
+    padding: 0 20px;
+    &:after {
+        content: '';
+        display: block;
+        width: 50%;
+        border-bottom: 1px solid grey;
+        margin: 80px auto;
+    }
 }
 
 .mainTitle {
-  @include font-size(55);
-  text-align: center;
+    @include font-size(55);
+    text-align: center;
 }
 
 .secondaryTitle {
-  @include font-size(40);
-  color: #07a5e0;
-  font-weight: normal;
+    @include font-size(40);
+    color: #07a5e0;
+    font-weight: normal;
 }
 
 .smallTitle {
-  @include font-size(22);
-  color: #5e5e5e;
-  margin: 40px 0 20px;
+    @include font-size(22);
+    color: #5e5e5e;
+    margin: 40px 0 20px;
 }
 
 .smallestTitle {
-  @include font-size(18);
-  color: #5e5e5e;
-  padding-left: 40px;
-  margin: 0;
+    @include font-size(18);
+    color: #5e5e5e;
+    padding-left: 40px;
+    margin: 0;
 }
 
 p {
-  @include font-size(14);
+    @include font-size(14);
 }
 
 .svgVisualExemples {
-  margin-bottom: 30px;
-  resize: both;
-  width: 50%;
-  position: relative;
-  overflow: hidden;
-  min-height: 100px;
-  &:after {
-    content: '';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 0 20px 20px;
-    border-color: transparent transparent #07a5e0 transparent;
-  }
+    margin-bottom: 30px;
+    resize: both;
+    width: 50%;
+    position: relative;
+    overflow: hidden;
+    min-height: 100px;
+    &:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0 20px 20px;
+        border-color: transparent transparent #07a5e0 transparent;
+    }
 }
 
 .svgVisualExemples--background {
-  background: url("../../../img/bike.svg") no-repeat top center;
-  height: 240px;
+    background: url("../../../img/bike.svg") no-repeat top center;
+    height: 240px;
 }
 
 .svgVisualExemples--mediaqueries {
-  width: 10%;
+    width: 10%;
 }
 
 .svgVisualExemples--data {
-  background-repeat: no-repeat;
-  background-image: url('data:image/svg+xml;utf8,<svg version="1.1" id="velo" xmlns="http://www.w3.org/2000/svg" viewBox="0 244.1 595.3 354" xml:space="preserve">
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml;utf8,<svg version="1.1" id="velo" xmlns="http://www.w3.org/2000/svg" viewBox="0 244.1 595.3 354" xml:space="preserve">
 
   <style type="text/css">#roue_gauche {fill : blue;}</style>
 
@@ -232,17 +229,12 @@ p {
 	c17.5,0,31.9-14.1,31.9-31.9c0-17.5-14.1-31.6-31.6-31.6h-0.8l0,0l-147.4-0.8c-5.1,0-9.3,4.2-9.3,9.3c0,4,2.5,7.6,6.2,8.8
 	L118.9,489.1L118.9,489.1z"/>
 </svg>');
-  }
+}
 
 $velo: '<svg version="1.1" id="velo" xmlns="http://www.w3.org/2000/svg" viewBox="0 244.1 595.3 354" xml:space="preserve">
 
-  <style type="text/css">#roue_gauche {fill : blue;}</style>
-
-  <title>Vélo SVG</title>
-<desc>Un beau vélo vectoriel</desc>
-
 <g id="roue_droite">
-	<path id="rayons_droite" d="M588.5,477.6c-0.6-29.4-12.4-57-33.6-77.9c-20.9-20.7-48.9-32-78.2-32l0,0c-0.6,0-1.4,0-2,0
+	<path id="rayons_droite" stroke="#07a5e0" stroke-width="10" d="M588.5,477.6c-0.6-29.4-12.4-57-33.6-77.9c-20.9-20.7-48.9-32-78.2-32l0,0c-0.6,0-1.4,0-2,0
 		c-61.6,1.1-111,52.2-109.9,113.8c0.6,29.4,12.4,57,33.6,77.9c20.9,20.6,48.9,31.9,78.2,31.9c0.6,0,1.4,0,2,0
 		c29.9-0.6,57.6-12.7,78.5-34.2C578.1,535.7,589.1,507.5,588.5,477.6z M484.9,578.7L484.9,578.7c-0.6,0-0.8,0-1.1-0.3
 		c-0.3-0.3-0.6-0.6-0.6-1.1l-0.6-87c0-0.6,0.3-0.8,0.6-1.1c0.3-0.3,0.8-0.3,1.4-0.3l83.3,26.5c0.3,0,0.8,0.3,0.8,0.8
@@ -301,7 +293,7 @@ $velo: '<svg version="1.1" id="velo" xmlns="http://www.w3.org/2000/svg" viewBox=
 	c-1.4-5.6-0.6-11.6,2.3-16.9l11.9,10.4l-13.8,8.2C247.4,510,247.4,509.5,247.1,508.9z M269.7,527c-4.2,0-8.5-1.1-12.4-3.7
 	c-2-1.1-3.7-2.5-5.1-4.2l13.8-8.2L269.7,527L269.7,527z M289.7,515.7c-2.5,4.2-6.2,7.3-10.4,9l-3.1-13.6l15.2,1.1
 	C290.9,513.7,290.3,514.8,289.7,515.7z"/>
-<path id="selle" fill="#4DB082" d="M248.5,251.7c-1.1-1.1-5.1-7.6-11-7.6H172c-5.1,0-4.2,4-2,5.6c2.3,1.7,16.4,11.9,25.4,11.9c0.8,0,1.4,0,2.5,0
+<path id="selle" d="M248.5,251.7c-1.1-1.1-5.1-7.6-11-7.6H172c-5.1,0-4.2,4-2,5.6c2.3,1.7,16.4,11.9,25.4,11.9c0.8,0,1.4,0,2.5,0
 	l16.7,64.9h-5.9v7.1h7.6l2.3,8.2l11.6-2.8l-1.4-5.6h1.7v-7.1H227l-17.5-66.9c6.8-1.7,13-3.7,14.7-4.2c3.1-1.1,13.8-1.4,20,0
 	C250.5,255.9,249.6,252.8,248.5,251.7z"/>
 <path id="cadre" fill="#7F7F7F" d="M373.6,341.2c-0.3-0.6-1.1-1.1-1.7-1.1l-137,6.2c-1.1,0-1.7,0.8-2,1.7c0,1.1,0.6,2,1.7,2
@@ -313,341 +305,262 @@ $velo: '<svg version="1.1" id="velo" xmlns="http://www.w3.org/2000/svg" viewBox=
 </svg>';
 
 .svgVisualExemples--data-svg {
-  //background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjw/eG1sLXN0eWxlc2hlZXQgdHlwZT0idGV4dC9jc3MiIGhyZWY9Ii4uL2Fzc2V0cy9jc3Mvc3R5bGVTVkctYmlrZS5jc3MiPz4NCg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJ2ZWxvIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Ig0KCXZpZXdCb3g9IjAgMjQ0LjEgNTk1LjMgMzU0IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCg0KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4NCgkjcm91ZV9nYXVjaGUgew0KCQlmaWxsIDogYmx1ZTsNCgl9DQo8L3N0eWxlPg0KDQo8dGl0bGU+VsOpbG8gU1ZHPC90aXRsZT4NCjxkZXNjPlVuIGJlYXUgdsOpbG8gdmVjdG9yaWVsPC9kZXNjPg0KDQo8ZyBpZD0icm91ZV9kcm9pdGUiPg0KCTxwYXRoIGlkPSJyYXlvbnNfZHJvaXRlIiBkPSJNNTg4LjUsNDc3LjZjLTAuNi0yOS40LTEyLjQtNTctMzMuNi03Ny45Yy0yMC45LTIwLjctNDguOS0zMi03OC4yLTMybDAsMGMtMC42LDAtMS40LDAtMiwwDQoJCWMtNjEuNiwxLjEtMTExLDUyLjItMTA5LjksMTEzLjhjMC42LDI5LjQsMTIuNCw1NywzMy42LDc3LjljMjAuOSwyMC42LDQ4LjksMzEuOSw3OC4yLDMxLjljMC42LDAsMS40LDAsMiwwDQoJCWMyOS45LTAuNiw1Ny42LTEyLjcsNzguNS0zNC4yQzU3OC4xLDUzNS43LDU4OS4xLDUwNy41LDU4OC41LDQ3Ny42eiBNNDg0LjksNTc4LjdMNDg0LjksNTc4LjdjLTAuNiwwLTAuOCwwLTEuMS0wLjMNCgkJYy0wLjMtMC4zLTAuNi0wLjYtMC42LTEuMWwtMC42LTg3YzAtMC42LDAuMy0wLjgsMC42LTEuMWMwLjMtMC4zLDAuOC0wLjMsMS40LTAuM2w4My4zLDI2LjVjMC4zLDAsMC44LDAuMywwLjgsMC44DQoJCWMwLjMsMC4zLDAuMywwLjgsMCwxLjFjLTQuOCwxMS42LTExLjYsMjIuMy0yMC42LDMxLjNDNTMxLjUsNTY2LDUwOC45LDU3Ni43LDQ4NC45LDU3OC43eiBNNDA1LjIsNDEwLjZjMS43LTEuNywzLjQtMy40LDUuNC01LjENCgkJYzAuMy0wLjMsMC44LTAuMywxLjEtMC4zYzAuNiwwLDAuOCwwLjMsMS4xLDAuNmw0OS43LDY2LjljMC4zLDAuMywwLjMsMC44LDAuMywxLjRjLTAuMywwLjYtMC42LDAuOC0wLjgsMC44bC03OS45LDI2LjUNCgkJYy0wLjMsMC0wLjMsMC0wLjYsMGMtMC4zLDAtMC42LDAtMC44LTAuM2MtMC4zLTAuMy0wLjYtMC42LTAuOC0xLjFjLTEuNC02LjItMi0xMi43LTIuMy0xOS4yQzM3Nyw0NTQuNywzODYuOSw0MjkuNiw0MDUuMiw0MTAuNg0KCQlMNDA1LjIsNDEwLjZ6IE0zODUuMiw1MTYuM2MwLjMtMC4zLDAuNi0wLjYsMC44LTAuOGw4MC4yLTI2LjhjMC42LTAuMywwLjgsMCwxLjQsMC4zYzAuMywwLjMsMC42LDAuOCwwLjYsMS4xbDAuNiw4Ni43DQoJCWMwLDAuNi0wLjMsMC44LTAuNiwxLjFjLTAuMywwLjMtMC42LDAuMy0xLjEsMC4zYzAsMCwwLDAtMC4zLDBjLTIyLjktMi4zLTQzLjUtMTEuOS01OS45LTI4Yy05LjYtOS42LTE3LjItMjAuNi0yMi4zLTMyLjgNCgkJQzM4NC45LDUxNy4xLDM4NC45LDUxNi44LDM4NS4yLDUxNi4zeiBNNDc1LjMsNDY0LjlMNDc1LjMsNDY0LjljLTAuNiwwLTAuOC0wLjMtMS4xLTAuNmwtNDkuNC02Ny4yYy0wLjMtMC4zLTAuMy0wLjgtMC4zLTEuMQ0KCQljMC0wLjMsMC4zLTAuOCwwLjYtMS4xYzE1LTkuMywzMi41LTE0LjQsNTAuMy0xNC43YzAuNiwwLDEuMSwwLDEuNywwbDAsMGMxNi45LDAsMzMuOSw0LjUsNDguNiwxMi43YzAuMywwLjMsMC42LDAuNiwwLjgsMS4xDQoJCWMwLDAuMywwLDAuOC0wLjMsMS4xbC00OS43LDY5LjJDNDc2LjEsNDY0LjYsNDc1LjgsNDY0LjksNDc1LjMsNDY0Ljl6IE01NzQuMSw1MDAuMmMwLDAuMy0wLjMsMC44LTAuOCwxLjFjLTAuMywwLTAuNiwwLjMtMC44LDAuMw0KCQlzLTAuMywwLTAuNiwwbC04My0yNi4zYy0wLjYtMC4zLTAuOC0wLjYtMC44LTAuOGMtMC4zLTAuNiwwLTAuOCwwLjMtMS40bDQ5LjctNjkuNWMwLjMtMC4zLDAuNi0wLjYsMS4xLTAuNmMwLjYsMCwwLjgsMCwxLjEsMC4zDQoJCWMyLjMsMS43LDQuMiwzLjcsNi4yLDUuNmMxOC42LDE4LjQsMjkuNCw0Mi45LDI5LjcsNjkuMkM1NzYuNCw0ODUuMiw1NzUuNSw0OTIuOCw1NzQuMSw1MDAuMnoiLz4NCgk8cGF0aCBpZD0icG5ldV9kcm9pdGUiIGQ9Ik00NzcsMzY5LjFMNDc3LDM2OS4xYzI5LjEsMCw1Ni41LDExLjMsNzcuNCwzMS42YzIwLjksMjAuMywzMi41LDQ3LjcsMzMsNzYuOA0KCQljMC42LDI5LjQtMTAuNCw1Ny4zLTMxLjEsNzguOGMtMjAuNiwyMS4yLTQ4LDMzLjMtNzcuNywzMy42Yy0wLjYsMC0xLjQsMC0yLDBjLTI5LjEsMC01Ni41LTExLjMtNzcuNC0zMS42DQoJCWMtMjAuOS0yMC4zLTMyLjUtNDcuNy0zMy03Ni44Yy0wLjYtMjkuNCwxMC40LTU3LjMsMzEuMS03OC44YzIwLjYtMjEuMiw0OC0zMy4zLDc3LjQtMzMuNkM0NzUuNSwzNjkuMSw0NzYuMSwzNjkuMSw0NzcsMzY5LjENCgkJIE00NzcsMzYxLjJjLTAuOCwwLTEuNCwwLTIuMywwYy02NS4yLDEuMS0xMTcuNSw1NS4xLTExNi4xLDEyMC42YzEuMSw2NC43LDUzLjksMTE2LjMsMTE4LjMsMTE2LjNjMC44LDAsMS40LDAsMi4zLDANCgkJYzY1LjItMS4xLDExNy41LTU1LjEsMTE2LjEtMTIwLjNDNTkzLjksNDEyLjksNTQxLjMsMzYxLjIsNDc3LDM2MS4yTDQ3NywzNjEuMnoiLz4NCjwvZz4NCg0KPGcgaWQ9InJvdWVfZ2F1Y2hlIj4NCgk8cGF0aCBpZD0icmF5b25zX2dhdWNoZSIgZD0iTTE5OS4xLDU1Ni45YzIwLjMtMjEuMiwzMS42LTQ5LjEsMzEuMS03OC44Yy0wLjMtMjkuNC0xMi4xLTU3LTMyLjgtNzcuOWwwLDBjLTAuNi0wLjYtMC44LTAuOC0xLjQtMS40DQoJCWMtNDQuMy00Mi42LTExNS41LTQxLjItMTU4LjEsMy4xQzE3LjUsNDIzLjEsNi4yLDQ1MSw2LjgsNDgwLjdjMC4zLDI5LjQsMTIuMSw1NywzMi44LDc3LjljMC42LDAuNiwwLjgsMC44LDEuNCwxLjQNCgkJYzIxLjUsMjAuNiw0OS43LDMxLjYsNzkuNiwzMS4xQzE1MC41LDU5MC44LDE3OC4yLDU3OC43LDE5OS4xLDU1Ni45eiBNNTQuMiw1NTUuNUM1NC4yLDU1NS41LDU0LjIsNTU1LjIsNTQuMiw1NTUuNQ0KCQljLTAuMy0wLjMtMC42LTAuOC0wLjYtMS4xczAtMC44LDAuNi0xLjFsNjEtNjIuMWMwLjMtMC4zLDAuOC0wLjYsMS40LTAuNnMwLjgsMC4zLDEuMSwwLjhsNDAuNCw3Ny40YzAuMywwLjMsMC4zLDAuOCwwLDEuMQ0KCQlzLTAuNiwwLjgtMC44LDAuOGMtMTEuNiw0LjgtMjQsNy42LTM2LjcsNy45Qzk2LDU3OS4yLDcyLjYsNTcxLDU0LjIsNTU1LjV6IE0xMTYuMywzODAuMWMyLjUsMCw1LjEsMCw3LjMsMGMwLjYsMCwwLjgsMC4zLDEuMSwwLjYNCgkJYzAuMywwLjMsMC4zLDAuOCwwLjMsMS4xbC0xMiw4Mi44YzAsMC42LTAuMywwLjgtMC44LDEuMWMtMC42LDAuMy0wLjgsMC4zLTEuNCwwbC03NS40LTM3LjZjLTAuMywwLTAuMy0wLjMtMC4zLTAuMw0KCQljLTAuMy0wLjMtMC4zLTAuMy0wLjMtMC42czAtMC44LDAuMy0xLjFjMy40LTUuNCw3LjYtMTAuNCwxMi4xLTE1LjJDNjQuOSwzOTEuNyw4OS44LDM4MC43LDExNi4zLDM4MC4xTDExNi4zLDM4MC4xeiBNMjcuNCw0NDAuOQ0KCQljMC4zLTAuMywwLjgsMCwxLjEsMGw3NS43LDM3LjhjMC42LDAuMywwLjgsMC42LDAuOCwxLjFjMCwwLjYsMCwwLjgtMC4zLDEuNEw0NCw1NDNjLTAuMywwLjMtMC44LDAuNi0xLjEsMC42DQoJCWMtMC4zLDAtMC44LTAuMy0xLjEtMC42bDAsMGMtMTQuNy0xNy41LTIyLjYtMzktMjIuNi02Mi4xYy0wLjMtMTMuOCwyLjMtMjYuOCw3LjMtMzkuM0MyNi41LDQ0MS40LDI2LjgsNDQxLjEsMjcuNCw0NDAuOXoNCgkJIE0xMjcuNiw0NjhMMTI3LjYsNDY4Yy0wLjMtMC4zLTAuNi0wLjgtMC42LTEuMWwxMi40LTgyLjVjMC0wLjMsMC4zLTAuOCwwLjYtMS4xYzAuMy0wLjMsMC44LTAuMywxLjEtMC4zDQoJCWMxNy4yLDQsMzMsMTIuNyw0NS43LDI1LjFjMC42LDAuMywwLjgsMC44LDEuNCwxLjRsMCwwYzEyLjEsMTIuMSwyMC45LDI3LjEsMjUuNCw0My4yYzAsMC4zLDAsMC44LTAuMywxLjENCgkJYy0wLjMsMC4zLTAuNiwwLjYtMS4xLDAuNmwtODMuOSwxNC4xQzEyOC41LDQ2OC41LDEyNy45LDQ2OC41LDEyNy42LDQ2OHogTTE3Mi41LDU2Mi44Yy0wLjMsMC4zLTAuOCwwLjMtMS4xLDAuMw0KCQljLTAuMywwLTAuNi0wLjMtMC42LTAuM2wtMC4zLTAuM2wtNDAuNC03Ny43Yy0wLjMtMC42LTAuMy0wLjgsMC0xLjRjMC4zLTAuNiwwLjYtMC44LDEuMS0wLjhsODQuMi0xNC4xYzAuMywwLDAuOCwwLDEuMSwwLjMNCgkJYzAuMywwLjMsMC42LDAuNiwwLjYsMS4xYzAuMywyLjgsMC42LDUuNiwwLjYsOC41YzAuMywyNi4zLTkuNiw1MS4xLTI3LjcsNzBDMTg0LjcsNTUzLjgsMTc5LDU1OC42LDE3Mi41LDU2Mi44eiIvPg0KCTxwYXRoIGlkPSJwbmV1X2dhdWNoZSIgZD0iTTExOC4zLDM2OS4xTDExOC4zLDM2OS4xYzI4LjUsMCw1NS45LDExLDc2LjUsMzAuOGMyMS4yLDIwLjMsMzMuMyw0OCwzMy45LDc3LjRzLTEwLjQsNTcuMy0zMC44LDc4LjgNCgkJQzE3Nyw1NzcuOCwxNDguNSw1OTAsMTE4LjMsNTkwYy0yOC41LDAtNTUuOS0xMS03Ni41LTMwLjhDLTIsNTE3LjEtMy40LDQ0Ny4xLDM4LjcsNDAzQzU5LjYsMzgxLjMsODguMSwzNjkuMSwxMTguMywzNjkuMQ0KCQkgTTExOC4zLDM2MS4yYy0zMS4xLDAtNjIuMSwxMi4xLTg1LjMsMzYuNGMtNDUuMiw0Ny4yLTQzLjgsMTIyLDMuNCwxNjcuNWMyMi45LDIyLDUyLjUsMzMsODEuOSwzM2MzMS4xLDAsNjIuMS0xMi4xLDg1LjMtMzYuNA0KCQljNDUuMi00Ny4yLDQzLjgtMTIyLTMuNC0xNjcuNUMxNzcuMywzNzIuMiwxNDgsMzYxLjIsMTE4LjMsMzYxLjJMMTE4LjMsMzYxLjJ6Ii8+DQo8L2c+DQoNCjxwYXRoIGlkPSJzdHJ1Y3R1cmUiIGQ9Ik00NzcuNSw0NzAuMmwtNDQuNi05Ni4zYy0yLjUtNS40LTMuNC0xNS4yLTMuNy0yMS4ybDAuNi0xLjFsLTcuMS0zMC41YzAsMC0wLjMsMC0wLjYsMFYzMjBoMC44DQoJYzAuOCwwLDEuNC0wLjgsMS40LTEuN2wtMC4zLTMuNGMwLTAuOC0wLjgtMS40LTEuNy0xLjRoLTAuNnYtNS4xYzEyLjctNCwyNi44LTkuNiwyOC4yLTE2LjFsMCwwYzAuOC0xLjEsMS40LTIuNSwxLjQtNC4yDQoJYzAtNC0zLjEtNy4xLTcuMS03LjFjLTQsMC03LjEsMy4xLTcuMSw3LjFsLTM5LjUsMTIuNGMtMC44LDAuMy0xLjQsMS4xLTEuMSwybDMuMSwxMC40YzAuMywwLjgsMS4xLDEuNCwyLDEuMWMwLDAsMi0wLjMsNS4xLTEuMXYyDQoJaC0wLjNjLTAuOCwwLTEuNCwwLjgtMS40LDEuN2wwLjMsMy40YzAsMC44LDAuOCwxLjQsMS40LDEuNHYwLjhjLTQ2LjYsMi41LTE3Ny45LDkuOS0xODMuMywxMC4yYy02LjIsMC4zLTEyLjQsNS42LTEyLjQsNS42DQoJTDk3LjcsNDkzLjdsMTgwLjQsMTcuOGwxMjQuNS0xNDIuNmM1LjQtNi4yLDkuNi04LjgsMTMuNi0xMC4yYzAuOCwxLjcsMS43LDMuNCwxLjcsNC4yYzAuMywyLDMuMSw1LjYsMC44LDYuOA0KCWMtMi4zLDEuMi0xLjcsNC41LTEuMSw3LjlsNTAsOTcuMWMtMC42LDEuNC0xLjEsMi44LTEuMSw0LjJjMCw1LjEsNC4yLDkuMyw5LjMsOS4zYzUuMSwwLDkuMy00LjIsOS4zLTkuMw0KCUM0ODUuNCw0NzQuNyw0ODIsNDcwLjgsNDc3LjUsNDcwLjJ6IE0zMzQuNiwzOTkuM2wtNTcuOSw4MWwtMTQyLTMuNGMwLDAsNzYuOC05NC4zLDgzLjktMTAzLjFjNy4xLTguOCwxOC45LTguOCwyNC4zLTcuNg0KCWMwLDAsODUuOCwxNi45LDg1LDE2LjdDMzM3LjIsMzg1LjUsMzM4LjYsMzk0LjMsMzM0LjYsMzk5LjN6Ii8+DQo8cGF0aCBpZD0icGVkYWxpZXIiIGQ9Ik0zNDUuMSw1MDguMWwtMC44LTIuNWMtMC4zLTAuOC0xLjEtMS40LTItMS4xbC0xMC4yLDIuOGwtMjkuOS00YzAtMi4zLTAuMy00LjgtMC44LTcuMQ0KCWMtMi04LjUtNy4xLTE1LjUtMTQuNC0yMGMtNS4xLTMuNC0xMS01LjEtMTcuMi01LjFjLTIsMC00LDAuMy01LjksMC42bDAsMGwtMC44LDAuM2MtMC4zLDAtMC4zLDAtMC42LDBjLTguNSwyLTE1LjUsNy4xLTIwLDE0LjQNCglzLTUuOSwxNi4xLTQsMjQuNmMyLDguNSw3LjEsMTUuNSwxNC40LDIwYzUuMSwzLjQsMTEsNS4xLDE3LjIsNS4xbDAsMGMyLjMsMCw0LjgtMC4zLDcuMS0wLjhoMC42YzguNS0yLDE1LjUtNy4xLDIwLTE0LjQNCgljMS40LTIuMywyLjUtNC44LDMuNC03LjNsNy45LDAuNmgtMC42Yy0wLjgsMC4zLTEuNCwxLjEtMS4xLDJsMC44LDIuNWMwLjMsMC44LDEuMSwxLjQsMiwxLjFsMzQuMi05LjYNCglDMzQ0LjgsNTA5LjgsMzQ1LjQsNTA4LjksMzQ1LjEsNTA4LjF6IE0yODMsNDg0LjFjNC44LDMuNCw4LjUsOC4yLDkuOSwxNC4xYzAuMywwLjgsMC4zLDEuNywwLjYsMi41bC0xNi43LTEuNEwyODMsNDg0LjF6DQoJIE0yNjQuMyw0ODAuN2gwLjNsMCwwYzMuMS0wLjYsNi4yLTAuOCw5LTAuM2wtNS45LDE1TDI1NS44LDQ4NUMyNTguNCw0ODIuOSwyNjEuMiw0ODEuNSwyNjQuMyw0ODAuN3ogTTI0Ny4xLDUwOC45DQoJYy0xLjQtNS42LTAuNi0xMS42LDIuMy0xNi45bDExLjksMTAuNGwtMTMuOCw4LjJDMjQ3LjQsNTEwLDI0Ny40LDUwOS41LDI0Ny4xLDUwOC45eiBNMjY5LjcsNTI3Yy00LjIsMC04LjUtMS4xLTEyLjQtMy43DQoJYy0yLTEuMS0zLjctMi41LTUuMS00LjJsMTMuOC04LjJMMjY5LjcsNTI3TDI2OS43LDUyN3ogTTI4OS43LDUxNS43Yy0yLjUsNC4yLTYuMiw3LjMtMTAuNCw5bC0zLjEtMTMuNmwxNS4yLDEuMQ0KCUMyOTAuOSw1MTMuNywyOTAuMyw1MTQuOCwyODkuNyw1MTUuN3oiLz4NCjxwYXRoIGlkPSJzZWxsZSIgZD0iTTI0OC41LDI1MS43Yy0xLjEtMS4xLTUuMS03LjYtMTEtNy42SDE3MmMtNS4xLDAtNC4yLDQtMiw1LjZjMi4zLDEuNywxNi40LDExLjksMjUuNCwxMS45YzAuOCwwLDEuNCwwLDIuNSwwDQoJbDE2LjcsNjQuOWgtNS45djcuMWg3LjZsMi4zLDguMmwxMS42LTIuOGwtMS40LTUuNmgxLjd2LTcuMUgyMjdsLTE3LjUtNjYuOWM2LjgtMS43LDEzLTMuNywxNC43LTQuMmMzLjEtMS4xLDEzLjgtMS40LDIwLDANCglDMjUwLjUsMjU1LjksMjQ5LjYsMjUyLjgsMjQ4LjUsMjUxLjd6Ii8+DQo8cGF0aCBpZD0iY2FkcmUiIGZpbGw9IiM3RjdGN0YiIGQ9Ik0zNzMuNiwzNDEuMmMtMC4zLTAuNi0xLjEtMS4xLTEuNy0xLjFsLTEzNyw2LjJjLTEuMSwwLTEuNywwLjgtMiwxLjdjMCwxLjEsMC42LDIsMS43LDINCglsMTE2LjYsMjMuN2gwLjNjMC42LDAsMS4xLTAuMywxLjctMC44bDIwLjYtMjkuOUMzNzMuOSwzNDIuOSwzNzMuOSwzNDIsMzczLjYsMzQxLjJ6Ii8+DQo8cGF0aCBpZD0iY2hhaW5lIiBkPSJNMjY5LjcsNTM2LjZjLTQuMiwwLTExLjYtMi0xMS45LTIuM2wtMTQwLjMtNDQuMWwwLDBjLTQtMS43LTYuOC01LjYtNi44LTkuOWMwLTUuOSw0LjgtMTAuNywxMC43LTEwLjcNCglsMTQ5LjQsMC44bDAsMGMxNy44LDAuNiwzMi4yLDE1LjIsMzIuMiwzM0MzMDMsNTIxLjYsMjg4LDUzNi42LDI2OS43LDUzNi42eiBNMTE4LjksNDg5LjFsMTM5LjIsNDQuMWMwLDAsNy4zLDIsMTEuMywyDQoJYzE3LjUsMCwzMS45LTE0LjEsMzEuOS0zMS45YzAtMTcuNS0xNC4xLTMxLjYtMzEuNi0zMS42aC0wLjhsMCwwbC0xNDcuNC0wLjhjLTUuMSwwLTkuMyw0LjItOS4zLDkuM2MwLDQsMi41LDcuNiw2LjIsOC44DQoJTDExOC45LDQ4OS4xTDExOC45LDQ4OS4xeiIvPg0KPC9zdmc+DQo=);
-  background-image: svg-url($velo);
-  background-repeat: no-repeat;
+    background-image: svg-url($velo);
+    background-repeat: no-repeat;
 }
 
+//On crée une nouvelle variable depuis l'original, dans lequel on remplace le contour bleu par un contour orange
+$toto: str-replace($velo, stroke="#07a5e0", fill="orange");
 
+.svgVisualExemples--data-replace {
+    //background-image: str-replace($velo, fill="#7F7F7F", fill="blue");
+    //background-image: svg-url($toto);
 
-
-
-
-
-
-
-
-
-
-
-.wrapper {
-  background-color: #fff;
-  border: 1px solid #CFD8DC;
-  margin: 2em auto;
-  max-width: 600px;
-  padding: 2em;
+    //On repart de cette nouvelle variable, en remplaçant tous les "fill" gris par du rouge
+    background-image: svg-replace-fill($toto, '#7F7F7F', 'red');
+    background-repeat: no-repeat;
 }
-
-.icon {
-  background-repeat: no-repeat;
-  background-position: 0 50%;
-  padding: 1em 0 1em 44px;
-}
-
-
-// Custom CSS
-
-/* variables */
-$icon-color: #B03032;
-
-// insert the svg code in a variable, make sure the svg only contains double quotes and surround the whole code with simple quotes
-$svg-icon-code: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125">
-	<title>Deer by Pumpkin Juice from the Noun Project</title>
-	<path fill="#000000" d="M52.673 77.548c-.655.49-1.418.71-2.236.71h-.873c-.818 0-1.582-.22-2.29-.71L45.2 76.185c-1.036-.654-2.073-2.072-2.018-3.763 0-1.527.71-2.78 1.636-3.545.927-.71 2.073-1.09 3.11-1.09h4.144c1.036 0 2.182.38 3.055 1.144.927.765 1.69 1.964 1.69 3.49 0 1.583-.98 3.055-2.017 3.71l-.055.054-2.072 1.364zM60.745 55.407c2.236 0 4.09 1.854 4.09 4.09 0 2.29-1.854 4.09-4.09 4.09-2.29 0-4.09-1.8-4.09-4.09 0-2.236 1.8-4.09 4.09-4.09zM39.2 55.407c2.236 0 4.09 1.854 4.09 4.09 0 2.29-1.854 4.09-4.09 4.09-2.29 0-4.09-1.8-4.09-4.09 0-2.236 1.8-4.09 4.09-4.09z"/>
-	<path fill="#000000" d="M78.527 47.28c.818.274 1.636.492 2.29.492l.874-.164v.055c.437-.164 1.037-.545 1.637-1.2.273-.273.49-.6.764-.927-.817-.327-1.69-.545-2.344-.545l-.873.165c-.436.11-1.036.49-1.636 1.2-.273.27-.492.598-.71.926zm-44.182-5.235c-.164.218-.327.382-.436.545-.056.11-.11.164-.22.218l-.054.11c-1.582 1.962-2.782 4.307-3.545 6.762-.544 1.963-.872 3.98-.872 6.108V66.04c0 5.727 2.29 10.908 6.055 14.67S44.218 86.82 50 86.82c5.727 0 10.91-2.345 14.673-6.108 3.764-3.763 6.11-8.944 6.11-14.67V55.788c0-2.072-.274-4.036-.874-5.89 0-.11-.056-.273-.11-.436-.818-2.4-2.018-4.69-3.545-6.653l-.218-.22c-.164-.217-.327-.38-.436-.6-.38-.326-.654-.653-.926-.926C60.91 37.3 55.727 35.01 50 35.01c-5.782 0-10.964 2.29-14.727 6.054-.273.327-.6.6-.873.927l-.055.055zm-13.58 4.31c-.6-.71-1.2-1.092-1.692-1.2l-.873-.165c-.655 0-1.473.218-2.29.49.217.328.435.71.708.983.6.654 1.2 1.036 1.69 1.2l.82.11c.654 0 1.526-.22 2.344-.492-.217-.327-.436-.654-.708-.926zM14.872 9.05c.655-1.144 1.364-2.07 2.236-2.944 1.635-1.527 4.254-1.472 5.78.164 1.583 1.636 1.528 4.254-.108 5.78-.164.11-.545.6-.982 1.31-.436.71-.927 1.582-1.31 2.563-.872 2.018-1.417 4.363-1.417 6.163 0 1.31.273 2.236.655 2.836 0 .055.055.055.055.055.382.436.764.764 1.145 1.09.436-3.544 1.964-6.707 4.527-8.943 1.69-1.472 4.31-1.254 5.782.436 1.473 1.745 1.255 4.308-.436 5.78-.926.765-1.854 2.564-1.854 4.8.055 1.8.545 3.818 1.964 5.89 5.072-4.528 11.78-7.2 19.09-7.2s13.964 2.672 19.036 7.2C70.51 31.956 71 29.94 71 28.14c0-2.237-.927-4.09-1.855-4.8-1.69-1.472-1.855-4.09-.382-5.78 1.473-1.692 4.036-1.91 5.782-.383 2.51 2.18 4.09 5.345 4.527 8.89.436-.383.818-.765 1.2-1.146l.055-.054c.327-.6.545-1.527.545-2.78.055-2.728-1.364-6.654-2.727-8.727-.436-.71-.818-1.2-.927-1.31-1.636-1.582-1.69-4.145-.164-5.78 1.582-1.637 4.145-1.692 5.782-.11.873.818 1.582 1.8 2.29 2.89.492.873 1.037 1.854 1.528 2.89.11-.927.164-1.854.164-2.836 0-2.29 1.8-4.09 4.09-4.09 2.237 0 4.092 1.8 4.092 4.09 0 7.8-3 15.325-8.345 20.996-.218.327-.545.6-.818.818-.545.6-1.036 1.09-1.636 1.582l-5.672 4.854c1.09-.382 2.182-.545 3.218-.545 3.164.054 5.727 1.144 7.527 2.07 2.29 1.146 3.6 3.546 3.6 5.945 0 1.036-.273 2.072-.71 3.054h-.054c-.6 1.2-1.474 2.67-2.728 4.035-1.255 1.418-2.945 2.78-5.236 3.49-1.145.382-2.29.545-3.327.545-.656 0-1.256-.055-1.856-.164V66.04C78.964 82.02 65.982 95 50 95c-16.036 0-28.964-12.98-28.964-28.96V55.79c-.6.11-1.255.164-1.91.164-1.035 0-2.18-.164-3.326-.545-2.29-.71-3.982-2.072-5.236-3.49-1.2-1.31-2.073-2.727-2.673-3.927 0-.055-.054-.055-.054-.11-.545-.98-.764-2.126-.764-3.053 0-2.454 1.364-4.8 3.655-5.944 1.8-.927 4.31-2.018 7.473-2.072 1.036 0 2.182.165 3.273.546L15.8 32.5c-.655-.544-1.255-1.09-1.8-1.69-.218-.218-.49-.436-.655-.71C7.945 24.486 5 16.96 5 9.106c0-2.29 1.8-4.09 4.09-4.09 2.237 0 4.092 1.8 4.092 4.09 0 .927.055 1.854.164 2.78.49-1.035.98-1.962 1.527-2.834z"/>
-</svg>';
-
-
-
-
-
-/* svg used as background image via data URI */
-/* do not work in IE and Firefox as is */
-.icon-zoom {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125">
-	<title>Deer by Pumpkin Juice from the Noun Project</title>
-	<path fill="#000000" d="M52.673 77.548c-.655.49-1.418.71-2.236.71h-.873c-.818 0-1.582-.22-2.29-.71L45.2 76.185c-1.036-.654-2.073-2.072-2.018-3.763 0-1.527.71-2.78 1.636-3.545.927-.71 2.073-1.09 3.11-1.09h4.144c1.036 0 2.182.38 3.055 1.144.927.765 1.69 1.964 1.69 3.49 0 1.583-.98 3.055-2.017 3.71l-.055.054-2.072 1.364zM60.745 55.407c2.236 0 4.09 1.854 4.09 4.09 0 2.29-1.854 4.09-4.09 4.09-2.29 0-4.09-1.8-4.09-4.09 0-2.236 1.8-4.09 4.09-4.09zM39.2 55.407c2.236 0 4.09 1.854 4.09 4.09 0 2.29-1.854 4.09-4.09 4.09-2.29 0-4.09-1.8-4.09-4.09 0-2.236 1.8-4.09 4.09-4.09z"/>
-	<path fill="#000000" d="M78.527 47.28c.818.274 1.636.492 2.29.492l.874-.164v.055c.437-.164 1.037-.545 1.637-1.2.273-.273.49-.6.764-.927-.817-.327-1.69-.545-2.344-.545l-.873.165c-.436.11-1.036.49-1.636 1.2-.273.27-.492.598-.71.926zm-44.182-5.235c-.164.218-.327.382-.436.545-.056.11-.11.164-.22.218l-.054.11c-1.582 1.962-2.782 4.307-3.545 6.762-.544 1.963-.872 3.98-.872 6.108V66.04c0 5.727 2.29 10.908 6.055 14.67S44.218 86.82 50 86.82c5.727 0 10.91-2.345 14.673-6.108 3.764-3.763 6.11-8.944 6.11-14.67V55.788c0-2.072-.274-4.036-.874-5.89 0-.11-.056-.273-.11-.436-.818-2.4-2.018-4.69-3.545-6.653l-.218-.22c-.164-.217-.327-.38-.436-.6-.38-.326-.654-.653-.926-.926C60.91 37.3 55.727 35.01 50 35.01c-5.782 0-10.964 2.29-14.727 6.054-.273.327-.6.6-.873.927l-.055.055zm-13.58 4.31c-.6-.71-1.2-1.092-1.692-1.2l-.873-.165c-.655 0-1.473.218-2.29.49.217.328.435.71.708.983.6.654 1.2 1.036 1.69 1.2l.82.11c.654 0 1.526-.22 2.344-.492-.217-.327-.436-.654-.708-.926zM14.872 9.05c.655-1.144 1.364-2.07 2.236-2.944 1.635-1.527 4.254-1.472 5.78.164 1.583 1.636 1.528 4.254-.108 5.78-.164.11-.545.6-.982 1.31-.436.71-.927 1.582-1.31 2.563-.872 2.018-1.417 4.363-1.417 6.163 0 1.31.273 2.236.655 2.836 0 .055.055.055.055.055.382.436.764.764 1.145 1.09.436-3.544 1.964-6.707 4.527-8.943 1.69-1.472 4.31-1.254 5.782.436 1.473 1.745 1.255 4.308-.436 5.78-.926.765-1.854 2.564-1.854 4.8.055 1.8.545 3.818 1.964 5.89 5.072-4.528 11.78-7.2 19.09-7.2s13.964 2.672 19.036 7.2C70.51 31.956 71 29.94 71 28.14c0-2.237-.927-4.09-1.855-4.8-1.69-1.472-1.855-4.09-.382-5.78 1.473-1.692 4.036-1.91 5.782-.383 2.51 2.18 4.09 5.345 4.527 8.89.436-.383.818-.765 1.2-1.146l.055-.054c.327-.6.545-1.527.545-2.78.055-2.728-1.364-6.654-2.727-8.727-.436-.71-.818-1.2-.927-1.31-1.636-1.582-1.69-4.145-.164-5.78 1.582-1.637 4.145-1.692 5.782-.11.873.818 1.582 1.8 2.29 2.89.492.873 1.037 1.854 1.528 2.89.11-.927.164-1.854.164-2.836 0-2.29 1.8-4.09 4.09-4.09 2.237 0 4.092 1.8 4.092 4.09 0 7.8-3 15.325-8.345 20.996-.218.327-.545.6-.818.818-.545.6-1.036 1.09-1.636 1.582l-5.672 4.854c1.09-.382 2.182-.545 3.218-.545 3.164.054 5.727 1.144 7.527 2.07 2.29 1.146 3.6 3.546 3.6 5.945 0 1.036-.273 2.072-.71 3.054h-.054c-.6 1.2-1.474 2.67-2.728 4.035-1.255 1.418-2.945 2.78-5.236 3.49-1.145.382-2.29.545-3.327.545-.656 0-1.256-.055-1.856-.164V66.04C78.964 82.02 65.982 95 50 95c-16.036 0-28.964-12.98-28.964-28.96V55.79c-.6.11-1.255.164-1.91.164-1.035 0-2.18-.164-3.326-.545-2.29-.71-3.982-2.072-5.236-3.49-1.2-1.31-2.073-2.727-2.673-3.927 0-.055-.054-.055-.054-.11-.545-.98-.764-2.126-.764-3.053 0-2.454 1.364-4.8 3.655-5.944 1.8-.927 4.31-2.018 7.473-2.072 1.036 0 2.182.165 3.273.546L15.8 32.5c-.655-.544-1.255-1.09-1.8-1.69-.218-.218-.49-.436-.655-.71C7.945 24.486 5 16.96 5 9.106c0-2.29 1.8-4.09 4.09-4.09 2.237 0 4.092 1.8 4.092 4.09 0 .927.055 1.854.164 2.78.49-1.035.98-1.962 1.527-2.834z"/>
-</svg>');
-}
-
-
-/* custom CSS using mixin */
-.svg-fill-replaced {
-  background-image: svg-replace-fill($svg-icon-code, '#000000', $icon-color);
-}
-
-.svg-with-mixin-from-jakob {
-  background-image: svg-url($svg-icon-code);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .svgExemple_wrapper {
-  text-align: center;
-  display: table-cell;
-  vertical-align: bottom;
+    text-align: center;
+    display: table-cell;
+    vertical-align: bottom;
 }
 
 .svgExemple {
-  width: 100%;
+    width: 100%;
 }
 
-
 code {
-  @include font-size(18);
-  background-color: #1B2038;
-  color: white;
-  border: 1px solid grey;
-  padding: 0 5px;
-  white-space: nowrap;
+    @include font-size(18);
+    background-color: #1B2038;
+    color: white;
+    border: 1px solid grey;
+    padding: 0 5px;
+    white-space: nowrap;
 }
 
 code.codeBlock {
-  display: block;
-  padding: 10px;
-  margin: 10px;
-  white-space: normal;
+    display: block;
+    padding: 10px;
+    margin: 10px;
+    white-space: normal;
 }
 
 .codeBlockElement {
-  display: block;
-  margin-bottom: 10px;
+    display: block;
+    margin-bottom: 10px;
 }
 
 .codeExergue {
-  color: $red;
-  font-weight: bold;
-  background-color: transparent;
+    color: $red;
+    font-weight: bold;
+    background-color: transparent;
 }
 
 .codeExergue.codeExergue--alt {
-  color: $green;
+    color: $green;
 }
 
 .codeExergue.codeExergue--blue {
-  color: $blue;
+    color: $blue;
 }
-
 
 //tabulations in <code>
 $maxLen: 8;
 .codeBlockElement.codeBlockElement--tab {
-  @for $i from 1 through $maxLen {
-    &#{$i} {
-      padding-left: 40px * $i
+    @for $i from 1 through $maxLen {
+        &#{$i} {
+            padding-left: 40px * $i
+        }
     }
-  }
 }
-
-
-
 
 /*===========-------modifyers pour exemples--------==========*/
 .svgExemple.svgExemple--big {
-  width: 172px;
-  height: 119px;
+    width: 172px;
+    height: 119px;
 }
 
 .svgExemple.svgExemple--border {
-  border: 1px solid red;
+    border: 1px solid red;
 }
-
-
 
 /*===========-------states--------==========*/
 ._is_resizable {
-  resize: both;
-  overflow: auto;
+    resize: both;
+    overflow: auto;
 }
 
 ._is_responsive {
-  width: 100%;
-  min-height: 100%;
+    width: 100%;
+    min-height: 100%;
 }
-
-
 
 /*===========-------Support Browsers--------==========*/
 table.support {
-  table-layout: fixed;
-  border-spacing: 0;
-  width: 100%;
+    table-layout: fixed;
+    border-spacing: 0;
+    width: 100%;
 }
 
 table.support .col-5 {
-  width: 20%;
+    width: 20%;
 }
 
 table.support .col-6 {
-  width: 16.66667%;
+    width: 16.66667%;
 }
 
 table.support .col-7 {
-  width: 14.28571%;
+    width: 14.28571%;
 }
 
 table.support .col-8 {
-  width: 12.5%;
+    width: 12.5%;
 }
 
 table.support td {
-  box-sizing: border-box;
-  max-height: 1em;
-  border-left: 2px solid white;
-  border-right: 2px solid white;
-  padding: 0.25em 0.5em;
-  text-align: center;
-  vertical-align: middle;
+    box-sizing: border-box;
+    max-height: 1em;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    padding: 0.25em 0.5em;
+    text-align: center;
+    vertical-align: middle;
 }
 
 table.support tr:first-child td {
-  padding-top: 0.4em;
+    padding-top: 0.4em;
 }
 
 table.support tr:first-child td:nth-child(2n + 1) {
-  background-color: #eee;
+    background-color: #eee;
 }
 
 table.support .support {
-  background-color: #8fa971;
+    background-color: #8fa971;
 }
 
 table.support .partial-support {
-  background-color: #e8c373;
+    background-color: #e8c373;
 }
 
 table.support .no-support {
-  background-color: #d87363;
+    background-color: #d87363;
 }
-
 
 /*======Exemple de menu=======*/
 .menuSvg {
-  margin: 0;
-  padding: 0;
-  display: block;
+    margin: 0;
+    padding: 0;
+    display: block;
 }
 
 .menuSvg_item {
-  list-style: none;
-  font-size: 3vw;
-  display: table;
-  width: 100%;
-  &:before {
-    content: '';
-    display: table-cell;
-    width: 5%;
-    background-image: url(../../../img/sprites/view/pictos_digiposte.svg#dgp_icon_pdf);
-    background-repeat: no-repeat;
-  }
+    list-style: none;
+    font-size: 3vw;
+    display: table;
+    width: 100%;
+    &:before {
+        content: '';
+        display: table-cell;
+        width: 5%;
+        background-image: url(../../../img/sprites/view/pictos_digiposte.svg#dgp_icon_pdf);
+        background-repeat: no-repeat;
+    }
 }
 
 .menuSvg_item.menuSvg_item--2:before {
-  background-image: url(../../../img/sprites/view/pictos_digiposte.svg#dgp_icon_premium);
+    background-image: url(../../../img/sprites/view/pictos_digiposte.svg#dgp_icon_premium);
 }
 
 .menuSvg_item.menuSvg_item--3:before {
-  background-image: url(../../../img/sprites/view/pictos_digiposte.svg#dgp_icon_visualiser);
+    background-image: url(../../../img/sprites/view/pictos_digiposte.svg#dgp_icon_visualiser);
 }
 
 .menuSvg_item.menuSvg_item--4:before {
-  background-image: url(../../../img/sprites/view/pictos_digiposte.svg#dgp_icon_home);
+    background-image: url(../../../img/sprites/view/pictos_digiposte.svg#dgp_icon_home);
 }
 
 #premium {
-  transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
 }
 
 .svgLink_list li {
-  margin: 30px 0;
+    margin: 30px 0;
 }
 
 .svgLink {
-  @include font-size(22);
-  margin-left:  60px;
-  color: #5e5e5e;
-  text-decoration: none;
-  position: relative;
+    @include font-size(22);
+    margin-left: 60px;
+    color: #5e5e5e;
+    text-decoration: none;
+    position: relative;
 
-  &::after {
-    content: '';
-    left: 100%;
-    top: 50%;
-    margin-left: 20px;
-    position: absolute;
-    margin-top: -25px;
-    width: 50px;
-    height: 50px;
-    display: inline-block;
-    background-size: cover;
-    background-position: 0 0;
-    background-image: url('../../../img/pictos_hover.svg');
-  }
-
-  &:hover,
-  &:focus {
-    border-bottom: 1px solid;
     &::after {
-      background-position: 0 -100%;
+        content: '';
+        left: 100%;
+        top: 50%;
+        margin-left: 20px;
+        position: absolute;
+        margin-top: -25px;
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+        background-size: cover;
+        background-position: 0 0;
+        background-image: url('../../../img/pictos_hover.svg');
     }
-  }
+
+    &:hover,
+    &:focus {
+        border-bottom: 1px solid;
+        &::after {
+            background-position: 0 -100%;
+        }
+    }
 }
 
 .svgLink--validate {
-  &::after {
-    background-position: 0 -200%;
-  }
-
-  &:hover,
-  &:focus {
     &::after {
-      background-position: 0 -300%;
+        background-position: 0 -200%;
     }
-  }
+
+    &:hover,
+    &:focus {
+        &::after {
+            background-position: 0 -300%;
+        }
+    }
 }
 
 .svgLink--delete {
-  &::after {
-    background-position: 0 -400%;
-  }
-
-  &:hover,
-  &:focus {
     &::after {
-      background-position: 0 -500%;
+        background-position: 0 -400%;
     }
-  }
+
+    &:hover,
+    &:focus {
+        &::after {
+            background-position: 0 -500%;
+        }
+    }
 }
-
-
 
 /*======Listes=======*/
 dl {
-  margin: 0;
+    margin: 0;
 }
 
 dt {
-  @include font-size(14);
-  font-weight: bold;
-  color: #51585A;
+    @include font-size(14);
+    font-weight: bold;
+    color: #51585A;
 }
 
 dd {
-  @include font-size(12);
-  padding-left: 10px;
-  margin: 0 0 15px 0;
+    @include font-size(12);
+    padding-left: 10px;
+    margin: 0 0 15px 0;
 }

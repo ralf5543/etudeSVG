@@ -471,7 +471,7 @@
         utilisation plus basique cette balise sera totalement appropriée. À noter que cette partie de la spécifications
         est toujours en brouillon.</p>
 
-    <p>pas de modifs, sauf css directement dans le svg !</p>
+    <p>pas de modifs, sauf css directement dans le svg ! (sauf dans ie10+ ???)</p>
 
 
     <h3 class="smallTitle">en arrière-plan</h3>
@@ -483,46 +483,32 @@
 
     <div class="svgVisualExemples svgVisualExemples--background _is_resizable">
     </div>
-    <p>Idem, pas de modif, seulement du style inline et des css direct dans le SVG.</p>
+    <p>Idem, pas de modif, seulement du style inline et des css direct dans le SVG. (sauf dans ie10+ ???)</p>
 </section>
 
 <section class="etude">
     <h2 class="secondaryTitle" id="data">Le format Data URI</h2>
-    <p>Que ce soit via la balise <code>&lt;img&gt;</code> ou <code>background-image</code>, on peut embarquer les données du SVG
+    <p>Quel que soit le mode d'intégration choisi, on peut embarquer les données du SVG
     directement dans le html via le format <code>Data URI</code>.</p>
 
     <p>Le premier avantage de ce format, qui n'est pas nouveau, est de limiter les requêtes HTTP, mais l'appliquer aux svg nous offre de nouvelles possibilités.</p>
 
     <div class="svgVisualExemples svgVisualExemples--data"></div>
 
-    <p>Cela ne marche actuellement ni sur Firedox, ni sur Internet Explorer. Il faut pour cela convertir l'encodage utf8 en base64.</p>
-    <p>De nombreux outils en ligne (comme <a href="http://jpillora.com/base64-encoder/">http://jpillora.com/base64-encoder/</a>)  s'occupent de la conversion</p>
-
-
     <code class="codeBlock">
         background-image: url('data:image/svg+xml;<mark class="codeExergue">utf8</mark>,<mark class="codeExergue">&lt;svg&gt;...&lt;/svg&gt;</mark>');
     </code>
+
+    <p>Cela ne marche actuellement ni sur Firedox, ni sur Internet Explorer. Il faut d'abord convertir les caractères spéciaux.</p>
+    <p>Plusieurs mixins Sass existent comme <a href="http://codepen.io/jakob-e/pen/doMoML">svg-url</a></p>
+
     <div class="svgVisualExemples svgVisualExemples--data-svg"></div>
 
-    <code class="codeBlock">
-        background-image: url(data:image/svg+xml;<mark class="codeExergue">base64</mark>,<mark class="codeExergue">PleinDeCodeRelouIncomprehensible</mark>);
-    </code>
+    <p>On peut maintenant réunir les avantages des deux mondes : utilisation de background pour la maintenabilité du code (dissociation fond/forme), et modification des styles du svg.</p>
+    <p>pour cela on va, via une mixin Sass par exemple, cibler les propriétés <code>fill</code></p>
 
-    <div class="wrapper">
-        <h1>Using SVG as background image with data URI and SASS mixin</h1>
+    <div class="svgVisualExemples svgVisualExemples--data-replace"></div>
 
-        <h2>As background data URI (do not work in IE and Firefox)</h2>
-        <div class="icon icon-zoom">The icon on the left is displayed as a background image via data URI</div>
-
-        <h2 class="u-margin-bottom-none">With the svg-url function that makes it IE friendly</h2>
-        <p class="u-margin-top-none u-text-small">(<a href="http://codepen.io/jakob-e/pen/doMoML">see Encode SVG SCSS here</a>)</p>
-        <div class="icon svg-with-mixin-from-jakob">The icon on the left still uses data URI but is IE friendly</div>
-
-        <h2>With custom function to replace fill hex color by something else</h2>
-        <div class="icon svg-fill-replaced">The icon on the left is displayed via a mixin that allows you to change its color</div>
-
-        <p class="u-text-small"><a href="https://thenounproject.com/search/?q=deer&i=242795">Deer Icon by Pumpkin Juice from the Noun Project</a></p>
-    </div>
 
 </section>
 
@@ -776,7 +762,9 @@
 
 
     <h3 class="smallTitle">Responsive et media-queries</h3>
-    <p>Retirer width et height du svg pour 100% du conteneur.</p>
+    <p>Au mieux, retirer width et height du svg pour 100% du conteneur.</p>
+    <p>Au pire, préciser <code>background-size: 100%;</code> (ou <code>backgroubd-size: cover;</code>), si le svg est en arrière-plan,
+    ou passer le conteneur (<code>img</code>, <code>objetc</code>...) à 100% dans les autres cas de figure.</p>
 
     <p>les media queries peuvent être intégrées directement au svg, pour en modifier l'affichage.</p>
     <p>La taille de référence n'est plus le navigateur, mais le SVG lui-même (le viewport).</p>
