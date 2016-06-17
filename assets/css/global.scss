@@ -309,15 +309,15 @@ $velo: '<svg version="1.1" id="velo" xmlns="http://www.w3.org/2000/svg" viewBox=
     background-repeat: no-repeat;
 }
 
-//On crée une nouvelle variable depuis l'original, dans lequel on remplace le contour bleu par un contour orange
-$toto: str-replace($velo, stroke="#07a5e0", fill="orange");
+$velo-orange: str-replace($velo, stroke="#07a5e0", stroke="orange");
 
 .svgVisualExemples--data-replace {
-    //background-image: str-replace($velo, fill="#7F7F7F", fill="blue");
-    //background-image: svg-url($toto);
+    background-image: svg-url($velo-orange);
+    background-repeat: no-repeat;
+}
 
-    //On repart de cette nouvelle variable, en remplaçant tous les "fill" gris par du rouge
-    background-image: svg-replace-fill($toto, '#7F7F7F', 'red');
+.svgVisualExemples--data-replace-final {
+    background-image: svg-replace-fill($velo, '#7F7F7F', 'red');
     background-repeat: no-repeat;
 }
 
@@ -344,7 +344,7 @@ code.codeBlock {
     display: block;
     padding: 10px;
     margin: 10px;
-    white-space: normal;
+    overflow-x: auto;
 }
 
 .codeBlockElement {
