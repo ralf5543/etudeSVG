@@ -25,7 +25,7 @@
         <a class="mainNav_element_link" href="#crop">Recadrer une partie du svg (fragment)</a>
     </li>
     <li class="mainNav_element">
-        <a class="mainNav_element_link" href="#draw">création d'un SVG</a>
+        <a class="mainNav_element_link" href="#draw">Création d'un SVG</a>
     </li>
     <li class="mainNav_element">
         <a class="mainNav_element_link" href="#ie">Le cas Internet Explorer</a>
@@ -60,25 +60,12 @@
     </table>
 
     <p>Une chiée de problèmes sur IE9+ quand même. Et chrome affiche pas les viewbox en arrière-plan [plus le cas !]</p>
-    <p>viewbox techniques avec ID :
-        Firefox does everything right.
-        IE 11 does everything right. IE 9 & 10 are a little weird with background-position (squishing) but otherwise
-        works with all.
-        Current versions of Chrome/Safari/Opera (38/8/25) handle all the HTML IMG techniques well, but none of the CSS
-        techniques, including the background-position one. Pre-Blink Opera was the same, interestingly enough.
-        The only thing iOS 8.1 can handle is IMG referencing a
-        VIEW.
-        The only thing Android 4.4 gets right is background-position (the one that's not really using fragment
-        identifiers at all). Android 5 matches current Chrome/Safari/Opera as above.
-
-    <p><a href="https://css-tricks.com/svg-fragment-identifiers-work/">https://css-tricks.com/svg-fragment-identifiers-work/</a>
-    </p>
 
 </section>
 
 
 <section class="etude">
-    <h2 class="secondaryTitle" id="draw">création d'un SVG</h2>
+    <h2 class="secondaryTitle" id="draw">Création d'un SVG</h2>
 
     <h3 class="smallTitle">Depuis Illustrator</h3>
     <img src="img/formes_illustrator.gif">
@@ -299,7 +286,7 @@
     <p></p>
 
 
-    <h3 class="smallTitle">preserveAspectRatio</h3>
+    <h3 class="smallTitle">L'attribut preserveAspectRatio</h3>
     <p>La seule utilité de le déclarer est si le viewport et la viewBox ont des valeurs différentes (ou pour être plus
         précis, pas le même ratio largeur et hauteur).</p>
     <p>Dans ce cas, la propriété <code>preserveAspectRatio</code> permet de conserver une image entière, et non
@@ -505,6 +492,7 @@
 
     <p>Le premier avantage de ce format, qui n'est pas nouveau, est de limiter les requêtes HTTP, mais l'appliquer aux
         svg nous offre de nouvelles possibilités.</p>
+    <p>L'exemple suivant reprend notre vélo, avec la bordure de la roue droite grossie et teintée (<code>stroke="#07a5e0" stroke-width="10"</code>).</p>
 
     <div class="svgVisualExemples svgVisualExemples--data"></div>
 
@@ -516,7 +504,7 @@
         ');
     </code>
 
-    <p>Cela ne marche actuellement ni sur Firedox, ni sur Internet Explorer. Il faut d'abord convertir les caractères
+    <p>Cela ne marche actuellement ni sur Firefox, ni sur Internet Explorer. Il faut d'abord convertir les caractères
         spéciaux.</p>
     <p>Plusieurs mixins Sass existent comme <a href="http://codepen.io/jakob-e/pen/doMoML">svg-url</a></p>
 
@@ -971,9 +959,9 @@
 
 
 <section class="etude">
-    <h2 class="secondaryTitle" id="">Modifier l'apparence d'un background svg</h2>
+    <h2 class="secondaryTitle" id="">Modifier l'apparence d'un background svg au survol</h2>
 
-    <h3 class="smallTitle">Cas pratique : changement de couleurs au survol</h3>
+    <h3 class="smallTitle">La solution la plus flexible</h3>
 
     <p>On crée simplement un sprite, de préférence sur une seule ligne verticale. Chaque dessin, ainsi que sa variante
         colorée, est un <code>symbol</code>, appelé
@@ -982,11 +970,53 @@
 
     <img src="img/pictos_hover.svg">
 
-    <ul class="svgLink_list">
-        <li><a href="#" class="svgLink svgLink--image">Hover me</a></li>
-        <li><a href="#" class="svgLink svgLink--validate">Hover me</a></li>
-        <li><a href="#" class="svgLink svgLink--delete">Hover me</a></li>
-    </ul>
+    <p>Dans le svg :</p>
+    <code class="codeBlock">
+        <span class="codeBlockElement">&lt;svg viewBox="<mark class="codeExergue">0 0 32 192</mark>" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;stylel&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab2"><mark class="codeExergue">.myFigure</mark> {</span>
+        <span class="codeBlockElement codeBlockElement--tab3">fill: red;</span>
+        <span class="codeBlockElement codeBlockElement--tab2">}</span>
+        <span class="codeBlockElement codeBlockElement--tab2"><mark class="codeExergue">.mySecondFigure</mark> {</span>
+        <span class="codeBlockElement codeBlockElement--tab3">fill: green;</span>
+        <span class="codeBlockElement codeBlockElement--tab2">}</span>
+        <span class="codeBlockElement codeBlockElement--tab2"><mark class="codeExergue codeExergue--alt">.myFigure-hover</mark> {</span>
+        <span class="codeBlockElement codeBlockElement--tab3">fill: blue;</span>
+        <span class="codeBlockElement codeBlockElement--tab2">}</span>
+        <span class="codeBlockElement codeBlockElement--tab2"><mark class="codeExergue codeExergue--alt">.mySecondFigure-hover</mark> {</span>
+        <span class="codeBlockElement codeBlockElement--tab3">fill: yellow;</span>
+        <span class="codeBlockElement codeBlockElement--tab2">}</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;/stylel&gt;</span>
+        <br>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="<mark class="codeExergue">icon1</mark>"&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab2">&lt;path class="<mark class="codeExergue">myFigure</mark>".../&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab2">&lt;path class="<mark class="codeExergue">mySecondFigure</mark>".../&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;/symbol&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="<mark class="codeExergue codeExergue--alt">icon1-hover</mark>"&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab2">&lt;path class="<mark class="codeExergue codeExergue--alt">myFigure-hover</mark>".../&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab2">&lt;path class="<mark class="codeExergue codeExergue--alt">mySecondFigure-hover</mark>".../&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;/symbol&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon2">...&lt;/symbol&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon2-hover">...&lt;/symbol&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon3">...&lt;/symbol&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon3-hover">...&lt;/symbol&gt;</span>
+        <br>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="<mark class="codeExergue">#icon1</mark>"/&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="<mark class="codeExergue codeExergue--alt">#icon1-hover</mark>" y="<mark class="codeExergue codeExergue--alt">32</mark>" /&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon2" y="64" /&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon2-hover" y="96" /&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon3" y="128" /&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon3-hover" y="160" c/&gt;</span>
+        <span class="codeBlockElement">&lt;/svg&gt;</span>
+    </code>
+
+    <p>Chaque forme à modifier est doublée (l'original plus la version colorisée,
+        via styles en ligne ou ses attributs internes modifiés), ce qui alourdit le poids de la page.</p>
+
+    <h3 class="smallTitle">La solution la plus propre</h3>
+
+    <p>La démarche est la même, à ceci près que chaque forme sera unique. On va rentabiliser <code>use</code> en appelant deux fois chaque forme,
+        et en les modifiant à ce moment-là grâce à l'ajout d'une classe.</p>
 
     <p>Dans le svg :</p>
     <code class="codeBlock">
@@ -1012,31 +1042,52 @@
         <span class="codeBlockElement">&lt;/svg&gt;</span>
     </code>
 
-    <p>Dans la css de la page :</p>
+    <p>Le fichier SVG est alors plus clair, plus facilement maintenable. Problème, à cause du <a href="https://www.w3.org/TR/shadow-dom/">shadow dom</a>,
+    on ne peut plus cibler les classes des différents éléments (<code>path</code>, etc.) en css.</p>
+    <p>Du coup, notre css va impacter tout le symbol, sans pouvoir faire de détail.</p>
+    <p>On peut néanmoins minimiser (un peu) le problème en ajoutant <code>fill="currentColor"</code> à un ou plusieurs éléments du SVG.
+        Cela nous permet de modifier deux paramètres, au lieu d'un seul :</p>
+
+    <code class="codeBlock">
+        <span class="codeBlockElement">&lt;stylel&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">.icon1_hover {</span>
+        <span class="codeBlockElement codeBlockElement--tab2">fill: red;</span>
+        <span class="codeBlockElement codeBlockElement--tab2"><mark class="codeExergue">color</mark>: blue;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">}</span>
+        <span class="codeBlockElement">&lt;/stylel&gt;</span>
+    </code>
+
+    <p>Tout dépend donc du besoin, mais quelle que soit la méthode choisie, le css (externe) de la page est le suivant :</p>
     <code class="codeBlock">
         <span class="codeBlockElement">.icon1 {</span>
         <span class="codeBlockElement codeBlockElement--tab1">background-image: url(icons.svg);</span>
         <span class="codeBlockElement codeBlockElement--tab1">background-size: <mark
-                class="codeExergue">cover;</mark></span>
-        <span class="codeBlockElement codeBlockElement--tab1">background-position: 0 <mark class="codeExergue">0</mark></span>
+                class="codeExergue">cover</mark>;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">background-position: 0 <mark class="codeExergue">0</mark>;</span>
         <span class="codeBlockElement">}</span>
         <br>
         <span class="codeBlockElement">.icon1:hover {</span>
         <span class="codeBlockElement codeBlockElement--tab1">background-position: 0 <mark
-                class="codeExergue">-100%</mark></span>
+                class="codeExergue">-100%</mark>;</span>
         <span class="codeBlockElement">}</span>
         <br>
         <span class="codeBlockElement">.icon2 {</span>
         <span class="codeBlockElement codeBlockElement--tab1">background-position: 0 <mark
-                class="codeExergue">-200%</mark></span>
+                class="codeExergue">-200%</mark>;</span>
         <span class="codeBlockElement">}</span>
         <br>
         <span class="codeBlockElement">.icon2:hover {</span>
         <span class="codeBlockElement codeBlockElement--tab1">background-position: 0 <mark
-                class="codeExergue">-300%</mark></span>
+                class="codeExergue">-300%</mark>;</span>
         <span class="codeBlockElement">}</span>
         etc.
     </code>
+
+    <ul class="svgLink_list">
+        <li><a href="#" class="svgLink svgLink--image">Hover me</a></li>
+        <li><a href="#" class="svgLink svgLink--validate">Hover me</a></li>
+        <li><a href="#" class="svgLink svgLink--delete">Hover me</a></li>
+    </ul>
 
 </section>
 
