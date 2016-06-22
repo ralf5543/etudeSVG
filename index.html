@@ -59,7 +59,8 @@
         </tbody>
     </table>
 
-    <p>Une chiée de problèmes sur IE9+ quand même. Et chrome affiche pas les viewbox en arrière-plan [plus le cas !]</p>
+    <p>Une chiée de problèmes sur IE9+ quand même. Et chrome affiche pas les viewbox en arrière-plan [plus le cas
+        !]</p>
 
 </section>
 
@@ -78,12 +79,14 @@
         <span class="codeBlockElement">&lt;svg version="1.1" id="<mark class="codeExergue">formes</mark>" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="595.3px" height="841.9px" viewBox="0 0 595.3 841.9" xml:space="preserve"&gt;</span>
 
-        <span class="codeBlockElement codeBlockElement--tab1">&lt;rect id="<mark class="codeExergue">Rectangle</mark>" x="134" y="131" fill="#ED1F24" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="339" height="218"/&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;rect id="<mark
+                    class="codeExergue">Rectangle</mark>" x="134" y="131" fill="#ED1F24" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="339" height="218"/&gt;</span>
 
         <span class="codeBlockElement codeBlockElement--tab1">&lt;g id="<mark class="codeExergue">groupe1
         </mark>"&gt;</span>
 
-        <span class="codeBlockElement codeBlockElement--tab2">&lt;ellipse id="<mark class="codeExergue">Ovale</mark>" fill="#4451A3" cx="135" cy="374" rx="86" ry="134"/&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab2">&lt;ellipse id="<mark
+                    class="codeExergue">Ovale</mark>" fill="#4451A3" cx="135" cy="374" rx="86" ry="134"/&gt;</span>
 
         <span class="codeBlockElement codeBlockElement--tab2">&lt;polygon id="<mark class="codeExergue">Etoile</mark>" fill="#ECE70D" stroke="#EC008C" stroke-width="8" stroke-miterlimit="10" points="127,367 262.1,381.1
 		350.2,277.8 378.6,410.6 504,462.5 386.5,530.5 375.9,665.9 274.9,575.1 142.9,606.8 198,482.8 	"/&gt;</span>
@@ -94,9 +97,11 @@
     </code>
 
     <p>Exemple avec la création d'un SVG cmposé de trois formes. Croper au max, pour faciliter manipulation.
-        L'ordre des claques est respecté (même si visuellement inversé, entre calques et code xml). Les groupes de
+        L'ordre des claques est respecté (même si visuellement inversé, entre calques et code xml). Les groupes
+        de
         calques sont aussi convertis,
-        et le nom des claques, groupe, et racine convertis en ID (ajout d'un chiffre si plusieurs avec le même nom).
+        et le nom des claques, groupe, et racine convertis en ID (ajout d'un chiffre si plusieurs avec le même
+        nom).
         Les formes simples ont aussi été converties en langage xml.
         Eviter les aller-retour dans illustrator : dégage les css, les classes, rajoute une taille, change la
         viewbox...</p>
@@ -160,7 +165,8 @@
         <ellipse cx="60" cy="60" rx="60" ry="30"/>
     </svg>
 
-    <p>Pour l'ovale, (<strong>&lt;ellipse&gt;</strong>), il y a deux rayons, correspondant au grand et petit axe.</p>
+    <p>Pour l'ovale, (<strong>&lt;ellipse&gt;</strong>), il y a deux rayons, correspondant au grand et petit axe.
+    </p>
 
 
     <h4 class="smallestTitle">Polygone</h4>
@@ -195,7 +201,8 @@
 
     <p>La ligne (<strong>&lt;line&gt;</strong>) est tracée grâce aux coordonnées de départ
         (<strong>x1</strong> et
-        <strong>y1</strong>) et d'arrivée (<strong>x2</strong> et <strong>y2</strong>). Une couleur doit être définie.
+        <strong>y1</strong>) et d'arrivée (<strong>x2</strong> et <strong>y2</strong>). Une couleur doit être
+        définie.
     </p>
 
     <code class="codeBlock">
@@ -287,7 +294,8 @@
 
 
     <h3 class="smallTitle">L'attribut preserveAspectRatio</h3>
-    <p>La seule utilité de le déclarer est si le viewport et la viewBox ont des valeurs différentes (ou pour être plus
+    <p>La seule utilité de le déclarer est si le viewport et la viewBox ont des valeurs différentes (ou pour être
+        plus
         précis, pas le même ratio largeur et hauteur).</p>
     <p>Dans ce cas, la propriété <code>preserveAspectRatio</code> permet de conserver une image entière, et non
         déformée.</p>
@@ -295,13 +303,16 @@
     <h4 class="smallestTitle">L'alignement</h4>
     <p>Il est déclaré avec une syntaxe de type <code>xMinYMid</code>.</p>
     <p>Dans cet exemple, la viewBox est positionné au début de l'axe des abscisses (xMin) et centré sur l'axe des
-        ordonnées (YMid) (<a href="https://www.w3.org/TR/SVG/coords.html#PreserveAspectRatioAttribute">Liste exhaustive
+        ordonnées (YMid) (<a href="https://www.w3.org/TR/SVG/coords.html#PreserveAspectRatioAttribute">Liste
+            exhaustive
             des attributs</a>).</p>
 
     <h4 class="smallestTitle">L'étirement</h4>
-    <p>En plus de l'alignement, on peut préciser comment va être interprété le ratio d'aspect. Par défaut, la valeur est
+    <p>En plus de l'alignement, on peut préciser comment va être interprété le ratio d'aspect. Par défaut, la valeur
+        est
         fixée à <code>meet</code>.
-        La viewBox va être redimesnionnée pour remplir autant que possible le viewport. A <code>slice</code>, elle va
+        La viewBox va être redimesnionnée pour remplir autant que possible le viewport. A <code>slice</code>,
+        elle va
         l'afficher à sa taille déclarée, et couper ce qui dépasse du viewport.
         Enfin, <code>none</code> essaie de remplir le viewport avec la viewPort, mais sans respecter le ratio
         hauteur/largeur, pouvant déformer le résultat obtenu.
@@ -423,7 +434,8 @@
     </div>
     <p>HTML5 introduit un nouvel élément afin d'embarquer du contenu SVG dans une page web.
         L'élément
-        SVG permet de ne plus ce soucier du namespace et d'intérargir avec les nœuds de SVG directement au sein du
+        SVG permet de ne plus ce soucier du namespace et d'intérargir avec les nœuds de SVG directement au sein
+        du
         document HTML.</p>
 
     <p>Avantages : Pas de requete supplémentaire</p>
@@ -436,7 +448,8 @@
 
     <code class="codeBlock">
         <span class="codeBlockElement">&lt;<mark class="codeExergue">object</mark> type="image/svg+xml" data="img/bike.svg"&gt;</span>
-        <span class="codeBlockElement codeBlockElement--tab1">Ce texte est affiché si le navigateur de peut pas lire le SVG.</span>
+    <span
+        class="codeBlockElement codeBlockElement--tab1">Ce texte est affiché si le navigateur de peut pas lire le SVG.</span>
         &lt;/
         <mark class="codeExergue">object</mark>
         &gt;
@@ -464,10 +477,13 @@
         <img class="svgExemple" src="img/bike.svg">
     </div>
     <p>Même s'il est possible d'inclure du SVG dans la balise &lt;img&gt;, c'est à éviter dans la
-        mesure où cette balise n'a pas été faite pour accueillir des éventuels comportements scriptés. À partir du
-        moment où vous utilisez Javascript avec SVG, il vaudra mieux éviter de l'inclure via la balise &lt;img&gt;, pour
+        mesure où cette balise n'a pas été faite pour accueillir des éventuels comportements scriptés. À partir
+        du
+        moment où vous utilisez Javascript avec SVG, il vaudra mieux éviter de l'inclure via la balise &lt;img&gt;,
+        pour
         une
-        utilisation plus basique cette balise sera totalement appropriée. À noter que cette partie de la spécifications
+        utilisation plus basique cette balise sera totalement appropriée. À noter que cette partie de la
+        spécifications
         est toujours en brouillon.</p>
 
     <p>pas de modifs, sauf css directement dans le svg ! (sauf dans ie10+ ???)</p>
@@ -490,9 +506,11 @@
     <p>Quel que soit le mode d'intégration choisi, on peut embarquer les données du SVG
         directement dans le html via le format <code>Data URI</code>.</p>
 
-    <p>Le premier avantage de ce format, qui n'est pas nouveau, est de limiter les requêtes HTTP, mais l'appliquer aux
+    <p>Le premier avantage de ce format, qui n'est pas nouveau, est de limiter les requêtes HTTP, mais l'appliquer
+        aux
         svg nous offre de nouvelles possibilités.</p>
-    <p>L'exemple suivant reprend notre vélo, avec la bordure de la roue droite grossie et teintée (<code>stroke="#07a5e0" stroke-width="10"</code>).</p>
+    <p>L'exemple suivant reprend notre vélo, avec la bordure de la roue droite grossie et teintée (<code>stroke="#07a5e0"
+        stroke-width="10"</code>).</p>
 
     <div class="svgVisualExemples svgVisualExemples--data"></div>
 
@@ -504,7 +522,8 @@
         ');
     </code>
 
-    <p>Cela ne marche actuellement ni sur Firefox, ni sur Internet Explorer. Il faut d'abord convertir les caractères
+    <p>Cela ne marche actuellement ni sur Firefox, ni sur Internet Explorer. Il faut d'abord convertir les
+        caractères
         spéciaux.</p>
     <p>Plusieurs mixins Sass existent comme <a href="http://codepen.io/jakob-e/pen/doMoML">svg-url</a></p>
 
@@ -595,9 +614,11 @@
     <code class="codeBlock">
         <span class="codeBlockElement"><mark class="codeExergue">$velo</mark>: '&lt;svg&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">...</span>
-        <span class="codeBlockElement codeBlockElement--tab1">&lt;path id="rayons_droite" <mark class="codeExergue">stroke="#07a5e0"</mark> stroke-width="10" d="M588......"/&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;path id="rayons_droite" <mark
+                    class="codeExergue">stroke="#07a5e0"</mark> stroke-width="10" d="M588......"/&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">...</span>
-        <span class="codeBlockElement codeBlockElement--tab1">&lt;path id="cadre" <mark class="codeExergue">fill="#7F7F7F"</mark> d="M373......"/&gt;</span>
+    <span class="codeBlockElement codeBlockElement--tab1">&lt;path id="cadre" <mark
+        class="codeExergue">fill="#7F7F7F"</mark> d="M373......"/&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">...</span>
         <span class="codeBlockElement">&lt;/svg&gt;';</span>
     </code>
@@ -611,7 +632,8 @@
     </code>
 
     <p>On a maintenant un code exploitable sur tout navigateur, dont on va pouvoir <a
-            href="http://www.sassmeister.com/gist/1b4f2da5527830088e4d">modifier</a> les attributs (<code>fill</code>,
+        href="http://www.sassmeister.com/gist/1b4f2da5527830088e4d">modifier</a> les attributs
+        (<code>fill</code>,
         <code>stroke</code>...).</p>
 
     <code class="codeBlock">$velo-orange: str-replace($velo, stroke="#07a5e0", stroke="orange");</code>
@@ -622,19 +644,30 @@
 
     <code class="codeBlock">
         <span class="codeBlockElement">@function svg-replace-fill($svg, $fill-to-replace, $new-fill...) {</span>
-        <span class="codeBlockElement codeBlockElement--tab1">$replaced-svg: <a href="http://www.sassmeister.com/gist/1b4f2da5527830088e4d">str-replace</a>($svg, $fill-to-replace, $new-fill);</span>
-        <span class="codeBlockElement codeBlockElement--tab1">$replaced-svg-url: <a href="http://codepen.io/jakob-e/pen/doMoML">svg-url</a>(('#{$replaced-svg}');</span>
+                <span class="codeBlockElement codeBlockElement--tab1">$replaced-svg: <a
+                    href="http://www.sassmeister.com/gist/1b4f2da5527830088e4d">str-replace</a>($svg, $fill-to-replace, $new-fill);</span>
+                <span class="codeBlockElement codeBlockElement--tab1">$replaced-svg-url: <a
+                    href="http://codepen.io/jakob-e/pen/doMoML">svg-url</a>(('#{$replaced-svg}');</span>
         <span class="codeBlockElement codeBlockElement--tab1">@return $replaced-svg-url;</span>
         <span class="codeBlockElement">}</span>
     </code>
 
-    <code class="codeBlock">background-image: svg-replace-fill(<mark class="codeExergue">$velo</mark>, '<mark class="codeExergue">#7F7F7F</mark>', '<mark class="codeExergue">red</mark>');</code>
+    <code class="codeBlock">background-image: svg-replace-fill(
+        <mark class="codeExergue">$velo</mark>
+        , '
+        <mark class="codeExergue">#7F7F7F</mark>
+        ', '
+        <mark class="codeExergue">red</mark>
+        ');</code>
 
     <div class="svgVisualExemples svgVisualExemples--data-replace-final"></div>
 
-    <p>Si cette technique permet d'approcher une certaine maîtrise des styles d'un SVG, on en voit vite les faiblesses.
-        Si plusieurs chemins ont d'origine la même couleur déclarée, tous seront modifiés ensemble, sans distinction.</p>
-    <p>Il convient avant toute modification d'appliquer un maximum de couleurs, ou tout du moins à toute partie du svg susceptible d'être modifiée.</p>
+    <p>Si cette technique permet d'approcher une certaine maîtrise des styles d'un SVG, on en voit vite les
+        faiblesses.
+        Si plusieurs chemins ont d'origine la même couleur déclarée, tous seront modifiés ensemble, sans
+        distinction.</p>
+    <p>Il convient avant toute modification d'appliquer un maximum de couleurs, ou tout du moins à toute partie du
+        svg susceptible d'être modifiée.</p>
 
 </section>
 
@@ -654,13 +687,15 @@
     </div>
 
     <p>
-        <code class="svgExemple_legend_code">&lt;img&nbsp;src="sprites.svg#svgView(viewBox(3,48,26,2))"&gt;</code>
+        <code class="svgExemple_legend_code">
+            &lt;img&nbsp;src="sprites.svg#svgView(viewBox(3,48,26,2))"&gt;</code>
     </p>
 
     <h3 class="smallTitle">Dans le SVG (Custom View)</h3>
 
     <div class="svgVisualExemples">
-        <img class="svgExemple svgExemple--pictoSize" src="img/sprites/view/pictos_digiposte.svg#dgp_icon_premium">
+        <img class="svgExemple svgExemple--pictoSize"
+             src="img/sprites/view/pictos_digiposte.svg#dgp_icon_premium">
     </div>
 
     <p><code class="svgExemple_legend_code">
@@ -668,7 +703,7 @@
     </p>
 
     <p>Plus propre, réutilisable. Juste rajouter le ou les éléments <code
-            class="svgExemple_legend_code">view</code> avec un identifiant.
+        class="svgExemple_legend_code">view</code> avec un identifiant.
         <code class="svgExemple_legend_code">&lt;view id='identifiant' viewBox='3,48,26,2'/&gt;</code>
     </p>
 
@@ -699,7 +734,8 @@
 
     <h3 class="smallTitle">La balise &lt;defs&gt;</h3>
     <p>
-        C'est le conteneur de tous les modèles que l'on "définit". Le code entre l'ouverture et la fermeture de cette
+        C'est le conteneur de tous les modèles que l'on "définit". Le code entre l'ouverture et la fermeture de
+        cette
         balise est invisible, et est appelé par la balise &lt;use&gt;.
     </p>
 
@@ -727,9 +763,11 @@
 
     <p>Une autre utilisation courante est la création d'un seul fichier SVG avec toutes les icones d'un site, et
         masquées. On les appelle selon les besoins,
-        via <code>use</code>, soit à la fin du svg, soit depuis le html. Dans ce dernier cas, Les styles internes ne
+        via <code>use</code>, soit à la fin du svg, soit depuis le html. Dans ce dernier cas, Les styles
+        internes ne
         seront pas embarqués.</p>
-    <p>On peut aussi y stocker des "effets", comme des dégradés, ou des filtres SVG, prêts à être utilisés sur d'autres
+    <p>On peut aussi y stocker des "effets", comme des dégradés, ou des filtres SVG, prêts à être utilisés sur
+        d'autres
         éléments</p>
 
 
@@ -752,7 +790,8 @@
 
         <br>
 
-        <span class="codeBlockElement">&lt;<mark class="codeExergue">use</mark> xlink:href="#roue" x="-380" y="10" /&gt;</span>
+    <span class="codeBlockElement">&lt;<mark
+        class="codeExergue">use</mark> xlink:href="#roue" x="-380" y="10" /&gt;</span>
         <span class="codeBlockElement">&lt;<mark class="codeExergue">use
         </mark> xlink:href="#roue" x="0" y="10" /&gt;</span>
     </code>
@@ -765,7 +804,8 @@
     <h3 class="smallTitle">Cas pratique : affichage d'un picto depuis une grille de sprites</h3>
 
     <p>En fait de grille, les multiples calques des icones superposés dans illustrator sont laissés tels quels.
-        On obtient un svg avec tous les pictos les uns sur les autres, même viewbox, mêmes coordonnées, chacun dans une
+        On obtient un svg avec tous les pictos les uns sur les autres, même viewbox, mêmes coordonnées, chacun
+        dans une
         balise <code>symbol</code>.
         L'appel de la bonne icone, via son identifiant, va se faire depuis le html.
     </p>
@@ -794,7 +834,7 @@
     <code class="codeBlock">
         <span class="codeBlockElement">&lt;<mark class="codeExergue">svg</mark>&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">&lt;<mark class="codeExergue">use</mark> xlink:href="img/pictos_symbol.svg#<mark
-                class="codeExergue">calendrier</mark>" /&gt;</span>
+            class="codeExergue">calendrier</mark>" /&gt;</span>
         <span class="codeBlockElement">&lt;/<mark class="codeExergue">svg</mark>&gt;</span>
     </code>
 
@@ -829,7 +869,8 @@
     </p>
 
     <p>Le contour, si une couleur est déclarée, fait 1px par défaut. Au delà, il s'étend autant à l'intérieur qu'à
-        l'extérieur, contrairement aux bordures css. Privilégier donc des valeurs multiples de 2. Si elle est définie en
+        l'extérieur, contrairement aux bordures css. Privilégier donc des valeurs multiples de 2. Si elle est
+        définie en
         pourcentages, cette valeur est relative au viewport, non à la viewBox.</p>
 
     <svg width="140" height="140" viewBox="0 0 140 140">
@@ -839,7 +880,8 @@
 
 
     <code class="codeBlock">
-        &lt;circle cx="60" cy="70" r="50" <strong>stroke</strong>="red" <strong>fill</strong>="blue" <strong>stroke-opacity</strong>="0.5"
+        &lt;circle cx="60" cy="70" r="50" <strong>stroke</strong>="red" <strong>fill</strong>="blue"
+        <strong>stroke-opacity</strong>="0.5"
         <strong>fill-opacity</strong>="0.8" <strong>stroke-width</strong>="20" /&gt;
     </code>
 
@@ -853,7 +895,8 @@
     <h3 class="smallTitle">Les styles internes</h3>
 
     <p>Comme en html, on peut déclarer une feuille de style interne, via la balise <code>&lt;style&gt;</code></p>
-    <p>ils ne sont pas embarqués lors de l'intégration d'un <code>symbol</code> avec la balise <code>&lt;use&gt;</code>
+    <p>ils ne sont pas embarqués lors de l'intégration d'un <code>symbol</code> avec la balise <code>
+        &lt;use&gt;</code>
         dans le html.</p>
 
     <code class="codeBlock">
@@ -862,7 +905,8 @@
         <span class="codeBlockElement codeBlockElement--tab2">#rectangle {</span>
         <span class="codeBlockElement codeBlockElement--tab3">fill : yellow;</span>
         <span class="codeBlockElement codeBlockElement--tab2">}</span>
-        <span class="codeBlockElement codeBlockElement--tab1">&lt;/<mark class="codeExergue">style</mark>&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;/<mark
+                    class="codeExergue">style</mark>&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">&lt;rect x="10px" y="10x" width="100" height="50" id="rectangle" /&gt;</span>
         <span class="codeBlockElement">&lt;/svg&gt;</span>
     </code>
@@ -881,19 +925,22 @@
 
     <h3 class="smallTitle">Les dégradés en SVG</h3>
 
-    <p>On peut les stocker dans des balises &lt;defs&gt;, et les appliquer au bon motif (ou à son contour. Soit <code>fill</code>
+    <p>On peut les stocker dans des balises &lt;defs&gt;, et les appliquer au bon motif (ou à son contour. Soit
+        <code>fill</code>
         ou <code>stroke</code>).</p>
 
     <h4 class="smallestTitle">Dégradé linéaire</h4>
 
     <p>Les attributs x1 x2 y1 et y2 précisent les début et fin du dégradé, ainsi que leur orientation.
-        Les <code>&lt;stop&gt;</code> définissent la répartition des couleurs (à quelle position la couleur atteint 100%
+        Les <code>&lt;stop&gt;</code> définissent la répartition des couleurs (à quelle position la couleur
+        atteint 100%
         de saturation (0% de mélange)).</p>
 
     <h4 class="smallestTitle">Dégradé radial</h4>
 
     <p>Les attributes cx et cy positionnent le dégradé sur l'axe des abscisses et des ordonnées.</p>
-    <p>Les points fx et fy déplacent, à l'intérieur de ce dégradé radial, le cercle le plus à l'intérieur (par défaut,
+    <p>Les points fx et fy déplacent, à l'intérieur de ce dégradé radial, le cercle le plus à l'intérieur (par
+        défaut,
         mêmes coordonnées que cx et cy).</p>
 
     <div class="svgVisualExemples">
@@ -903,9 +950,11 @@
 
     <h3 class="smallTitle">Responsive et media-queries</h3>
     <p>Au mieux, retirer width et height du svg pour 100% du conteneur.</p>
-    <p>Au pire, préciser <code>background-size: 100%;</code> (ou <code>backgroubd-size: cover;</code>), si le svg est en
+    <p>Au pire, préciser <code>background-size: 100%;</code> (ou <code>backgroubd-size: cover;</code>), si le svg
+        est en
         arrière-plan,
-        ou passer le conteneur (<code>img</code>, <code>objetc</code>...) à 100% dans les autres cas de figure.</p>
+        ou passer le conteneur (<code>img</code>, <code>objetc</code>...) à 100% dans les autres cas de figure.
+    </p>
 
     <p>les media queries peuvent être intégrées directement au svg, pour en modifier l'affichage.</p>
     <p>La taille de référence n'est plus le navigateur, mais le SVG lui-même (le viewport).</p>
@@ -942,9 +991,9 @@
         <br>
 
         <span class="codeBlockElement codeBlockElement--tab1">&lt;path class="<mark
-                class="codeExergue codeExergue--alt">bike-light</mark>" ... /&gt;</span>
+            class="codeExergue codeExergue--alt">bike-light</mark>" ... /&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">&lt;path class="<mark
-                class="codeExergue codeExergue--alt">bike-full</mark>" ... /&gt;</span>
+            class="codeExergue codeExergue--alt">bike-full</mark>" ... /&gt;</span>
 
         <br>
 
@@ -963,7 +1012,8 @@
 
     <h3 class="smallTitle">La solution la plus flexible</h3>
 
-    <p>On crée simplement un sprite, de préférence sur une seule ligne verticale. Chaque dessin, ainsi que sa variante
+    <p>On crée simplement un sprite, de préférence sur une seule ligne verticale. Chaque dessin, ainsi que sa
+        variante
         colorée, est un <code>symbol</code>, appelé
         via <code>use</code>, et positionné sur l'axe des ordonnées l'un sous l'autre.</p>
     <p>Ils sont ensuite intégrés en css sous forme d'arrière plan.</p>
@@ -974,13 +1024,15 @@
     <code class="codeBlock">
         <span class="codeBlockElement">&lt;svg viewBox="<mark class="codeExergue">0 0 32 192</mark>" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">&lt;stylel&gt;</span>
-        <span class="codeBlockElement codeBlockElement--tab2"><mark class="codeExergue">.myFigure</mark> {</span>
+                <span class="codeBlockElement codeBlockElement--tab2"><mark
+                    class="codeExergue">.myFigure</mark> {</span>
         <span class="codeBlockElement codeBlockElement--tab3">fill: red;</span>
         <span class="codeBlockElement codeBlockElement--tab2">}</span>
         <span class="codeBlockElement codeBlockElement--tab2"><mark class="codeExergue">.mySecondFigure</mark> {</span>
         <span class="codeBlockElement codeBlockElement--tab3">fill: green;</span>
         <span class="codeBlockElement codeBlockElement--tab2">}</span>
-        <span class="codeBlockElement codeBlockElement--tab2"><mark class="codeExergue codeExergue--alt">.myFigure-hover</mark> {</span>
+    <span class="codeBlockElement codeBlockElement--tab2"><mark
+        class="codeExergue codeExergue--alt">.myFigure-hover</mark> {</span>
         <span class="codeBlockElement codeBlockElement--tab3">fill: blue;</span>
         <span class="codeBlockElement codeBlockElement--tab2">}</span>
         <span class="codeBlockElement codeBlockElement--tab2"><mark class="codeExergue codeExergue--alt">.mySecondFigure-hover</mark> {</span>
@@ -988,21 +1040,30 @@
         <span class="codeBlockElement codeBlockElement--tab2">}</span>
         <span class="codeBlockElement codeBlockElement--tab1">&lt;/stylel&gt;</span>
         <br>
-        <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="<mark class="codeExergue">icon1</mark>"&gt;</span>
-        <span class="codeBlockElement codeBlockElement--tab2">&lt;path class="<mark class="codeExergue">myFigure</mark>".../&gt;</span>
-        <span class="codeBlockElement codeBlockElement--tab2">&lt;path class="<mark class="codeExergue">mySecondFigure</mark>".../&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="<mark
+                    class="codeExergue">icon1</mark>"&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab2">&lt;path class="<mark
+                    class="codeExergue">myFigure</mark>".../&gt;</span>
+    <span class="codeBlockElement codeBlockElement--tab2">&lt;path class="<mark
+        class="codeExergue">mySecondFigure</mark>".../&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">&lt;/symbol&gt;</span>
-        <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="<mark class="codeExergue codeExergue--alt">icon1-hover</mark>"&gt;</span>
-        <span class="codeBlockElement codeBlockElement--tab2">&lt;path class="<mark class="codeExergue codeExergue--alt">myFigure-hover</mark>".../&gt;</span>
-        <span class="codeBlockElement codeBlockElement--tab2">&lt;path class="<mark class="codeExergue codeExergue--alt">mySecondFigure-hover</mark>".../&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="<mark
+                    class="codeExergue codeExergue--alt">icon1-hover</mark>"&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab2">&lt;path class="<mark
+                    class="codeExergue codeExergue--alt">myFigure-hover</mark>".../&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab2">&lt;path class="<mark
+                    class="codeExergue codeExergue--alt">mySecondFigure-hover</mark>".../&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">&lt;/symbol&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon2">...&lt;/symbol&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon2-hover">...&lt;/symbol&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon3">...&lt;/symbol&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon3-hover">...&lt;/symbol&gt;</span>
         <br>
-        <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="<mark class="codeExergue">#icon1</mark>"/&gt;</span>
-        <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="<mark class="codeExergue codeExergue--alt">#icon1-hover</mark>" y="<mark class="codeExergue codeExergue--alt">32</mark>" /&gt;</span>
+        <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="<mark
+            class="codeExergue">#icon1</mark>"/&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="<mark
+                    class="codeExergue codeExergue--alt">#icon1-hover</mark>" y="<mark
+                    class="codeExergue codeExergue--alt">32</mark>" /&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon2" y="64" /&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon2-hover" y="96" /&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon3" y="128" /&gt;</span>
@@ -1015,70 +1076,80 @@
 
     <h3 class="smallTitle">La solution la plus propre</h3>
 
-    <p>La démarche est la même, à ceci près que chaque forme sera unique. On va rentabiliser <code>use</code> en appelant deux fois chaque forme,
+    <p>La démarche est la même, à ceci près que chaque forme sera unique. On va rentabiliser <code>use</code> en
+        appelant deux fois chaque forme,
         et en les modifiant à ce moment-là grâce à l'ajout d'une classe.</p>
 
     <p>Dans le svg :</p>
     <code class="codeBlock">
         <span class="codeBlockElement">&lt;svg viewBox="<mark class="codeExergue">0 0 32 192</mark>" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">&lt;stylel&gt;</span>
-        <span class="codeBlockElement codeBlockElement--tab2"><mark class="codeExergue">.icon1_hover</mark> {</span>
+                <span class="codeBlockElement codeBlockElement--tab2"><mark
+                    class="codeExergue">.icon1_hover</mark> {</span>
         <span class="codeBlockElement codeBlockElement--tab3">fill: red;</span>
         <span class="codeBlockElement codeBlockElement--tab2">}</span>
         <span class="codeBlockElement codeBlockElement--tab1">&lt;/stylel&gt;</span>
         <br>
-        <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="<mark class="codeExergue">icon1</mark>">...&lt;/symbol&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="<mark
+                    class="codeExergue">icon1</mark>">...&lt;/symbol&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon2">...&lt;/symbol&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon3">...&lt;/symbol&gt;</span>
         <br>
         <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon1"/&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="<mark
-                class="codeExergue">#icon1</mark>" y="<mark class="codeExergue">32</mark>" class="<mark
-                class="codeExergue">icon1_hover</mark>"/&gt;</span>
+            class="codeExergue">#icon1</mark>" y="<mark class="codeExergue">32</mark>" class="<mark
+            class="codeExergue">icon1_hover</mark>"/&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon2" y="64" /&gt;</span>
-        <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon2" y="96" class="icon2_hover"/&gt;</span>
+    <span
+        class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon2" y="96" class="icon2_hover"/&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon3" y="128" /&gt;</span>
-        <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon3" y="160" class="icon3_hover"/&gt;</span>
+    <span
+        class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon3" y="160" class="icon3_hover"/&gt;</span>
         <span class="codeBlockElement">&lt;/svg&gt;</span>
     </code>
 
-    <p>Le fichier SVG est alors plus clair, plus facilement maintenable. Problème, à cause du <a href="https://www.w3.org/TR/shadow-dom/">shadow dom</a>,
-    on ne peut plus cibler les classes des différents éléments (<code>path</code>, etc.) en css.</p>
+    <p>Le fichier SVG est alors plus clair, plus facilement maintenable. Problème, à cause du <a
+        href="https://www.w3.org/TR/shadow-dom/">shadow dom</a>,
+        on ne peut plus cibler les classes des différents éléments (<code>path</code>, etc.) en css.</p>
     <p>Du coup, notre css va impacter tout le symbol, sans pouvoir faire de détail.</p>
-    <p>On peut néanmoins minimiser (un peu) le problème en ajoutant <code>fill="currentColor"</code> à un ou plusieurs éléments du SVG.
+    <p>On peut néanmoins minimiser (un peu) le problème en ajoutant <code>fill="currentColor"</code> à un ou
+        plusieurs éléments du SVG.
         Cela nous permet de modifier deux paramètres, au lieu d'un seul :</p>
 
     <code class="codeBlock">
         <span class="codeBlockElement">&lt;stylel&gt;</span>
         <span class="codeBlockElement codeBlockElement--tab1">.icon1_hover {</span>
         <span class="codeBlockElement codeBlockElement--tab2">fill: red;</span>
-        <span class="codeBlockElement codeBlockElement--tab2"><mark class="codeExergue">color</mark>: blue;</span>
+                <span class="codeBlockElement codeBlockElement--tab2"><mark
+                    class="codeExergue">color</mark>: blue;</span>
         <span class="codeBlockElement codeBlockElement--tab1">}</span>
         <span class="codeBlockElement">&lt;/stylel&gt;</span>
     </code>
 
-    <p>Tout dépend donc du besoin, mais quelle que soit la méthode choisie, le css (externe) de la page est le suivant :</p>
+    <p>Tout dépend donc du besoin, mais quelle que soit la méthode choisie, le css (externe) de la page est le
+        suivant :</p>
     <code class="codeBlock">
         <span class="codeBlockElement">.icon1 {</span>
         <span class="codeBlockElement codeBlockElement--tab1">background-image: url(icons.svg);</span>
         <span class="codeBlockElement codeBlockElement--tab1">background-size: <mark
-                class="codeExergue">cover</mark>;</span>
-        <span class="codeBlockElement codeBlockElement--tab1">background-position: 0 <mark class="codeExergue">0</mark>;</span>
+            class="codeExergue">cover</mark>;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">background-position: 0 <mark
+                    class="codeExergue">0</mark>;</span>
         <span class="codeBlockElement">}</span>
         <br>
         <span class="codeBlockElement">.icon1:hover {</span>
         <span class="codeBlockElement codeBlockElement--tab1">background-position: 0 <mark
-                class="codeExergue">-100%</mark>;</span>
+            class="codeExergue">-100%</mark>;</span>
         <span class="codeBlockElement">}</span>
         <br>
         <span class="codeBlockElement">.icon2 {</span>
         <span class="codeBlockElement codeBlockElement--tab1">background-position: 0 <mark
-                class="codeExergue">-200%</mark>;</span>
+            class="codeExergue">-200%</mark>;</span>
         <span class="codeBlockElement">}</span>
         <br>
         <span class="codeBlockElement">.icon2:hover {</span>
         <span class="codeBlockElement codeBlockElement--tab1">background-position: 0 <mark
-                class="codeExergue">-300%</mark>;</span>
+            class="codeExergue">-300%</mark>;</span>
         <span class="codeBlockElement">}</span>
         etc.
     </code>
