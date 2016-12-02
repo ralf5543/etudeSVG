@@ -4,6 +4,7 @@
 $red: #e42518;
 $blue: #00f;
 $green: #37ff7e;
+$light-blue: #07a5e0;
 
 /*===========-------mixins--------==========*/
 
@@ -99,7 +100,7 @@ li {
 
 .secondaryTitle {
     @include font-size(40);
-    color: #07a5e0;
+    color: $light-blue;
     font-weight: normal;
 }
 
@@ -120,6 +121,35 @@ p {
     @include font-size(14);
 }
 
+p a,
+code a {
+    position: relative;
+    display: inline-block;
+    color: $light-blue;
+    text-decoration: none;
+
+    &::after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 1px;
+        top: 110%;
+        left: 0;
+        background-color: $light-blue;
+        transition: all .2s;
+    }
+
+    &:hover {
+        &::after {
+            top: 120%;
+        }
+    }
+}
+
+img {
+    max-width: 100%;
+}
+
 .svgVisualExemples {
     margin-bottom: 30px;
     resize: both;
@@ -137,7 +167,7 @@ p {
         height: 0;
         border-style: solid;
         border-width: 0 0 20px 20px;
-        border-color: transparent transparent #07a5e0 transparent;
+        border-color: transparent transparent $light-blue transparent;
     }
 }
 
@@ -329,6 +359,12 @@ $velo-orange: str-replace($velo, stroke="#07a5e0", stroke="orange");
     width: 100%;
 }
 
+.bike-css {
+    background: url("../../../img/bike.svg"),
+    linear-gradient(transparent, transparent);
+}
+
+
 code {
     @include font-size(18);
     background-color: #1B2038;
@@ -399,7 +435,8 @@ $maxLen: 8;
 table.support {
     table-layout: fixed;
     border-spacing: 0;
-    width: 100%;
+    width: 50%;
+    min-width: 600px;
 }
 
 table.support .col-5 {
