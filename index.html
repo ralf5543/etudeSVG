@@ -12,20 +12,41 @@
 
     <body>
 
-    <h1 class="mainTitle">Etude SVG</h1>
+    <header class="mainHeader">
+        <h1 class="mainTitle">Etude SVG</h1>
+        <object type="image/svg+xml" data="img/logo_svg.svg" class="svg-logo">Please use a modern browser.</object>
+    </header>
 
     <ul class="mainNav">
         <li class="mainNav_element">
             <a class="mainNav_element_link" href="#browsers">Compatibilité navigateurs</a>
         </li>
         <li class="mainNav_element">
+            <a class="mainNav_element_link" href="#draw">Création d'un SVG</a>
+        </li>
+        <li class="mainNav_element">
             <a class="mainNav_element_link" href="#integration">Intégration</a>
+        </li>
+        <li class="mainNav_element">
+            <a class="mainNav_element_link" href="#data">Le format Data URI</a>
+        </li>
+        <li class="mainNav_element">
+            <a class="mainNav_element_link" href="#viewbox">Le viewPort et la viewBox</a>
         </li>
         <li class="mainNav_element">
             <a class="mainNav_element_link" href="#crop">Recadrer une partie du svg (fragment)</a>
         </li>
         <li class="mainNav_element">
-            <a class="mainNav_element_link" href="#draw">Création d'un SVG</a>
+            <a class="mainNav_element_link" href="#models">Les modèles</a>
+        </li>
+        <li class="mainNav_element">
+            <a class="mainNav_element_link" href="#crop">Recadrer une partie du svg (fragment)</a>
+        </li>
+        <li class="mainNav_element">
+            <a class="mainNav_element_link" href="#styles">Styles CSS</a>
+        </li>
+        <li class="mainNav_element">
+            <a class="mainNav_element_link" href="#hover">Modifier l'apparence d'un svg au survol</a>
         </li>
         <li class="mainNav_element">
             <a class="mainNav_element_link" href="#ie">Le cas Internet Explorer</a>
@@ -61,7 +82,7 @@
 
         <p>Les svg sont aujourd'hui reconnus par tous les navigateurs modernes. Pour les plus anciens, des solutions de fallback existent,
             et remplacent le svg par un fichier image plus classique (jpeg, png...).</p>
-        <p>Quelques problèmes subsistent (évidemment...) sur ie9 et supérieur, aussi une <a href="#ie">section</a> lui est dédiée. </p>
+        <p>Quelques problèmes subsistent (évidemment...) sur ie9 et supérieur, aussi une <a href="#ie">section</a> lui est dédiée.</p>
 
     </section>
 
@@ -282,42 +303,14 @@
             </li>
         </ol>
 
-        <h3 class="smallTitle">La viewBox et le viewPort</h3>
-        <h4 class="smallestTitle">Définition</h4>
-        <h4 class="smallestTitle">Relation et manipulation</h4>
 
-
-        <h3 class="smallTitle">L'attribut preserveAspectRatio</h3>
-        <p>La seule utilité de le déclarer est si le viewport et la viewBox ont des valeurs différentes (ou pour être
-            plus
-            précis, pas le même ratio largeur et hauteur).</p>
-        <p>Dans ce cas, la propriété <code>preserveAspectRatio</code> permet de conserver une image entière, et non
-            déformée.</p>
-
-        <h4 class="smallestTitle">L'alignement</h4>
-        <p>Il est déclaré avec une syntaxe de type <code>xMinYMid</code>.</p>
-        <p>Dans cet exemple, la viewBox est positionné au début de l'axe des abscisses (xMin) et centré sur l'axe des
-            ordonnées (YMid) (<a href="https://www.w3.org/TR/SVG/coords.html#PreserveAspectRatioAttribute">Liste
-                exhaustive
-                des attributs</a>).</p>
-
-        <h4 class="smallestTitle">L'étirement</h4>
-        <p>En plus de l'alignement, on peut préciser comment va être interprété le ratio d'aspect. Par défaut, la valeur
-            est
-            fixée à <code>meet</code>.
-            La viewBox va être redimesnionnée pour remplir autant que possible le viewport. A <code>slice</code>,
-            elle va
-            l'afficher à sa taille déclarée, et couper ce qui dépasse du viewport.
-            Enfin, <code>none</code> essaie de remplir le viewport avec la viewPort, mais sans respecter le ratio
-            hauteur/largeur, pouvant déformer le résultat obtenu.
-        </p>
     </section>
 
 
     <section class="etude">
         <h2 class="secondaryTitle" id="integration">Intégration</h2>
 
-        <p>Les exemples suivants utilisent le même code svg. La roue de
+        <p>Les exemples suivants intégrent le même code svg. La roue de
             <mark class="codeExergue codeExergue--blue">gauche</mark>
             , en bleu, utilise des styles internes. La roue de
             <mark class="codeExergue">droite</mark>
@@ -425,7 +418,7 @@
         <p>On peut facilement atteindre et manipuler via css ou javascript les noeuds qui le composent, utiliser les intéractions css (type ":focus), des animations css,
             ajouter des liens...</p>
 
-        <p>Inconviénients  : peu maintenable, agumentation de la taille du fichier html, à réserver si le svg est utilisé une unique fois sur le site.</p>
+        <p>Inconviénients  : peu maintenable, augmentation de la taille du fichier html, à réserver si le svg est utilisé une unique fois sur le site.</p>
         <p>On peut s'affranchir de ces inconvénients en utilisant, selon les possibilités, des méthodes d'appel tel que <code>
             &lt;?php include("bike.svg"); ?&gt;</code>, ou <code>ng-include="'bike.svg'"</code>.</p>
 
@@ -453,7 +446,7 @@
         <p>Le fallback de cette méthode d'intégration est la plus ardue. Pour aller au plus simple, on peut se reposer sur l'attribut alt que nous permet cette balise.</p>
         <p>On peut aussi recourir à la balise <code>&lt;srcset&gt;</code> pour
         proposer une image alternative (<code>&lt;img src="bike.png" srcset="bike.svg"/&gt;</code>), mais cela demandera l'utilisation d'un <a href="http://scottjehl.github.io/picturefill/">polyfill</a>.</p>
-        <p>On peut aussi recourir des librairires javascript, comme <a href="https://dirkgroenen.github.io/SVGMagic/">SVGMagic</a>.</p>
+        <p>On peut aussi recourir à des librairies javascript, comme <a href="https://dirkgroenen.github.io/SVGMagic/">SVGMagic</a>.</p>
 
 
         <h3 class="smallTitle">En arrière-plan (css)</h3>
@@ -488,11 +481,29 @@
         </code>
 
         <div class="svgVisualExemples">
+            <a href="http://www.google.fr" target="_blank" class="toto">
             <object class="svgExemple" type="image/svg+xml" data="img/bike.svg">
-                Ce texte est affiché si le navigateur de peut pas lire le SVG.
+                <img src="img/bike.png" alt="Un beau vélo" />
             </object>
+                </a>
         </div>
-        <p>Cette solution n'a qu'un seul vrai désavantage, l'impossibilité d'en faire un lien.</p>
+        <p>Cette solution n'a en apparence qu'un seul vrai désavantage, l'impossibilité d'en faire un lien.</p>
+        <p>C'est en réalité un problème facilement contournable. On peut nativement intégrer des liens dirèctement à l'intérieur du svg (en précisant la cible (target)
+        afin que la page ne s'ouvre pas dans l' "object").</p>
+        <p>On peut également utiliser du CSS pour rendre fonctionnel le lien englobant notre balise object :</p>
+
+        <code class="codeBlock">
+            <span class="codeBlockElement">.mon-lien::after {</span>
+            <span class="codeBlockElement codeBlockElement--tab1">content: "";</span>
+            <span class="codeBlockElement codeBlockElement--tab1">position: absolute;</span>
+            <span class="codeBlockElement codeBlockElement--tab1">top: 0;</span>
+            <span class="codeBlockElement codeBlockElement--tab1">right: 0;</span>
+            <span class="codeBlockElement codeBlockElement--tab1">bottom: 0;</span>
+            <span class="codeBlockElement codeBlockElement--tab1">left: 0;</span>
+            <span class="codeBlockElement">}</span>
+        </code>
+
+        <p>NB: oui, sans préciser une position relative sur le lien lui-même...</p>
 
         <h4 class="smallestTitle">Fallback</h4>
         <p>Du contenu alternatif (png, texte...) peut-être intégré simplement entre les balises d'ouverture et de fermeture.
@@ -501,13 +512,26 @@
 
         <h3 class="smallTitle">dans une iframe</h3>
 
+        <code class="codeBlock">
+            <span class="codeBlockElement">&lt;<mark class="codeExergue">iframe</mark> src="bike.svg"&gt;</span>
+            <span
+                class="codeBlockElement codeBlockElement--tab1">&lt;img src="bike.png" alt="Un beau vélo"/&gt;</span>
+            &lt;/
+            <mark class="codeExergue">iframe</mark>
+            &gt;
+        </code>
+
         <div class="svgVisualExemples">
-            <iframe class="svgExemple" height="100%" src="img/bike.svg" sandbox>
+            <iframe class="svgExemple" src="img/bike.svg" sandbox>
                 <img src="img/bike.png" alt="Un beau vélo" />
             </iframe>
         </div>
 
-        <p>Intéret ??</p>
+        <p>Lorsqu'on a le choix, il n'y a pas vraiment d'intéret à choisir d'intégrer un svg dans une iframe. Cette solution n'apporte rien de plus.</p>
+        <p>Pas de css externe, et pas de manipulation en javascript, sauf si le SVG et la page web actuelle ont la même origine.</p>
+
+        <h4 class="smallestTitle">Fallback</h4>
+        <p>Pas de fallback connu. L'image alternative entre les balises d'ouverture et de fermeture de l'iframe ne sont interprétées que si l'iframe elle-même n'est pas prise en charge.</p>
 
 
         <h3 class="smallTitle">via balise EMBED</h3>
@@ -642,7 +666,7 @@
 
         <code class="codeBlock">
             <span class="codeBlockElement">.image {</span>
-            <span class="codeBlockElement codeBlockElement--tab1">background-image: svg-url($velo);</span>
+            <span class="codeBlockElement codeBlockElement--tab1">background-image: <mark class="codeExergue">svg-url</mark>($velo);</span>
             <span class="codeBlockElement">}</span>
         </code>
 
@@ -686,43 +710,193 @@
 
     </section>
 
+    <section class="etude">
+
+        <h2 class="secondaryTitle" id="viewbox">Le viewPort et la viewBox</h2>
+        <h3 class="smallTitle">Définition</h3>
+        <p>Le viewPort est simplement la taille du svg, définie par les attributs "width" et "height".</p>
+        <p>La viewBox va préciser la place que vont prendre les éléments graphiques à l'intérieur de ce conteneur.</p>
+        <p>Les coordonnées indiquent respectivement les deux points d'origine de la viewBox, et ses points d'arrivée sur les axes X et Y :</p>
+
+        <code class="codeBlock">
+            <span class="codeBlockElement">&lt;svg width="400" height="200" viewBox="0 0 <mark class="codeExergue">400 200</mark>"&gt;</span>
+            <span class="codeBlockElement codeBlockElement--tab1">&lt;circle cx="200" cy="100" r="80"fill="blue" /&gt;</span>
+            <span class="codeBlockElement">&lt;/svg&gt;</span>
+        </code>
+
+        <p>NB: par défaut, l'unité utilisée est le pixel. Dans un contexte responsif, la taille n'a plus d'importance, seul le ratio viewBox/viewPort compte.</p>
+
+        <div class="svgVisualExemples svgVisualExemples--viewbox">
+            <svg width="400" height="200" viewBox="0 0 400 200">
+                <circle cx="200" cy="100" r="80"fill="blue" />
+            </svg>
+        </div>
+
+        <p>Par défaut, les points d'arrivée de la viewBox correspondent à la taille du viewPort. Dans ce cas, le ratio est de 1/1.</p>
+
+        <p>Dans l'exemple ci-dessus, notre disque de 80px de rayon affiche bien 160px de diamètre dans son conteneur.</p>
+
+        <h3 class="smallTitle">Relation et manipulation</h3>
+
+        <p>Si les points d'arrivée de la viewBox sont réduits, le ratio viewBox/viewPort est modifié d'autant.</p>
+
+        <p>Dans l'exemple ci-dessous, les valeurs de la viewBox sont deux fois plus petites que celles du viewPort. Conséquence, le ratio de 2/1 va doubler l'affichage de son contenu
+            (qui n'apparaitra donc plus qu'en partie, puisque le viewPort reste inchangé) :</p>
+
+        <code class="codeBlock">
+            <span class="codeBlockElement">&lt;svg width="400" height="200" viewBox="0 0 <mark class="codeExergue">200 100</mark>"&gt;</span>
+            <span class="codeBlockElement codeBlockElement--tab1">&lt;circle cx="200" cy="100" r="80"fill="blue" /&gt;</span>
+            <span class="codeBlockElement">&lt;/svg&gt;</span>
+        </code>
+
+
+        <div class="svgVisualExemples svgVisualExemples--viewbox">
+            <svg width="400" height="200" viewBox="0 0 200 100">
+                <circle cx="200" cy="100" r="80"fill="blue" />
+            </svg>
+        </div>
+
+        <p>A l'inverse, plus la taille de la viewBox est supérieure à celle du viewPort, plus son contenu apparaitra proportionnellement petit.</p>
+
+        <p>Ici, le ratio viewBox/viewPort affiche notre forme à 50% de sa taille :</p>
+
+        <code class="codeBlock">
+            <span class="codeBlockElement">&lt;svg width="400" height="200" viewBox="0 0 <mark class="codeExergue">800 400</mark>"&gt;</span>
+            <span class="codeBlockElement codeBlockElement--tab1">&lt;circle cx="200" cy="100" r="80"fill="blue" /&gt;</span>
+            <span class="codeBlockElement">&lt;/svg&gt;</span>
+        </code>
+
+
+        <div class="svgVisualExemples svgVisualExemples--viewbox">
+            <svg width="400" height="200" viewBox="0 0 800 400">
+                <circle cx="200" cy="100" r="80"fill="blue" />
+            </svg>
+        </div>
+
+        <p>En modifiant les points d'origine, on en touche plus au ratio, qui va définir la proportion de la forme, mais on précise quelle portion on va afficher :</p>
+
+        <code class="codeBlock">
+            <span class="codeBlockElement">&lt;svg width="400" height="200" viewBox="<mark class="codeExergue">200 100</mark> 400 200"&gt;</span>
+            <span class="codeBlockElement codeBlockElement--tab1">&lt;circle cx="200" cy="100" r="80"fill="blue" /&gt;</span>
+            <span class="codeBlockElement">&lt;/svg&gt;</span>
+        </code>
+
+        <div class="svgVisualExemples svgVisualExemples--viewbox">
+            <svg width="400" height="200" viewBox="200 100 400 200">
+                <circle cx="200" cy="100" r="80"fill="blue" />
+            </svg>
+        </div>
+
+        <p>Ici, notre forme a toujours un ratio de 1/1. Sa taille n'est pas modifiée, mais les points d'origine sont placés à 200px et 100px du viewPort,
+            ce qui réduit d'autant la partie visible du contenu du SVG.</p>
+        <p>La valeur X de la viewBox, ici "200" revient à "décaler" le contenu de 200px vers la gauche. Son conteneur reste identique, créant un blanc supplémentaire sur la droite.</p>
+        <p>Pour bien faire, il faudrait donc réduire également la viewBox ET le viewPort (afin de réduire la taille du svg, sans toucher au ratio) :</p>
+
+        <code class="codeBlock">
+            <span class="codeBlockElement">&lt;svg <mark class="codeExergue">width="100" height="100" viewBox="200 100 100 100"</mark>&gt;</span>
+            <span class="codeBlockElement codeBlockElement--tab1">&lt;circle cx="200" cy="100" r="80"fill="blue" /&gt;</span>
+            <span class="codeBlockElement">&lt;/svg&gt;</span>
+        </code>
+
+        <div class="svgVisualExemples svgVisualExemples--viewbox">
+            <svg width="100" height="100" viewBox="200 100 100 100">
+                <circle cx="200" cy="100" r="80"fill="blue" />
+            </svg>
+        </div>
+
+        <p>En conclusion, tout ceci est un peu théorique, et peu utile à retenir. En effet, il est conseillé de supprimer purement et simplement les valeurs de viewPort.</p>
+        <p>Ainsi, la taille de celui-ci sera celle de son conteneur. Dès lors, plus de raison de se soucier de la taille de notre forme, qui sera confortablement définie en css.</p>
+
+        <p>Reprenons notre dernier exemple, sans les déclarations de hauteur et de largeur :</p>
+
+        <code class="codeBlock">
+            <span class="codeBlockElement">&lt;svg <mark class="codeExergue">viewBox="200 100 100 100"</mark>&gt;</span>
+            <span class="codeBlockElement codeBlockElement--tab1">&lt;circle cx="200" cy="100" r="80"fill="blue" /&gt;</span>
+            <span class="codeBlockElement">&lt;/svg&gt;</span>
+        </code>
+
+        <div class="svgVisualExemples svgVisualExemples--viewbox svgVisualExemples--viewbox_responsive">
+            <svg viewBox="200 100 100 100">
+                <circle cx="200" cy="100" r="80"fill="blue" />
+            </svg>
+        </div>
+
+        <p>C'est pareil, mais en mieux ! Prêt à être intégré dans un environnement responsif.</p>
+
+        <h3 class="smallTitle">L'attribut preserveAspectRatio</h3>
+        <p>La seule utilité de le déclarer est si le viewport et la viewBox ont des valeurs différentes (ou pour être
+            plus
+            précis, pas le même ratio largeur et hauteur).</p>
+        <p>Dans ce cas, la propriété <code>preserveAspectRatio</code> permet de conserver une image entière, et non
+            déformée.</p>
+
+        <h4 class="smallestTitle">L'alignement</h4>
+        <p>Il est déclaré avec une syntaxe de type <code>xMinYMid</code>.</p>
+        <p>Dans cet exemple, la viewBox est positionnée au début de l'axe des abscisses (xMin) et centré sur l'axe des
+            ordonnées (YMid) (<a href="https://www.w3.org/TR/SVG/coords.html#PreserveAspectRatioAttribute">Liste
+                exhaustive
+                des attributs</a>).</p>
+
+        <h4 class="smallestTitle">L'étirement</h4>
+        <p>En plus de l'alignement, on peut préciser comment va être interprété le ratio d'aspect. Par défaut, la valeur
+            est
+            fixée à <code>meet</code>.
+            La viewBox va être redimensionnée pour remplir autant que possible le viewPort. A <code>slice</code>,
+            elle va
+            l'afficher à sa taille déclarée, et couper ce qui dépasse du viewport.
+            Enfin, <code>none</code> essaie de remplir le viewPort avec la viewBox, mais sans respecter le ratio
+            hauteur/largeur, pouvant déformer le résultat obtenu.
+        </p>
+
+    </section>
+
 
     <section class="etude">
         <h2 class="secondaryTitle" id="crop">Recadrer une partie du svg (fragment).</h2>
+
+        <p>Si la déclaration du viewPort est à éviter, celle de la viewBox reste indispensable pour rendre le svg responsif.</p>
+        <p>Par ailleurs, choisir grâce à elle de n'afficher qu'une partie du svg, ce qu'on appelle de la custom viewBox, peut être très utile, notamment pour une feuille de sprites :</p>
 
         <div class="svgVisualExemples">
             <img class="svgExemple" src="img/sprites/view/pictos_digiposte.svg">
         </div>
 
-        <h3 class="smallTitle">Dans le html (Custom View Box)</h3>
-
-        <div class="svgVisualExemples">
-            <img class="svgExemple svgExemple--pictoSize"
-                 src="img/sprites/view/pictos_digiposte.svg#svgView(viewBox(175.145 33.044 35.029 33.044))">
-        </div>
+        <h3 class="smallTitle">Dans le html</h3>
 
         <p>
             <code class="svgExemple_legend_code">
                 &lt;img&nbsp;src="sprites.svg#svgView(viewBox(3,48,26,2))"&gt;</code>
         </p>
 
-        <h3 class="smallTitle">Dans le SVG (Custom View)</h3>
+        <div class="svgVisualExemples">
+            <img class="svgExemple svgExemple--pictoSize"
+                 src="img/sprites/view/pictos_digiposte.svg#svgView(viewBox(175.145 33.044 35.029 33.044))">
+        </div>
+
+        <p>C'est au moment de l'appel du svg qu'on précise avec les bonnes coordonnées, quelle portion du svg on souhaite afficher.</p>
+
+
+
+        <h3 class="smallTitle">Dans le SVG</h3>
+
+        <p><code class="svgExemple_legend_code">
+            &lt;img&nbsp;src="sprites.svg#identifiant"&gt;</code>
+        </p>
 
         <div class="svgVisualExemples">
             <img class="svgExemple svgExemple--pictoSize"
                  src="img/sprites/view/pictos_digiposte.svg#dgp_icon_premium">
         </div>
 
-        <p><code class="svgExemple_legend_code">
-            &lt;img&nbsp;src="sprites.svg#identifiant"&gt;</code>
-        </p>
+        <p>Les portions sur lesquelles la viewBox va se concentrer sont déclarées dans le fichier, en dehors de la balise &lt;svg&gt;, via la balise <code
+            class="svgExemple_legend_code">view</code>, à laquelle on ajoute un identifiant, qui sera utilisé lors de l'appel du fichier.</p>
 
-        <p>Plus propre, réutilisable. Juste rajouter le ou les éléments <code
-            class="svgExemple_legend_code">view</code> avec un identifiant.
-            <code class="svgExemple_legend_code">&lt;view id='identifiant' viewBox='3,48,26,2'/&gt;</code>
-        </p>
+        <code class="codeBlock">&lt;view id='identifiant' viewBox='3,48,26,2'/&gt;</code>
+            <p>C'est évidemment plus propre, et maintenable.</p>
 
         <h3 class="smallTitle">Cas pratique : menu responsif</h3>
+
+        <p>En combinant des unités de polices déclarées en vw, et nos pictogrammes dénués de viewPort et utilisant des custom viewBox, on obtient un menu vectoriel, responsif et homogène.</p>
 
         <ul class="menuSvg">
             <li class="menuSvg_item">Element de menu</li>
@@ -733,11 +907,12 @@
 
         <code class="codeBlock">background: url("sprite.svg#identifiant");</code>
 
-        <p>Outil <a href="https://github.com/jkphl/svg-sprite">svg-sprite</a> : compile tous les
-            svg d'un dossier en un seul sprite, + viewbox pour chacun.</p>
+        <h3 class="smallTitle">Générateur de sprites svg</h3>
 
-        <p>Chrome n'affiche pas la viewbox en arrière-plan, sauf si déjà utilisé ailleurs sur la
-            page. [edit : ce n'est plus le cas !!!]</p>
+        <p>Le fichier de sprites de ces exemples a été réalisé grâce à <a href="https://github.com/jkphl/svg-sprite">svg-sprite</a>, un outil qui compile tous les
+            fichiers svg d'un dossier en un seul sprite, en ajoutant la viewBox pour chacun.</p>
+        <p>L'utilisation des custom viewBox s'en trouve grandement simplifiée.</p>
+
 
     </section>
 
@@ -771,14 +946,13 @@
 
 
         <code class="codeBlock">
-            &lt;
-            <mark class="codeExergue">use</mark>
+            &lt;<mark class="codeExergue">use</mark>
             xlink:href="#modele1" x="20" y="50" /&gt;
         </code>
 
         <p>Une autre utilisation courante est la création d'un seul fichier SVG avec toutes les icones d'un site, et
             masquées. On les appelle selon les besoins,
-            via <code>use</code>, soit à la fin du svg, soit depuis le html. Dans ce dernier cas, Les styles
+            via <code>use</code>, soit à la fin du svg, soit depuis le html. Dans ce dernier cas, les styles
             internes ne
             seront pas embarqués.</p>
         <p>On peut aussi y stocker des "effets", comme des dégradés, ou des filtres SVG, prêts à être utilisés sur
@@ -788,8 +962,8 @@
 
         <h3 class="smallTitle">La balise &lt;symbol&gt;</h3>
         <p>Version étendue de &lt;defs&gt;, elle regroupe plusieurs éléments cachés, et les affiche via &lt;use&gt;. En
-            clair elle compose un nouveau dessin en combinant plusieurs formes.</p>
-        <p>On peut y indiquer directement la taille de la viewbox, ainsi qu'un titre et une description.</p>
+            clair, elle compose un nouveau dessin en combinant plusieurs formes.</p>
+        <p>On peut y indiquer directement la taille de la viewBox, ainsi qu'un titre et une description.</p>
 
 
         <h3 class="smallTitle">Cas pratique : répétition d'un motif (la roue d'un vélo)</h3>
@@ -819,7 +993,7 @@
         <h3 class="smallTitle">Cas pratique : affichage d'un picto depuis une grille de sprites</h3>
 
         <p>En fait de grille, les multiples calques des icones superposés dans illustrator sont laissés tels quels.
-            On obtient un svg avec tous les pictos les uns sur les autres, même viewbox, mêmes coordonnées, chacun
+            On obtient un svg avec tous les pictos les uns sur les autres, même viewBox, mêmes coordonnées, chacun
             dans une
             balise <code>symbol</code>.
             L'appel de la bonne icone, via son identifiant, va se faire depuis le html.
@@ -865,7 +1039,7 @@
     <section class="etude">
         <h2 class="secondaryTitle" id="styles">Styles CSS</h2>
 
-        <h3 class="smallTitle">Attributs de présentation</h3>
+        <h3 class="smallTitle">Principaux attributs de présentation</h3>
 
         <dl>
             <dt>stroke</dt>
@@ -886,7 +1060,7 @@
         <p>Le contour, si une couleur est déclarée, fait 1px par défaut. Au delà, il s'étend autant à l'intérieur qu'à
             l'extérieur, contrairement aux bordures css. Privilégier donc des valeurs multiples de 2. Si elle est
             définie en
-            pourcentages, cette valeur est relative au viewport, non à la viewBox.</p>
+            pourcentage, cette valeur est relative au viewport, non à la viewBox.</p>
 
         <svg width="140" height="140" viewBox="0 0 140 140">
             <circle cx="60" cy="70" r="50" stroke="red" fill="blue" stroke-opacity="0.5" fill-opacity="0.8"
@@ -902,7 +1076,7 @@
 
         <h3 class="smallTitle">Les styles en ligne</h3>
 
-        <p>Ils sont déclarés avec l'attribut <code>style</code>, et prennent le pas sur la déclaration via fill</p>
+        <p>Ils sont déclarés avec l'attribut <code>style</code>, et prennent le pas sur la déclaration faite via fill.</p>
         <p>Il n'y a pas vraiment d'intéret à utiliser les styles en ligne, sachant que <code>fill="yellow"</code> est
             équivalent à <code>style="fill: yellow;"</code></p>
 
@@ -964,15 +1138,15 @@
 
 
         <h3 class="smallTitle">Responsive et media-queries</h3>
-        <p>Au mieux, retirer width et height du svg pour 100% du conteneur.</p>
-        <p>Au pire, préciser <code>background-size: 100%;</code> (ou <code>backgroubd-size: cover;</code>), si le svg
+        <p>Il vaut mieux ne pas déclarer de hauteur ni de largeur au svg, pour un meilleur contrôle en css (il fera alors 100% de son conteneur).</p>
+        <p>Quand cela n'est pas possible, préciser au moins <code>background-size: 100%;</code> (ou <code>background-size: cover;</code>), si le svg
             est en
             arrière-plan,
-            ou passer le conteneur (<code>img</code>, <code>objetc</code>...) à 100% dans les autres cas de figure.
+            ou passer le conteneur (<code>img</code>, <code>object</code>...) à 100% dans les autres cas de figure.
         </p>
 
-        <p>les media queries peuvent être intégrées directement au svg, pour en modifier l'affichage.</p>
-        <p>La taille de référence n'est plus le navigateur, mais le SVG lui-même (le viewport).</p>
+        <p>Les media queries peuvent être intégrées directement au svg, pour en modifier l'affichage.</p>
+        <p>La taille de référence n'est plus le navigateur, mais le SVG lui-même (le viewPort).</p>
 
         <code class="codeBlock">
             <span class="codeBlockElement">&lt;svg viewBox="0 0 184.252 112.089"&gt;</span>
@@ -1023,7 +1197,7 @@
 
 
     <section class="etude">
-        <h2 class="secondaryTitle" id="">Modifier l'apparence d'un background svg au survol</h2>
+        <h2 class="secondaryTitle" id="hover">Modifier l'apparence svg au survol</h2>
 
         <h3 class="smallTitle">La solution la plus flexible</h3>
 
