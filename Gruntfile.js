@@ -42,7 +42,16 @@ module.exports = function (grunt) {
             },
             dist: {
                 src: ['assets/js/scripts.js'],
-                dest: 'build/assets/js/built.js'
+                dest: 'build/assets/js/built.min.js'
+            }
+        },
+        copy: {
+            options: {
+                // generic options go here.
+            },
+            dist: {
+                src: ['node_modules/jquery/dist/jquery.min.js'],
+                dest: 'build/assets/js/jquery.min.js'
             }
         },
         svg_sprite: {
@@ -81,6 +90,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-svg-sprite');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
 // 4. Nous disons à Grunt quoi faire lorsque nous tapons "grunt" dans la console.
     grunt.registerTask('default', ['sass']);
