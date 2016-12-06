@@ -10,17 +10,39 @@ module.exports = function (grunt) {
                     style: 'compressed'
                 },
                 files: {
-                    'build/assets/css/global.css': 'assets/css/global.scss'
+                    'build/assets/css/styles.css': 'assets/css/styles.scss'
                 }
             }
         },
         watch: {
+            scripts: {
+                files: ['assets/js/scripts/*.js'],
+                tasks: ['concat']
+            },
             css: {
                 files: ['assets/css/*.scss'],
                 tasks: ['sass'],
                 options: {
                     spawn: false
                 }
+            }
+        },
+        concat: {
+            options: {
+                separator: ';' // permet d'ajouter un point-virgule entre chaque fichier concaténé.
+            },
+            dist: {
+                src: ['assets/js/scripts/*.js'], // la source
+                dest: 'assets/js/scripts.js' // la destination finale
+            }
+        },
+        uglify: {
+            options: {
+                separator: ';'
+            },
+            dist: {
+                src: ['assets/js/scripts.js'],
+                dest: 'build/assets/js/built.js'
             }
         },
         svg_sprite: {
@@ -57,9 +79,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-svg-sprite');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
 // 4. Nous disons à Grunt quoi faire lorsque nous tapons "grunt" dans la console.
     grunt.registerTask('default', ['sass']);
     grunt.registerTask('sprite', ['svg_sprite']);
-
 };

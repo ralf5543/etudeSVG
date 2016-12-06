@@ -1,0 +1,7 @@
+// Basic clickable (reset button and link styles)
+@mixin basic-clickable {
+    background: none;
+    border: 0;
+    cursor: pointer;
+    text-decoration: none;
+}

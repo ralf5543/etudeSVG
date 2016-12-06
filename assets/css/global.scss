@@ -2,66 +2,11 @@
 
 /*===========-------variables--------==========*/
 $red: #e42518;
-$blue: #00f;
 $green: #37ff7e;
 $light-blue: #07a5e0;
+$blue: #00f;
+$dark-blue: #1B2038;
 
-/*===========-------mixins--------==========*/
-
-/* ------------------------------------------------- */
-/* ==from http://codepen.io/jakob-e/pen/doMoML       */
-/* ------------------------------------------------- */
-@function svg-url($svg) {
-    //
-    //  Chunk up string in order to avoid
-    //  "stack level too deep" error
-    //
-    $encoded: '';
-    $slice: 2000;
-    $index: 0;
-    $loops: ceil(str-length($svg)/$slice);
-    @for $i from 1 through $loops {
-        $chunk: str-slice($svg, $index, $index + $slice - 1);
-        //
-        //   Encode (may need a few extra replacements)
-        //
-        $chunk: str-replace($chunk, '"', '\'');
-        $chunk: str-replace($chunk, '<', '%3C');
-        $chunk: str-replace($chunk, '>', '%3E');
-        $chunk: str-replace($chunk, '&', '%26');
-        $chunk: str-replace($chunk, '#', '%23');
-        $encoded: #{$encoded}#{$chunk};
-        $index: $index + $slice;
-    }
-    @return url("data:image/svg+xml;charset=utf8,#{$encoded}");
-}
-
-//  Helper function to replace characters in a string
-@function str-replace($string, $search, $replace: '') {
-    $index: str-index($string, $search);
-    @if $index {
-        @return str-slice($string, 1, $index - 1) + $replace +
-            str-replace(str-slice($string, $index +
-            str-length($search)), $search, $replace);
-    }
-    @return $string;
-}
-
-/* ------------- */
-/* ==end         */
-/* ------------- */
-
-/* custom mixin to replace a defined fill color with another one */
-@function svg-replace-fill($svg, $fill-to-replace, $new-fill...) {
-    $replaced-svg: str-replace($svg, $fill-to-replace, $new-fill);
-    $replaced-svg-url: svg-url('#{$replaced-svg}');
-    @return $replaced-svg-url;
-}
-
-@mixin font-size($sizeValue: 1.6) {
-    font-size: ($sizeValue) + px;
-    font-size: $sizeValue / 10 + rem;
-}
 
 html {
     font-size: 62.5%;
@@ -87,56 +32,253 @@ h1 {
     margin: 0;
 }
 
+
+.hidden-wording {
+    position: absolute;
+    height: 1px; width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px); // IE6, IE7
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+.go-top {
+    @include basic-clickable;
+    position: fixed;
+    display: inline-block;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border: 1px solid $light-blue;
+    border-radius: 10px;
+    opacity: .5;
+    transition: all .2s;
+
+    &::after {
+        position: absolute;
+        content: 'a';
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: etude-svg;
+        font-size: 5rem;
+        color: $light-blue;
+        margin-top: 3px;
+        margin-left: -1px;
+    }
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+
+
+
+//==================----------------Main Nav
+
+.mainNav_wrapper {
+    display: table-cell;
+    vertical-align: middle;
+
+    @include bp(mob) {
+        display: block;
+        margin-top: 10px;
+        padding-top: 20px;
+        border-top: 1px solid white;
+
+        &.is-closed {
+            display: none;
+        }
+    }
+}
+
+.mainNav {
+    @include flexbox;
+    @include justify-content(center);
+    @include flex-wrap(wrap);
+}
+
+.mainNav_element {
+    margin: 0 30px 5px 0;
+}
+
+.mainNav_element_link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 100;
+
+    &:hover {
+        color: $dark-blue;
+    }
+}
+
 .etude {
     padding: 0 20px;
+
     &:after {
         content: '';
         display: block;
         width: 50%;
         border-bottom: 1px solid grey;
         margin: 80px auto;
+
+        @include bp(mob) {
+            margin: 40px auto;
+        }
     }
 }
 
 .mainHeader {
     position: relative;
+    margin-bottom: 40px;
     padding: 40px;
     background-color: $light-blue;
+
+    @include bp(mob) {
+        margin-bottom: 20px;
+        padding: 20px;
+    }
+}
+
+.mainHeader_inner {
+    display: table;
+    width: 100%;
+
+    @include bp(tab) {
+        margin-top: 30px;
+    }
+}
+
+$timing-function: cubic-bezier(.190, 1, .220, 1);
+
+.main-header__mob-btn {
+    @include basic-clickable;
+    position: absolute;
+    top: 35px;
+    width: 30px;
+    height: 25px;
+    transition: opacity .5s $timing-function;
+
+    @include bp(tab) {
+        display: none;
+    }
+
+    &::before,
+    .main-header__mob-btn__inner,
+    &::after {
+        display: block;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 12%;
+        transition: all .5s $timing-function;
+        background: white;
+        content: '';
+    }
+
+    .main-header__mob-btn__inner {
+        top: 44%;
+    }
+
+    &::before {
+        top: 0;
+        transform-origin: top left;
+    }
+
+    &::after {
+        bottom: 0;
+        transform-origin: bottom left;
+    }
+
+    &.is-opened {
+        &::before,
+        &::after {
+            width: 36px; // Pythagore!
+        }
+
+        &::before {
+            transform: rotate(45deg) translateY(-50%);
+        }
+
+        &::after {
+            transform: rotate(-45deg) translateY(50%);
+        }
+
+        .main-header__mob-btn__inner {
+            transform: scale(.1);
+        }
+    }
 }
 
 .mainTitle {
     @include font-size(55);
-    margin-right: 10%;
     color: white;
+    font-weight: 100;
     text-align: center;
+    text-shadow: 5px 5px #1476A2;
+
+    @include bp(mob) {
+        @include font-size(35);
+    }
+}
+
+.svg-logo_wrapper {
+    display: table-cell;
+    vertical-align: middle;
+
+    @include bp(mob) {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 25px;
+    }
 }
 
 .svg-logo {
-    position: absolute;
     display: block;
     width: 100px;
-    right: 10%;
-    top: 50%;
-    transform: translateY(-50%);
+
+    @include bp(mob) {
+        width: 40px;
+    }
 }
 
 .secondaryTitle {
     @include font-size(40);
     color: $light-blue;
     font-weight: normal;
+    margin: 0 0 40px;
+
+    @include bp(mob) {
+        @include font-size(30);
+        margin: 0 0 20px;
+    }
 }
 
 .smallTitle {
     @include font-size(22);
     color: #5e5e5e;
-    margin: 40px 0 20px;
+    margin: 40px 0 15px;
+
+    @include bp(mob) {
+        @include font-size(18);
+        margin: 20px 0 10px;
+    }
 }
 
 .smallestTitle {
     @include font-size(18);
     color: #5e5e5e;
     padding-left: 40px;
-    margin: 0;
+    margin: 20px 0 10px;
+
+    @include bp(mob) {
+        @include font-size(14);
+        margin: 10px 0 5px;
+    }
 }
 
 p {
@@ -146,9 +288,12 @@ p {
 p a,
 code a {
     position: relative;
-    display: inline-block;
     color: $light-blue;
     text-decoration: none;
+
+    @include bp(tab) {
+        display: inline-block;
+    }
 
     &::after {
         position: absolute;
@@ -399,11 +544,14 @@ $velo-orange: str-replace($velo, stroke="#07a5e0", stroke="orange");
 
 code {
     @include font-size(18);
-    background-color: #1B2038;
+    background-color: $dark-blue;
     color: white;
     border: 1px solid grey;
     padding: 0 5px;
-    white-space: nowrap;
+
+    @include bp(tab) {
+        white-space: nowrap;
+    }
 }
 
 code.codeBlock {
@@ -469,6 +617,12 @@ table.support {
     border-spacing: 0;
     width: 50%;
     min-width: 600px;
+    margin: auto;
+
+    @include bp(mob) {
+        width: 100%;
+        min-width: 0;
+    }
 }
 
 table.support .col-5 {
@@ -634,17 +788,4 @@ dd {
     @include font-size(12);
     padding-left: 10px;
     margin: 0 0 15px 0;
-}
-
-.toto {
-    display: block;
-
-    &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-    }
 }

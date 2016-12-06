@@ -1,0 +1,11 @@
+/* custom mixin to replace a defined fill color with another one */
+@function svg-replace-fill($svg, $fill-to-replace, $new-fill...) {
+    $replaced-svg: str-replace($svg, $fill-to-replace, $new-fill);
+    $replaced-svg-url: svg-url('#{$replaced-svg}');
+    @return $replaced-svg-url;
+}
+
+@mixin font-size($sizeValue: 1.6) {
+    font-size: ($sizeValue) + px;
+    font-size: $sizeValue / 10 + rem;
+}

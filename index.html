@@ -2,1376 +2,1397 @@
 <html lang="fr">
 
 <html>
-<head>
-    <meta charset='utf-8'>
-    <title>Etude SVG (Scalable Vector Graphics)</title>
-    <link href='build/assets/css/global.css' rel='stylesheet' type='text/css'>
-    <link href='assets/css/styleSVG-bike.css' rel='stylesheet' type='text/css'>
-    <?xml-stylesheet type="text/css" href="assets/css/styleSVG-bike.css"?>
-</head>
+    <head>
+        <meta charset='utf-8'>
+        <title>Etude SVG (Scalable Vector Graphics)</title>
+        <link href='build/assets/css/styles.css' rel='stylesheet' type='text/css'>
+        <link href='assets/css/styleSVG-bike.css' rel='stylesheet' type='text/css'>
+        <?xml-stylesheet type="text/css" href="assets/css/styleSVG-bike.css"?>
+    </head>
 
-    <body>
+    <body id="body">
+
+    <a href="#body" class="go-top js-scrollTo">
+        <span class="hidden-wording">Go to top</span>
+    </a>
 
     <header class="mainHeader">
         <h1 class="mainTitle">Etude SVG</h1>
-        <object type="image/svg+xml" data="img/logo_svg.svg" class="svg-logo">Please use a modern browser.</object>
+
+        <button class="main-header__mob-btn js-header-nav-displayer">
+            <span class="main-header__mob-btn__inner"></span>
+            <span class="hidden-wording">Open navigation</span>
+        </button>
+
+        <div class="mainHeader_inner">
+
+            <nav class="mainNav_wrapper js-header-nav-displayable">
+                <ul class="mainNav">
+                    <li class="mainNav_element">
+                        <a class="mainNav_element_link js-scrollTo" href="#browsers">Compatibilité navigateurs</a>
+                    </li>
+                    <li class="mainNav_element">
+                        <a class="mainNav_element_link js-scrollTo" href="#draw">Création d'un SVG</a>
+                    </li>
+                    <li class="mainNav_element">
+                        <a class="mainNav_element_link js-scrollTo" href="#integration">Intégration</a>
+                    </li>
+                    <li class="mainNav_element">
+                        <a class="mainNav_element_link js-scrollTo" href="#data">Le format Data URI</a>
+                    </li>
+                    <li class="mainNav_element">
+                        <a class="mainNav_element_link js-scrollTo" href="#viewbox">Le viewPort et la viewBox</a>
+                    </li>
+                    <li class="mainNav_element">
+                        <a class="mainNav_element_link js-scrollTo" href="#crop">Recadrer une partie du svg (fragment)</a>
+                    </li>
+                    <li class="mainNav_element">
+                        <a class="mainNav_element_link js-scrollTo" href="#models">Les modèles</a>
+                    </li>
+                    <li class="mainNav_element">
+                        <a class="mainNav_element_link js-scrollTo" href="#styles">Styles CSS</a>
+                    </li>
+                    <li class="mainNav_element">
+                        <a class="mainNav_element_link js-scrollTo" href="#hover">Modifier l'apparence d'un svg au survol</a>
+                    </li>
+                    <li class="mainNav_element">
+                        <a class="mainNav_element_link js-scrollTo" href="#ie">Le cas Internet Explorer</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="svg-logo_wrapper">
+                <object type="image/svg+xml" data="img/logo_svg.svg" class="svg-logo">Please use a modern browser.</object>
+            </div>
+
+        </div>
+
     </header>
 
-    <ul class="mainNav">
-        <li class="mainNav_element">
-            <a class="mainNav_element_link" href="#browsers">Compatibilité navigateurs</a>
-        </li>
-        <li class="mainNav_element">
-            <a class="mainNav_element_link" href="#draw">Création d'un SVG</a>
-        </li>
-        <li class="mainNav_element">
-            <a class="mainNav_element_link" href="#integration">Intégration</a>
-        </li>
-        <li class="mainNav_element">
-            <a class="mainNav_element_link" href="#data">Le format Data URI</a>
-        </li>
-        <li class="mainNav_element">
-            <a class="mainNav_element_link" href="#viewbox">Le viewPort et la viewBox</a>
-        </li>
-        <li class="mainNav_element">
-            <a class="mainNav_element_link" href="#crop">Recadrer une partie du svg (fragment)</a>
-        </li>
-        <li class="mainNav_element">
-            <a class="mainNav_element_link" href="#models">Les modèles</a>
-        </li>
-        <li class="mainNav_element">
-            <a class="mainNav_element_link" href="#crop">Recadrer une partie du svg (fragment)</a>
-        </li>
-        <li class="mainNav_element">
-            <a class="mainNav_element_link" href="#styles">Styles CSS</a>
-        </li>
-        <li class="mainNav_element">
-            <a class="mainNav_element_link" href="#hover">Modifier l'apparence d'un svg au survol</a>
-        </li>
-        <li class="mainNav_element">
-            <a class="mainNav_element_link" href="#ie">Le cas Internet Explorer</a>
-    </ul>
+    <main class="main-content">
 
-    <section class="etude">
-        <h2 class="secondaryTitle" id="browsers">Compatibilité navigateurs</h2>
+        <section class="etude">
+            <h2 class="secondaryTitle" id="browsers">Compatibilité navigateurs</h2>
 
-        <table class="support">
-            <tbody>
-            <tr>
-                <td class="col-7"><img src="img/browsers/internet-explorer.svg" alt="Internet Explorer"
-                                       title="Internet Explorer"></td>
-                <td class="col-7"><img src="img/browsers/chrome.svg" alt="Chrome" title="Chrome"></td>
-                <td class="col-7"><img src="img/browsers/firefox.svg" alt="Firefox" title="Firefox"></td>
-                <td class="col-7"><img src="img/browsers/safari.svg" alt="Safari" title="Safari"></td>
-                <td class="col-7"><img src="img/browsers/opera.svg" alt="Opera" title="Opera"></td>
-                <td class="col-7"><img src="img/browsers/ios.svg" alt="iOS" title="iOS"></td>
-                <td class="col-7"><img src="img/browsers/android.svg" alt="Android" title="Android"></td>
-            </tr>
-            <tr>
-                <td class="support">9</td>
-                <td class="support">37</td>
-                <td class="support">32</td>
-                <td class="partial-support">7.1</td>
-                <td class="support">24</td>
-                <td class="partial-support">8</td>
-                <td class="no-support">4.4</td>
+            <p>Les svg sont aujourd'hui reconnus par tous les navigateurs modernes. Pour les plus anciens, des solutions de fallback existent,
+                et remplacent le svg par un fichier image plus classique (jpeg, png...).</p>
 
-            </tr>
-            </tbody>
-        </table>
+            <p>Ci-dessous une liste précisant à partir de quelle version les principaux navigateurs ont interpreté totalement ce format :</p>
 
-        <p>Les svg sont aujourd'hui reconnus par tous les navigateurs modernes. Pour les plus anciens, des solutions de fallback existent,
-            et remplacent le svg par un fichier image plus classique (jpeg, png...).</p>
-        <p>Quelques problèmes subsistent (évidemment...) sur ie9 et supérieur, aussi une <a href="#ie">section</a> lui est dédiée.</p>
+            <table class="support">
+                <tbody>
+                <tr>
+                    <td class="col-7"><img src="img/browsers/internet-explorer.svg" alt="Internet Explorer"
+                                           title="Internet Explorer"></td>
+                    <td class="col-7"><img src="img/browsers/chrome.svg" alt="Chrome" title="Chrome"></td>
+                    <td class="col-7"><img src="img/browsers/firefox.svg" alt="Firefox" title="Firefox"></td>
+                    <td class="col-7"><img src="img/browsers/safari.svg" alt="Safari" title="Safari"></td>
+                    <td class="col-7"><img src="img/browsers/opera.svg" alt="Opera" title="Opera"></td>
+                    <td class="col-7"><img src="img/browsers/ios.svg" alt="iOS" title="iOS"></td>
+                    <td class="col-7"><img src="img/browsers/android.svg" alt="Android" title="Android"></td>
+                </tr>
+                <tr>
+                    <td class="support">9.0</td>
+                    <td class="support">4.0</td>
+                    <td class="support">3.0</td>
+                    <td class="support">3.2</td>
+                    <td class="support">10.1</td>
+                    <td class="support">3.2</td>
+                    <td class="support">4.4</td>
 
-    </section>
+                </tr>
+                </tbody>
+            </table>
 
 
-    <section class="etude">
-        <h2 class="secondaryTitle" id="draw">Création d'un SVG</h2>
+            <p>Quelques problèmes subsistent (évidemment...) sur ie9 et supérieur, aussi une <a href="#ie">section</a> lui est dédiée.</p>
 
-        <h3 class="smallTitle">Depuis Illustrator</h3>
-        <img src="img/formes_illustrator.gif">
-
-        <code class="codeBlock">
-            <span class="codeBlockElement">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
-            <span class="codeBlockElement">&lt;!-- Generator: Adobe Illustrator 17.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --&gt;</span>
-            <span class="codeBlockElement">&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"&gt;</span>
-
-            <span class="codeBlockElement">&lt;svg version="1.1" id="<mark class="codeExergue">formes</mark>" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-         width="595.3px" height="841.9px" viewBox="0 0 595.3 841.9" xml:space="preserve"&gt;</span>
-
-                    <span class="codeBlockElement codeBlockElement--tab1">&lt;rect id="<mark
-                        class="codeExergue">Rectangle</mark>" x="134" y="131" fill="#ED1F24" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="339" height="218"/&gt;</span>
-
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;g id="<mark class="codeExergue">groupe1</mark>"&gt;</span>
-
-                    <span class="codeBlockElement codeBlockElement--tab2">&lt;ellipse id="<mark
-                        class="codeExergue">Ovale</mark>" fill="#4451A3" cx="135" cy="374" rx="86" ry="134"/&gt;</span>
-
-            <span class="codeBlockElement codeBlockElement--tab2">&lt;polygon id="<mark class="codeExergue">Etoile</mark>" fill="#ECE70D" stroke="#EC008C" stroke-width="8" stroke-miterlimit="10" points="127,367 262.1,381.1
-            350.2,277.8 378.6,410.6 504,462.5 386.5,530.5 375.9,665.9 274.9,575.1 142.9,606.8 198,482.8 	"/&gt;</span>
-
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;/g&gt;</span>
-
-            <span class="codeBlockElement">&lt;/svg&gt;</span>
-        </code>
-
-        <p>Exemple avec la création d'un SVG composé de trois formes. Croper la forme au plus près, pour faciliter manipulation. Laisser quelques pixels autour peut-être judicieux, pour antciper des modifications de contour.
-            L'ordre des calques est respecté (même si visuellement inversé, entre calques et code xml). Les groupes
-            de calques sont aussi convertis,
-            et les noms des calques (groupes et racine) convertis en Identifiants (auquels se greffent un chiffre si le même ID est présent plusieurs fois dans le code).
-            Les formes simples ont aussi été converties en langage xml.</p>
-
-        <p>Il est important d'éviter les aller-retour dans illustrator. Celui-ci manipulera automatiquement votre code en supprimant les css, les classes, en rajoutant une taille, en changeant la
-            viewbox...</p>
-
-        <p>Utiliser le menu Objet - Associer / Dissocier pour cleaner les groupes.</p>
-
-        <p>Une fois le SVG exporté, utiliser au moins <a href="https://jakearchibald.github.io/svgomg/">svgomg</a> pour nettoyer le code.</p>
-        <p>Il peut-être aussi judicieux de supprimer les propriétés height et width, pour renre le SVG facilement "responsive".</p>
-
-        <p>S'il n'est pas utilisé (comme pour l'appel d'une feuille de style), supprimer aussi la déclaration xml et le doctype.</p>
-
-        <code class="codeBlock">
-            <span class="codeBlockElement">&lt;title>Titre du SVG&lt;/title&gt;</span>
-            <span class="codeBlockElement">&lt;desc>Description du SVG&lt;/desc&gt;</span>
-        </code>
-
-        <p>Facultatives, ces balises sont notamment utiles pour le référencement et certains agents
-            utilisateurs.</p>
+        </section>
 
 
-        <h3 class="smallTitle">Construction et modification du SVG</h3>
+        <section class="etude">
+            <h2 class="secondaryTitle" id="draw">Création d'un SVG</h2>
 
-        <h4 class="smallestTitle">Rectangle</h4>
+            <h3 class="smallTitle">Depuis Illustrator</h3>
+            <img src="img/formes_illustrator.gif">
 
-        <code class="codeBlock">
-            &lt;<mark class="codeExergue">rect</mark>
-            x="25px" y="25px" width="150" height="100" /&gt;
-        </code>
+            <code class="codeBlock">
+                <span class="codeBlockElement">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+                <span class="codeBlockElement">&lt;!-- Generator: Adobe Illustrator 17.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --&gt;</span>
+                <span class="codeBlockElement">&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"&gt;</span>
 
-        <svg height="100px">
-            <rect x="25px" y="25px" width="150" height="100"/>
+                <span class="codeBlockElement">&lt;svg version="1.1" id="<mark class="codeExergue">formes</mark>" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             width="595.3px" height="841.9px" viewBox="0 0 595.3 841.9" xml:space="preserve"&gt;</span>
+
+                        <span class="codeBlockElement codeBlockElement--tab1">&lt;rect id="<mark
+                            class="codeExergue">Rectangle</mark>" x="134" y="131" fill="#ED1F24" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="339" height="218"/&gt;</span>
+
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;g id="<mark class="codeExergue">groupe1</mark>"&gt;</span>
+
+                        <span class="codeBlockElement codeBlockElement--tab2">&lt;ellipse id="<mark
+                            class="codeExergue">Ovale</mark>" fill="#4451A3" cx="135" cy="374" rx="86" ry="134"/&gt;</span>
+
+                <span class="codeBlockElement codeBlockElement--tab2">&lt;polygon id="<mark class="codeExergue">Etoile</mark>" fill="#ECE70D" stroke="#EC008C" stroke-width="8" stroke-miterlimit="10" points="127,367 262.1,381.1
+                350.2,277.8 378.6,410.6 504,462.5 386.5,530.5 375.9,665.9 274.9,575.1 142.9,606.8 198,482.8 	"/&gt;</span>
+
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;/g&gt;</span>
+
+                <span class="codeBlockElement">&lt;/svg&gt;</span>
+            </code>
+
+            <p>Exemple avec la création d'un SVG composé de trois formes. Croper la forme au plus près, pour faciliter manipulation. Laisser quelques pixels autour peut-être judicieux, pour antciper des modifications de contour.
+                L'ordre des calques est respecté (même si visuellement inversé, entre calques et code xml). Les groupes
+                de calques sont aussi convertis,
+                et les noms des calques (groupes et racine) convertis en Identifiants (auquels se greffent un chiffre si le même ID est présent plusieurs fois dans le code).
+                Les formes simples ont aussi été converties en langage xml.</p>
+
+            <p>Il est important d'éviter les aller-retour dans illustrator. Celui-ci manipulera automatiquement votre code en supprimant les css, les classes, en rajoutant une taille, en changeant la
+                viewbox...</p>
+
+            <p>Utiliser le menu Objet - Associer / Dissocier pour cleaner les groupes.</p>
+
+            <p>Une fois le SVG exporté, utiliser au moins <a href="https://jakearchibald.github.io/svgomg/">svgomg</a> pour nettoyer le code.</p>
+            <p>Il peut-être aussi judicieux de supprimer les propriétés height et width, pour renre le SVG facilement "responsive".</p>
+
+            <p>S'il n'est pas utilisé (comme pour l'appel d'une feuille de style), supprimer aussi la déclaration xml et le doctype.</p>
+
+            <code class="codeBlock">
+                <span class="codeBlockElement">&lt;title>Titre du SVG&lt;/title&gt;</span>
+                <span class="codeBlockElement">&lt;desc>Description du SVG&lt;/desc&gt;</span>
+            </code>
+
+            <p>Facultatives, ces balises sont notamment utiles pour le référencement et certains agents
+                utilisateurs.</p>
+
+
+            <h3 class="smallTitle">Construction et modification du SVG</h3>
+
+            <h4 class="smallestTitle">Rectangle</h4>
+
+            <code class="codeBlock">
+                &lt;<mark class="codeExergue">rect</mark>
+                x="25px" y="25px" width="150" height="100" /&gt;
+            </code>
+
+            <svg height="100px">
+                <rect x="25px" y="25px" width="150" height="100"/>
+            </svg>
+
+            <p>Le rectangle utilise la balise <strong>&lt;rect&gt;</strong>, les coordonnées <strong>x</strong> et
+                <strong>y</strong> et les déclarations de dimensions <strong>width</strong> et <strong>height</strong>.
+            </p>
+
+            <h4 class="smallestTitle">Cercle et ovale</h4>
+
+            <code class="codeBlock">
+                &lt;<mark class="codeExergue">circle</mark>
+                cx="60" cy="50" r="50" /&gt;
+            </code>
+
+            <svg height="100px">
+                <circle cx="60" cy="50" r="50"/>
+            </svg>
+
+            <p>Le centre du cercle (<strong>&lt;circle&gt;</strong>) est positionné dans le SVG avec <strong>cx</strong> et
+                <strong>cy</strong>. <strong>r</strong> définit la taille du rayon.</p>
+
+            <code class="codeBlock">
+                &lt;<mark class="codeExergue">ellipse</mark>
+                cx="60" cy="60" rx="60" ry="30" /&gt;
+            </code>
+
+            <svg height="100px">
+                <ellipse cx="60" cy="60" rx="60" ry="30"/>
+            </svg>
+
+            <p>Pour l'ovale, (<strong>&lt;ellipse&gt;</strong>), il y a deux rayons, correspondant au grand et petit axe.
+            </p>
+
+
+            <h4 class="smallestTitle">Polygone</h4>
+
+            <code class="codeBlock">
+                &lt;<mark class="codeExergue">polygon</mark>
+                points="50 15, 100 100, 0 100 /&gt;
+            </code>
+
+            <svg height="100px">
+                <polygon points="50 15, 100 100, 0 100"/>
+            </svg>
+
+            <p>Chaque paire de coordonnées, séparée par des virgules, correspond à un point du polygone
+                (<strong>&lt;polygon&gt;</strong>), représentant <strong>x</strong> et <strong>y</strong>.</p>
+
+            <p>Les virgules ne sont pas obligatoires, et ne servent qu'au confort visuel du code.</p>
+
+
+            <h4 class="smallestTitle">Ligne et polyligne</h4>
+
+            <code class="codeBlock">
+                &lt;<mark class="codeExergue">line</mark>
+                x1="50" y1="0" x2="150" y2="100" stroke="black" /&gt;
+            </code>
+
+            <svg height="100px">
+                <line x1="50" y1="0" x2="150" y2="100" stroke="black"/>
+            </svg>
+
+            <p>La ligne (<strong>&lt;line&gt;</strong>) est tracée grâce aux coordonnées de départ
+                (<strong>x1</strong> et
+                <strong>y1</strong>) et d'arrivée (<strong>x2</strong> et <strong>y2</strong>). Une couleur doit être
+                définie.
+            </p>
+
+            <code class="codeBlock">
+                &lt;<mark class="codeExergue">polyline</mark>
+                points="0 100, 100 0, 150 50, 110 50, 180 0" fill="transparent" stroke="black /&gt;
+            </code>
+
+            <svg height="100px">
+                <polyline points="0 100, 100 0, 150 50, 110 50, 180 0" fill="transparent" stroke="black"/>
+            </svg>
+
+            <p>La polyligne (<strong>&lt;polyline&gt;</strong>) peut être considérée comme un polygone non fermée. Il est
+                "rempli" d'une couleur par défaut (fill), et son tracé transparent.</p>
+
+            <h4 class="smallestTitle">Chemin</h4>
+
+            <code class="codeBlock">&lt;
+                <mark class="codeExergue">path</mark>
+                d="
+                <mark class="codeExergue">M
+                </mark>
+                0,100
+                <mark class="codeExergue">L
+                </mark>
+                100,0 L 180,50 L 220,0
+                <mark class="codeExergue">l</mark>
+                40,80 l -60 5" style="fill:none; stroke:black" /&gt;
+            </code>
+
+            <svg height="100px">
+                <path d="M 0,100 L 100,0 L 180,50 L 220,0 l 40,80 l -60 5" style="fill:none; stroke:black"/>
+            </svg>
+
+            <p>Le chemin est peut-être la balise la plus importante (et la plus représentée dans votre
+                SVG), puisqu'elle permet de tracer tout ce qui n'est pas défini ci-dessus.
+            </p>
+
+            <code class="codeBlock">&lt;
+                <mark class="codeExergue">path</mark>
+                d="M 5 40
+                <mark class="codeExergue">a</mark>
+                55 30 0 0 0 155 0
+                <mark class="codeExergue">A</mark>
+                80 10 0 0 0 5 40 z" fill="transparent" stroke="black" /&gt;</path>
+            </code>
+
+            <svg height="100px">
+                <path d="M 5 40 a 55 30 0 0 0 155 0 A 80 10 0 0 0 5 40 z" fill="transparent" stroke="black"></path>
+            </svg>
+
+            <p>Le chemin ci-dessus utilise des courbes (A), définies par 7 paramètres : </p>
+            <ol class="etude_orderedList">
+                <li class="etude_orderedList_element">
+                    Le rayon de x
+                </li>
+                <li class="etude_orderedList_element">
+                    Le rayon de y
+                </li>
+                <li class="etude_orderedList_element">
+                    L'axe de rotation de démarrage
+                </li>
+                <li class="etude_orderedList_element">
+                    Le large flag (0 (petit), ou 1 (grand))
+                </li>
+                <li class="etude_orderedList_element">
+                    Le sweep-flag (0 (sens anti-horaire), ou 1 (sens horaire))
+                </li>
+
+                <li class="etude_orderedList_element">
+                    Le point d'arrivée x
+                </li>
+                <li class="etude_orderedList_element">
+                    Le point d'arrivée 7
+                </li>
+            </ol>
+
+
+        </section>
+
+
+        <section class="etude">
+            <h2 class="secondaryTitle" id="integration">Intégration</h2>
+
+            <p>Les exemples suivants intégrent le même code svg. La roue de
+                <mark class="codeExergue codeExergue--blue">gauche</mark>
+                , en bleu, utilise des styles internes. La roue de
+                <mark class="codeExergue">droite</mark>
+                , en rouge, appelle une css externe.
+            </p>
+            <p>En plus de toutes les solutions de fallback proposées, <a href="https://modernizr.com/">Modernizr</a> reste un outil complémentaire
+                très utile pour gérer l'affichage des textes ou images alternatifs. </p>
+
+            <h3 class="smallTitle">Intégration via balise SVG</h3>
+
+            <code class="codeBlock">
+                &lt;
+                <mark class="codeExergue">svg</mark>
+                &gt;...&lt;/
+                <mark class="codeExergue">svg</mark>
+                &gt;
+            </code>
+
+            <div class="svgVisualExemples">
+                <svg version="1.1" id="velo" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 244.1 595.3 354" xml:space="preserve">
+
+        <style type="text/css">
+            #roue_gauche {
+                fill: blue;
+            }
+        </style>
+
+        <title>Vélo SVG</title>
+        <desc>Un beau vélo vectoriel</desc>
+
+        <g id="roue_droite">
+            <path id="rayons_droite" d="M588.5,477.6c-0.6-29.4-12.4-57-33.6-77.9c-20.9-20.7-48.9-32-78.2-32l0,0c-0.6,0-1.4,0-2,0
+                c-61.6,1.1-111,52.2-109.9,113.8c0.6,29.4,12.4,57,33.6,77.9c20.9,20.6,48.9,31.9,78.2,31.9c0.6,0,1.4,0,2,0
+                c29.9-0.6,57.6-12.7,78.5-34.2C578.1,535.7,589.1,507.5,588.5,477.6z M484.9,578.7L484.9,578.7c-0.6,0-0.8,0-1.1-0.3
+                c-0.3-0.3-0.6-0.6-0.6-1.1l-0.6-87c0-0.6,0.3-0.8,0.6-1.1c0.3-0.3,0.8-0.3,1.4-0.3l83.3,26.5c0.3,0,0.8,0.3,0.8,0.8
+                c0.3,0.3,0.3,0.8,0,1.1c-4.8,11.6-11.6,22.3-20.6,31.3C531.5,566,508.9,576.7,484.9,578.7z M405.2,410.6c1.7-1.7,3.4-3.4,5.4-5.1
+                c0.3-0.3,0.8-0.3,1.1-0.3c0.6,0,0.8,0.3,1.1,0.6l49.7,66.9c0.3,0.3,0.3,0.8,0.3,1.4c-0.3,0.6-0.6,0.8-0.8,0.8l-79.9,26.5
+                c-0.3,0-0.3,0-0.6,0c-0.3,0-0.6,0-0.8-0.3c-0.3-0.3-0.6-0.6-0.8-1.1c-1.4-6.2-2-12.7-2.3-19.2C377,454.7,386.9,429.6,405.2,410.6
+                L405.2,410.6z M385.2,516.3c0.3-0.3,0.6-0.6,0.8-0.8l80.2-26.8c0.6-0.3,0.8,0,1.4,0.3c0.3,0.3,0.6,0.8,0.6,1.1l0.6,86.7
+                c0,0.6-0.3,0.8-0.6,1.1c-0.3,0.3-0.6,0.3-1.1,0.3c0,0,0,0-0.3,0c-22.9-2.3-43.5-11.9-59.9-28c-9.6-9.6-17.2-20.6-22.3-32.8
+                C384.9,517.1,384.9,516.8,385.2,516.3z M475.3,464.9L475.3,464.9c-0.6,0-0.8-0.3-1.1-0.6l-49.4-67.2c-0.3-0.3-0.3-0.8-0.3-1.1
+                c0-0.3,0.3-0.8,0.6-1.1c15-9.3,32.5-14.4,50.3-14.7c0.6,0,1.1,0,1.7,0l0,0c16.9,0,33.9,4.5,48.6,12.7c0.3,0.3,0.6,0.6,0.8,1.1
+                c0,0.3,0,0.8-0.3,1.1l-49.7,69.2C476.1,464.6,475.8,464.9,475.3,464.9z M574.1,500.2c0,0.3-0.3,0.8-0.8,1.1c-0.3,0-0.6,0.3-0.8,0.3
+                s-0.3,0-0.6,0l-83-26.3c-0.6-0.3-0.8-0.6-0.8-0.8c-0.3-0.6,0-0.8,0.3-1.4l49.7-69.5c0.3-0.3,0.6-0.6,1.1-0.6c0.6,0,0.8,0,1.1,0.3
+                c2.3,1.7,4.2,3.7,6.2,5.6c18.6,18.4,29.4,42.9,29.7,69.2C576.4,485.2,575.5,492.8,574.1,500.2z"/>
+            <path id="pneu_droite" d="M477,369.1L477,369.1c29.1,0,56.5,11.3,77.4,31.6c20.9,20.3,32.5,47.7,33,76.8
+                c0.6,29.4-10.4,57.3-31.1,78.8c-20.6,21.2-48,33.3-77.7,33.6c-0.6,0-1.4,0-2,0c-29.1,0-56.5-11.3-77.4-31.6
+                c-20.9-20.3-32.5-47.7-33-76.8c-0.6-29.4,10.4-57.3,31.1-78.8c20.6-21.2,48-33.3,77.4-33.6C475.5,369.1,476.1,369.1,477,369.1
+                 M477,361.2c-0.8,0-1.4,0-2.3,0c-65.2,1.1-117.5,55.1-116.1,120.6c1.1,64.7,53.9,116.3,118.3,116.3c0.8,0,1.4,0,2.3,0
+                c65.2-1.1,117.5-55.1,116.1-120.3C593.9,412.9,541.3,361.2,477,361.2L477,361.2z"/>
+        </g>
+
+        <g id="roue_gauche">
+            <path id="rayons_gauche" d="M199.1,556.9c20.3-21.2,31.6-49.1,31.1-78.8c-0.3-29.4-12.1-57-32.8-77.9l0,0c-0.6-0.6-0.8-0.8-1.4-1.4
+                c-44.3-42.6-115.5-41.2-158.1,3.1C17.5,423.1,6.2,451,6.8,480.7c0.3,29.4,12.1,57,32.8,77.9c0.6,0.6,0.8,0.8,1.4,1.4
+                c21.5,20.6,49.7,31.6,79.6,31.1C150.5,590.8,178.2,578.7,199.1,556.9z M54.2,555.5C54.2,555.5,54.2,555.2,54.2,555.5
+                c-0.3-0.3-0.6-0.8-0.6-1.1s0-0.8,0.6-1.1l61-62.1c0.3-0.3,0.8-0.6,1.4-0.6s0.8,0.3,1.1,0.8l40.4,77.4c0.3,0.3,0.3,0.8,0,1.1
+                s-0.6,0.8-0.8,0.8c-11.6,4.8-24,7.6-36.7,7.9C96,579.2,72.6,571,54.2,555.5z M116.3,380.1c2.5,0,5.1,0,7.3,0c0.6,0,0.8,0.3,1.1,0.6
+                c0.3,0.3,0.3,0.8,0.3,1.1l-12,82.8c0,0.6-0.3,0.8-0.8,1.1c-0.6,0.3-0.8,0.3-1.4,0l-75.4-37.6c-0.3,0-0.3-0.3-0.3-0.3
+                c-0.3-0.3-0.3-0.3-0.3-0.6s0-0.8,0.3-1.1c3.4-5.4,7.6-10.4,12.1-15.2C64.9,391.7,89.8,380.7,116.3,380.1L116.3,380.1z M27.4,440.9
+                c0.3-0.3,0.8,0,1.1,0l75.7,37.8c0.6,0.3,0.8,0.6,0.8,1.1c0,0.6,0,0.8-0.3,1.4L44,543c-0.3,0.3-0.8,0.6-1.1,0.6
+                c-0.3,0-0.8-0.3-1.1-0.6l0,0c-14.7-17.5-22.6-39-22.6-62.1c-0.3-13.8,2.3-26.8,7.3-39.3C26.5,441.4,26.8,441.1,27.4,440.9z
+                 M127.6,468L127.6,468c-0.3-0.3-0.6-0.8-0.6-1.1l12.4-82.5c0-0.3,0.3-0.8,0.6-1.1c0.3-0.3,0.8-0.3,1.1-0.3
+                c17.2,4,33,12.7,45.7,25.1c0.6,0.3,0.8,0.8,1.4,1.4l0,0c12.1,12.1,20.9,27.1,25.4,43.2c0,0.3,0,0.8-0.3,1.1
+                c-0.3,0.3-0.6,0.6-1.1,0.6l-83.9,14.1C128.5,468.5,127.9,468.5,127.6,468z M172.5,562.8c-0.3,0.3-0.8,0.3-1.1,0.3
+                c-0.3,0-0.6-0.3-0.6-0.3l-0.3-0.3l-40.4-77.7c-0.3-0.6-0.3-0.8,0-1.4c0.3-0.6,0.6-0.8,1.1-0.8l84.2-14.1c0.3,0,0.8,0,1.1,0.3
+                c0.3,0.3,0.6,0.6,0.6,1.1c0.3,2.8,0.6,5.6,0.6,8.5c0.3,26.3-9.6,51.1-27.7,70C184.7,553.8,179,558.6,172.5,562.8z"/>
+            <path id="pneu_gauche" d="M118.3,369.1L118.3,369.1c28.5,0,55.9,11,76.5,30.8c21.2,20.3,33.3,48,33.9,77.4s-10.4,57.3-30.8,78.8
+                C177,577.8,148.5,590,118.3,590c-28.5,0-55.9-11-76.5-30.8C-2,517.1-3.4,447.1,38.7,403C59.6,381.3,88.1,369.1,118.3,369.1
+                 M118.3,361.2c-31.1,0-62.1,12.1-85.3,36.4c-45.2,47.2-43.8,122,3.4,167.5c22.9,22,52.5,33,81.9,33c31.1,0,62.1-12.1,85.3-36.4
+                c45.2-47.2,43.8-122-3.4-167.5C177.3,372.2,148,361.2,118.3,361.2L118.3,361.2z"/>
+        </g>
+
+        <path id="structure" d="M477.5,470.2l-44.6-96.3c-2.5-5.4-3.4-15.2-3.7-21.2l0.6-1.1l-7.1-30.5c0,0-0.3,0-0.6,0V320h0.8
+            c0.8,0,1.4-0.8,1.4-1.7l-0.3-3.4c0-0.8-0.8-1.4-1.7-1.4h-0.6v-5.1c12.7-4,26.8-9.6,28.2-16.1l0,0c0.8-1.1,1.4-2.5,1.4-4.2
+            c0-4-3.1-7.1-7.1-7.1c-4,0-7.1,3.1-7.1,7.1l-39.5,12.4c-0.8,0.3-1.4,1.1-1.1,2l3.1,10.4c0.3,0.8,1.1,1.4,2,1.1c0,0,2-0.3,5.1-1.1v2
+            h-0.3c-0.8,0-1.4,0.8-1.4,1.7l0.3,3.4c0,0.8,0.8,1.4,1.4,1.4v0.8c-46.6,2.5-177.9,9.9-183.3,10.2c-6.2,0.3-12.4,5.6-12.4,5.6
+            L97.7,493.7l180.4,17.8l124.5-142.6c5.4-6.2,9.6-8.8,13.6-10.2c0.8,1.7,1.7,3.4,1.7,4.2c0.3,2,3.1,5.6,0.8,6.8
+            c-2.3,1.2-1.7,4.5-1.1,7.9l50,97.1c-0.6,1.4-1.1,2.8-1.1,4.2c0,5.1,4.2,9.3,9.3,9.3c5.1,0,9.3-4.2,9.3-9.3
+            C485.4,474.7,482,470.8,477.5,470.2z M334.6,399.3l-57.9,81l-142-3.4c0,0,76.8-94.3,83.9-103.1c7.1-8.8,18.9-8.8,24.3-7.6
+            c0,0,85.8,16.9,85,16.7C337.2,385.5,338.6,394.3,334.6,399.3z"/>
+        <path id="pedalier" d="M345.1,508.1l-0.8-2.5c-0.3-0.8-1.1-1.4-2-1.1l-10.2,2.8l-29.9-4c0-2.3-0.3-4.8-0.8-7.1
+            c-2-8.5-7.1-15.5-14.4-20c-5.1-3.4-11-5.1-17.2-5.1c-2,0-4,0.3-5.9,0.6l0,0l-0.8,0.3c-0.3,0-0.3,0-0.6,0c-8.5,2-15.5,7.1-20,14.4
+            s-5.9,16.1-4,24.6c2,8.5,7.1,15.5,14.4,20c5.1,3.4,11,5.1,17.2,5.1l0,0c2.3,0,4.8-0.3,7.1-0.8h0.6c8.5-2,15.5-7.1,20-14.4
+            c1.4-2.3,2.5-4.8,3.4-7.3l7.9,0.6h-0.6c-0.8,0.3-1.4,1.1-1.1,2l0.8,2.5c0.3,0.8,1.1,1.4,2,1.1l34.2-9.6
+            C344.8,509.8,345.4,508.9,345.1,508.1z M283,484.1c4.8,3.4,8.5,8.2,9.9,14.1c0.3,0.8,0.3,1.7,0.6,2.5l-16.7-1.4L283,484.1z
+             M264.3,480.7h0.3l0,0c3.1-0.6,6.2-0.8,9-0.3l-5.9,15L255.8,485C258.4,482.9,261.2,481.5,264.3,480.7z M247.1,508.9
+            c-1.4-5.6-0.6-11.6,2.3-16.9l11.9,10.4l-13.8,8.2C247.4,510,247.4,509.5,247.1,508.9z M269.7,527c-4.2,0-8.5-1.1-12.4-3.7
+            c-2-1.1-3.7-2.5-5.1-4.2l13.8-8.2L269.7,527L269.7,527z M289.7,515.7c-2.5,4.2-6.2,7.3-10.4,9l-3.1-13.6l15.2,1.1
+            C290.9,513.7,290.3,514.8,289.7,515.7z"/>
+        <path id="selle" d="M248.5,251.7c-1.1-1.1-5.1-7.6-11-7.6H172c-5.1,0-4.2,4-2,5.6c2.3,1.7,16.4,11.9,25.4,11.9c0.8,0,1.4,0,2.5,0
+            l16.7,64.9h-5.9v7.1h7.6l2.3,8.2l11.6-2.8l-1.4-5.6h1.7v-7.1H227l-17.5-66.9c6.8-1.7,13-3.7,14.7-4.2c3.1-1.1,13.8-1.4,20,0
+            C250.5,255.9,249.6,252.8,248.5,251.7z"/>
+        <path id="cadre" fill="#7F7F7F" d="M373.6,341.2c-0.3-0.6-1.1-1.1-1.7-1.1l-137,6.2c-1.1,0-1.7,0.8-2,1.7c0,1.1,0.6,2,1.7,2
+            l116.6,23.7h0.3c0.6,0,1.1-0.3,1.7-0.8l20.6-29.9C373.9,342.9,373.9,342,373.6,341.2z"/>
+        <path id="chaine" d="M269.7,536.6c-4.2,0-11.6-2-11.9-2.3l-140.3-44.1l0,0c-4-1.7-6.8-5.6-6.8-9.9c0-5.9,4.8-10.7,10.7-10.7
+            l149.4,0.8l0,0c17.8,0.6,32.2,15.2,32.2,33C303,521.6,288,536.6,269.7,536.6z M118.9,489.1l139.2,44.1c0,0,7.3,2,11.3,2
+            c17.5,0,31.9-14.1,31.9-31.9c0-17.5-14.1-31.6-31.6-31.6h-0.8l0,0l-147.4-0.8c-5.1,0-9.3,4.2-9.3,9.3c0,4,2.5,7.6,6.2,8.8
+            L118.9,489.1L118.9,489.1z"/>
         </svg>
+            </div>
+            <p>Intégrer le SVG directement dans le code html reste la méthode la plus simple, et la plus flexible.</p>
+            <p>Elle évite des requêtes http supplémentaires</p>
+            <p>On peut facilement atteindre et manipuler via css ou javascript les noeuds qui le composent, utiliser les intéractions css (type ":focus), des animations css,
+                ajouter des liens...</p>
 
-        <p>Le rectangle utilise la balise <strong>&lt;rect&gt;</strong>, les coordonnées <strong>x</strong> et
-            <strong>y</strong> et les déclarations de dimensions <strong>width</strong> et <strong>height</strong>.
-        </p>
+            <p>Inconviénients  : peu maintenable, augmentation de la taille du fichier html, à réserver si le svg est utilisé une unique fois sur le site.</p>
+            <p>On peut s'affranchir de ces inconvénients en utilisant, selon les possibilités, des méthodes d'appel tel que <code>
+                &lt;?php include("bike.svg"); ?&gt;</code>, ou <code>ng-include="'bike.svg'"</code>.</p>
 
-        <h4 class="smallestTitle">Cercle et ovale</h4>
+            <h4 class="smallestTitle">Fallback</h4>
+            <p>L'intégration d'un contenu alternatif peut se faire au coeur du svg dans une balise &lt;<code>foreignObject</code>&gt;,
+                mais son contenu sera chargé par tous les navigateurs, qu'ils comprennent ou non le format svg.</p>
+            <p>Au pire, le contenu de la balise <code>&lt;desc&gt;</code> s'affichera à la place du svg, s'il n'est pas lu.</p>
 
-        <code class="codeBlock">
-            &lt;<mark class="codeExergue">circle</mark>
-            cx="60" cy="50" r="50" /&gt;
-        </code>
 
-        <svg height="100px">
-            <circle cx="60" cy="50" r="50"/>
+            <h3 class="smallTitle">Via la balise &lt;img&gt;</h3>
+
+            <code class="codeBlock">
+                &lt;
+                <mark class="codeExergue">img</mark>
+                src="img/bike.svg" alt="un beau vélo" &gt;
+            </code>
+
+            <div class="svgVisualExemples">
+                <img class="svgExemple" src="img/bike.svg" alt="Un beau vélo vectoriel">
+            </div>
+            <p>L'intégration dans une balise IMG est également facile, peut-être plus claire et plus intuitive, mais son contenu est inaccessible au javascript,
+            et son CSS doit être inclus dans le code SVG.</p>
+
+            <h4 class="smallestTitle">Fallback</h4>
+            <p>Le fallback de cette méthode d'intégration est la plus ardue. Pour aller au plus simple, on peut se reposer sur l'attribut alt que nous permet cette balise.</p>
+            <p>On peut aussi recourir à la balise <code>&lt;srcset&gt;</code> pour
+            proposer une image alternative (<code>&lt;img src="bike.png" srcset="bike.svg"/&gt;</code>), mais cela demandera l'utilisation d'un <a href="http://scottjehl.github.io/picturefill/">polyfill</a>.</p>
+            <p>On peut aussi recourir à des librairies javascript, comme <a href="https://dirkgroenen.github.io/SVGMagic/">SVGMagic</a>.</p>
+
+
+            <h3 class="smallTitle">En arrière-plan (css)</h3>
+
+            <code class="codeBlock">
+                <mark class="codeExergue">background</mark>
+                : url("bike.svg");
+            </code>
+
+            <div class="svgVisualExemples bike-css"></div>
+
+            <p>L'intégration en css est semblable à la balise &lt;img&gt; (avantages comme inconvénients), en dissociant un peu plus le fond de la forme.</p>
+
+            <h4 class="smallestTitle">Fallback</h4>
+            <p>On a ici recours a une petite ruse. Si le navigateur sait interpréter les dégradés linéaires ET les arrière-plan multiples, il connait aussi le format SVG.</p>
+            <p>S'il ne connait pas cette syntaxe, il revient en arrière sur la valeur déclarée précédemment.</p>
+            <code class="codeBlock">
+                <span class="codeBlockElement">background: url("bike.<mark class="codeExergue">png</mark>");</span>
+                <span class="codeBlockElement">background: url("bike.<mark class="codeExergue">svg</mark>"), <mark class="codeExergue">linear-gradient(transparent, transparent)</mark>;</span>
+            </code>
+
+
+            <h3 class="smallTitle">Dans une balise OBJECT</h3>
+
+            <code class="codeBlock">
+                <span class="codeBlockElement">&lt;<mark class="codeExergue">object</mark> type="image/svg+xml" data="img/bike.svg"&gt;</span>
+                <span
+                class="codeBlockElement codeBlockElement--tab1">Ce texte est affiché si le navigateur de peut pas lire le SVG.</span>
+                &lt;/
+                <mark class="codeExergue">object</mark>
+                &gt;
+            </code>
+
+            <div class="svgVisualExemples">
+                <a href="http://www.google.fr" target="_blank" class="toto">
+                <object class="svgExemple" type="image/svg+xml" data="img/bike.svg">
+                    <img src="img/bike.png" alt="Un beau vélo" />
+                </object>
+                    </a>
+            </div>
+            <p>Cette solution n'a en apparence qu'un seul vrai désavantage, l'impossibilité d'en faire un lien.</p>
+            <p>C'est en réalité un problème facilement contournable. On peut nativement intégrer des liens dirèctement à l'intérieur du svg (en précisant la cible (target)
+            afin que la page ne s'ouvre pas dans l' "object").</p>
+            <p>On peut également utiliser du CSS pour rendre fonctionnel le lien englobant notre balise object :</p>
+
+            <code class="codeBlock">
+                <span class="codeBlockElement">.mon-lien::after {</span>
+                <span class="codeBlockElement codeBlockElement--tab1">content: "";</span>
+                <span class="codeBlockElement codeBlockElement--tab1">position: absolute;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">top: 0;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">right: 0;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">bottom: 0;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">left: 0;</span>
+                <span class="codeBlockElement">}</span>
+            </code>
+
+            <p>NB: oui, sans préciser une position relative sur le lien lui-même...</p>
+
+            <h4 class="smallestTitle">Fallback</h4>
+            <p>Du contenu alternatif (png, texte...) peut-être intégré simplement entre les balises d'ouverture et de fermeture.
+                Il sera malheureusement aussi chargé (mais non affiché) par les navigateurs comprenant le format svg.</p>
+
+
+            <h3 class="smallTitle">dans une iframe</h3>
+
+            <code class="codeBlock">
+                <span class="codeBlockElement">&lt;<mark class="codeExergue">iframe</mark> src="bike.svg"&gt;</span>
+                <span
+                    class="codeBlockElement codeBlockElement--tab1">&lt;img src="bike.png" alt="Un beau vélo"/&gt;</span>
+                &lt;/
+                <mark class="codeExergue">iframe</mark>
+                &gt;
+            </code>
+
+            <div class="svgVisualExemples">
+                <iframe class="svgExemple" src="img/bike.svg" sandbox>
+                    <img src="img/bike.png" alt="Un beau vélo" />
+                </iframe>
+            </div>
+
+            <p>Lorsqu'on a le choix, il n'y a pas vraiment d'intéret à choisir d'intégrer un svg dans une iframe. Cette solution n'apporte rien de plus.</p>
+            <p>Pas de css externe, et pas de manipulation en javascript, sauf si le SVG et la page web actuelle ont la même origine.</p>
+
+            <h4 class="smallestTitle">Fallback</h4>
+            <p>Pas de fallback connu. L'image alternative entre les balises d'ouverture et de fermeture de l'iframe ne sont interprétées que si l'iframe elle-même n'est pas prise en charge.</p>
+
+
+            <h3 class="smallTitle">via balise EMBED</h3>
+
+            <p>Plus aucun intéret aujourd'hui.</p>
+
+        </section>
+
+        <section class="etude">
+            <h2 class="secondaryTitle" id="data">Le format Data URI</h2>
+            <p>Quel que soit le mode d'intégration choisi, on peut embarquer les données du SVG
+                directement dans le html via le format <code>Data URI</code>.</p>
+
+            <p>Le premier avantage de ce format, qui n'est pas nouveau, est de limiter les requêtes HTTP, mais l'appliquer
+                aux
+                svg nous offre de nouvelles possibilités.</p>
+            <p>L'exemple suivant reprend notre vélo, avec la bordure de la roue droite grossie et teintée (<code>stroke="#07a5e0"
+                stroke-width="10"</code>).</p>
+
+            <div class="svgVisualExemples svgVisualExemples--data"></div>
+
+            <code class="codeBlock">
+                background-image: url('data:image/svg+xml;
+                <mark class="codeExergue">utf8</mark>
+                ,
+                <mark class="codeExergue">&lt;svg&gt;...&lt;/svg&gt;</mark>
+                ');
+            </code>
+
+            <p>Cela ne marche actuellement ni sur Firefox, ni sur Internet Explorer. Il faut d'abord convertir les
+                caractères
+                spéciaux.</p>
+            <p>Plusieurs mixins Sass existent comme <a href="http://codepen.io/jakob-e/pen/doMoML">svg-url</a></p>
+
+            <div class="svgVisualExemples svgVisualExemples--data-svg"></div>
+
+            <p>On peut maintenant réunir les avantages des deux mondes : utilisation de background pour la maintenabilité du
+                code (dissociation fond/forme), et modification des styles du svg.</p>
+
+            <h3 class="smallTitle">Application avec le préprocesseur Sass</h3>
+
+            <p>SVG d'origine :</p>
+            <div class="svgVisualExemples">
+                <svg version="1.1" id="velo" xmlns="http://www.w3.org/2000/svg" viewBox="0 244.1 595.3 354" xml:space="preserve">
+
+        <g id="roue_droit">
+            <path id="rayons_droite" stroke="#07a5e0" stroke-width="10" d="M588.5,477.6c-0.6-29.4-12.4-57-33.6-77.9c-20.9-20.7-48.9-32-78.2-32l0,0c-0.6,0-1.4,0-2,0
+                c-61.6,1.1-111,52.2-109.9,113.8c0.6,29.4,12.4,57,33.6,77.9c20.9,20.6,48.9,31.9,78.2,31.9c0.6,0,1.4,0,2,0
+                c29.9-0.6,57.6-12.7,78.5-34.2C578.1,535.7,589.1,507.5,588.5,477.6z M484.9,578.7L484.9,578.7c-0.6,0-0.8,0-1.1-0.3
+                c-0.3-0.3-0.6-0.6-0.6-1.1l-0.6-87c0-0.6,0.3-0.8,0.6-1.1c0.3-0.3,0.8-0.3,1.4-0.3l83.3,26.5c0.3,0,0.8,0.3,0.8,0.8
+                c0.3,0.3,0.3,0.8,0,1.1c-4.8,11.6-11.6,22.3-20.6,31.3C531.5,566,508.9,576.7,484.9,578.7z M405.2,410.6c1.7-1.7,3.4-3.4,5.4-5.1
+                c0.3-0.3,0.8-0.3,1.1-0.3c0.6,0,0.8,0.3,1.1,0.6l49.7,66.9c0.3,0.3,0.3,0.8,0.3,1.4c-0.3,0.6-0.6,0.8-0.8,0.8l-79.9,26.5
+                c-0.3,0-0.3,0-0.6,0c-0.3,0-0.6,0-0.8-0.3c-0.3-0.3-0.6-0.6-0.8-1.1c-1.4-6.2-2-12.7-2.3-19.2C377,454.7,386.9,429.6,405.2,410.6
+                L405.2,410.6z M385.2,516.3c0.3-0.3,0.6-0.6,0.8-0.8l80.2-26.8c0.6-0.3,0.8,0,1.4,0.3c0.3,0.3,0.6,0.8,0.6,1.1l0.6,86.7
+                c0,0.6-0.3,0.8-0.6,1.1c-0.3,0.3-0.6,0.3-1.1,0.3c0,0,0,0-0.3,0c-22.9-2.3-43.5-11.9-59.9-28c-9.6-9.6-17.2-20.6-22.3-32.8
+                C384.9,517.1,384.9,516.8,385.2,516.3z M475.3,464.9L475.3,464.9c-0.6,0-0.8-0.3-1.1-0.6l-49.4-67.2c-0.3-0.3-0.3-0.8-0.3-1.1
+                c0-0.3,0.3-0.8,0.6-1.1c15-9.3,32.5-14.4,50.3-14.7c0.6,0,1.1,0,1.7,0l0,0c16.9,0,33.9,4.5,48.6,12.7c0.3,0.3,0.6,0.6,0.8,1.1
+                c0,0.3,0,0.8-0.3,1.1l-49.7,69.2C476.1,464.6,475.8,464.9,475.3,464.9z M574.1,500.2c0,0.3-0.3,0.8-0.8,1.1c-0.3,0-0.6,0.3-0.8,0.3
+                s-0.3,0-0.6,0l-83-26.3c-0.6-0.3-0.8-0.6-0.8-0.8c-0.3-0.6,0-0.8,0.3-1.4l49.7-69.5c0.3-0.3,0.6-0.6,1.1-0.6c0.6,0,0.8,0,1.1,0.3
+                c2.3,1.7,4.2,3.7,6.2,5.6c18.6,18.4,29.4,42.9,29.7,69.2C576.4,485.2,575.5,492.8,574.1,500.2z"/>
+            <path id="pneu_droite" d="M477,369.1L477,369.1c29.1,0,56.5,11.3,77.4,31.6c20.9,20.3,32.5,47.7,33,76.8
+                c0.6,29.4-10.4,57.3-31.1,78.8c-20.6,21.2-48,33.3-77.7,33.6c-0.6,0-1.4,0-2,0c-29.1,0-56.5-11.3-77.4-31.6
+                c-20.9-20.3-32.5-47.7-33-76.8c-0.6-29.4,10.4-57.3,31.1-78.8c20.6-21.2,48-33.3,77.4-33.6C475.5,369.1,476.1,369.1,477,369.1
+                 M477,361.2c-0.8,0-1.4,0-2.3,0c-65.2,1.1-117.5,55.1-116.1,120.6c1.1,64.7,53.9,116.3,118.3,116.3c0.8,0,1.4,0,2.3,0
+                c65.2-1.1,117.5-55.1,116.1-120.3C593.9,412.9,541.3,361.2,477,361.2L477,361.2z"/>
+        </g>
+
+        <g id="roue_gauch">
+            <path id="rayons_gauche" d="M199.1,556.9c20.3-21.2,31.6-49.1,31.1-78.8c-0.3-29.4-12.1-57-32.8-77.9l0,0c-0.6-0.6-0.8-0.8-1.4-1.4
+                c-44.3-42.6-115.5-41.2-158.1,3.1C17.5,423.1,6.2,451,6.8,480.7c0.3,29.4,12.1,57,32.8,77.9c0.6,0.6,0.8,0.8,1.4,1.4
+                c21.5,20.6,49.7,31.6,79.6,31.1C150.5,590.8,178.2,578.7,199.1,556.9z M54.2,555.5C54.2,555.5,54.2,555.2,54.2,555.5
+                c-0.3-0.3-0.6-0.8-0.6-1.1s0-0.8,0.6-1.1l61-62.1c0.3-0.3,0.8-0.6,1.4-0.6s0.8,0.3,1.1,0.8l40.4,77.4c0.3,0.3,0.3,0.8,0,1.1
+                s-0.6,0.8-0.8,0.8c-11.6,4.8-24,7.6-36.7,7.9C96,579.2,72.6,571,54.2,555.5z M116.3,380.1c2.5,0,5.1,0,7.3,0c0.6,0,0.8,0.3,1.1,0.6
+                c0.3,0.3,0.3,0.8,0.3,1.1l-12,82.8c0,0.6-0.3,0.8-0.8,1.1c-0.6,0.3-0.8,0.3-1.4,0l-75.4-37.6c-0.3,0-0.3-0.3-0.3-0.3
+                c-0.3-0.3-0.3-0.3-0.3-0.6s0-0.8,0.3-1.1c3.4-5.4,7.6-10.4,12.1-15.2C64.9,391.7,89.8,380.7,116.3,380.1L116.3,380.1z M27.4,440.9
+                c0.3-0.3,0.8,0,1.1,0l75.7,37.8c0.6,0.3,0.8,0.6,0.8,1.1c0,0.6,0,0.8-0.3,1.4L44,543c-0.3,0.3-0.8,0.6-1.1,0.6
+                c-0.3,0-0.8-0.3-1.1-0.6l0,0c-14.7-17.5-22.6-39-22.6-62.1c-0.3-13.8,2.3-26.8,7.3-39.3C26.5,441.4,26.8,441.1,27.4,440.9z
+                 M127.6,468L127.6,468c-0.3-0.3-0.6-0.8-0.6-1.1l12.4-82.5c0-0.3,0.3-0.8,0.6-1.1c0.3-0.3,0.8-0.3,1.1-0.3
+                c17.2,4,33,12.7,45.7,25.1c0.6,0.3,0.8,0.8,1.4,1.4l0,0c12.1,12.1,20.9,27.1,25.4,43.2c0,0.3,0,0.8-0.3,1.1
+                c-0.3,0.3-0.6,0.6-1.1,0.6l-83.9,14.1C128.5,468.5,127.9,468.5,127.6,468z M172.5,562.8c-0.3,0.3-0.8,0.3-1.1,0.3
+                c-0.3,0-0.6-0.3-0.6-0.3l-0.3-0.3l-40.4-77.7c-0.3-0.6-0.3-0.8,0-1.4c0.3-0.6,0.6-0.8,1.1-0.8l84.2-14.1c0.3,0,0.8,0,1.1,0.3
+                c0.3,0.3,0.6,0.6,0.6,1.1c0.3,2.8,0.6,5.6,0.6,8.5c0.3,26.3-9.6,51.1-27.7,70C184.7,553.8,179,558.6,172.5,562.8z"/>
+            <path id="pneu_gauche" d="M118.3,369.1L118.3,369.1c28.5,0,55.9,11,76.5,30.8c21.2,20.3,33.3,48,33.9,77.4s-10.4,57.3-30.8,78.8
+                C177,577.8,148.5,590,118.3,590c-28.5,0-55.9-11-76.5-30.8C-2,517.1-3.4,447.1,38.7,403C59.6,381.3,88.1,369.1,118.3,369.1
+                 M118.3,361.2c-31.1,0-62.1,12.1-85.3,36.4c-45.2,47.2-43.8,122,3.4,167.5c22.9,22,52.5,33,81.9,33c31.1,0,62.1-12.1,85.3-36.4
+                c45.2-47.2,43.8-122-3.4-167.5C177.3,372.2,148,361.2,118.3,361.2L118.3,361.2z"/>
+        </g>
+
+        <path fill="#000000" id="structure" d="M477.5,470.2l-44.6-96.3c-2.5-5.4-3.4-15.2-3.7-21.2l0.6-1.1l-7.1-30.5c0,0-0.3,0-0.6,0V320h0.8
+            c0.8,0,1.4-0.8,1.4-1.7l-0.3-3.4c0-0.8-0.8-1.4-1.7-1.4h-0.6v-5.1c12.7-4,26.8-9.6,28.2-16.1l0,0c0.8-1.1,1.4-2.5,1.4-4.2
+            c0-4-3.1-7.1-7.1-7.1c-4,0-7.1,3.1-7.1,7.1l-39.5,12.4c-0.8,0.3-1.4,1.1-1.1,2l3.1,10.4c0.3,0.8,1.1,1.4,2,1.1c0,0,2-0.3,5.1-1.1v2
+            h-0.3c-0.8,0-1.4,0.8-1.4,1.7l0.3,3.4c0,0.8,0.8,1.4,1.4,1.4v0.8c-46.6,2.5-177.9,9.9-183.3,10.2c-6.2,0.3-12.4,5.6-12.4,5.6
+            L97.7,493.7l180.4,17.8l124.5-142.6c5.4-6.2,9.6-8.8,13.6-10.2c0.8,1.7,1.7,3.4,1.7,4.2c0.3,2,3.1,5.6,0.8,6.8
+            c-2.3,1.2-1.7,4.5-1.1,7.9l50,97.1c-0.6,1.4-1.1,2.8-1.1,4.2c0,5.1,4.2,9.3,9.3,9.3c5.1,0,9.3-4.2,9.3-9.3
+            C485.4,474.7,482,470.8,477.5,470.2z M334.6,399.3l-57.9,81l-142-3.4c0,0,76.8-94.3,83.9-103.1c7.1-8.8,18.9-8.8,24.3-7.6
+            c0,0,85.8,16.9,85,16.7C337.2,385.5,338.6,394.3,334.6,399.3z"/>
+        <path id="pedalier" d="M345.1,508.1l-0.8-2.5c-0.3-0.8-1.1-1.4-2-1.1l-10.2,2.8l-29.9-4c0-2.3-0.3-4.8-0.8-7.1
+            c-2-8.5-7.1-15.5-14.4-20c-5.1-3.4-11-5.1-17.2-5.1c-2,0-4,0.3-5.9,0.6l0,0l-0.8,0.3c-0.3,0-0.3,0-0.6,0c-8.5,2-15.5,7.1-20,14.4
+            s-5.9,16.1-4,24.6c2,8.5,7.1,15.5,14.4,20c5.1,3.4,11,5.1,17.2,5.1l0,0c2.3,0,4.8-0.3,7.1-0.8h0.6c8.5-2,15.5-7.1,20-14.4
+            c1.4-2.3,2.5-4.8,3.4-7.3l7.9,0.6h-0.6c-0.8,0.3-1.4,1.1-1.1,2l0.8,2.5c0.3,0.8,1.1,1.4,2,1.1l34.2-9.6
+            C344.8,509.8,345.4,508.9,345.1,508.1z M283,484.1c4.8,3.4,8.5,8.2,9.9,14.1c0.3,0.8,0.3,1.7,0.6,2.5l-16.7-1.4L283,484.1z
+             M264.3,480.7h0.3l0,0c3.1-0.6,6.2-0.8,9-0.3l-5.9,15L255.8,485C258.4,482.9,261.2,481.5,264.3,480.7z M247.1,508.9
+            c-1.4-5.6-0.6-11.6,2.3-16.9l11.9,10.4l-13.8,8.2C247.4,510,247.4,509.5,247.1,508.9z M269.7,527c-4.2,0-8.5-1.1-12.4-3.7
+            c-2-1.1-3.7-2.5-5.1-4.2l13.8-8.2L269.7,527L269.7,527z M289.7,515.7c-2.5,4.2-6.2,7.3-10.4,9l-3.1-13.6l15.2,1.1
+            C290.9,513.7,290.3,514.8,289.7,515.7z"/>
+        <path id="selle" d="M248.5,251.7c-1.1-1.1-5.1-7.6-11-7.6H172c-5.1,0-4.2,4-2,5.6c2.3,1.7,16.4,11.9,25.4,11.9c0.8,0,1.4,0,2.5,0
+            l16.7,64.9h-5.9v7.1h7.6l2.3,8.2l11.6-2.8l-1.4-5.6h1.7v-7.1H227l-17.5-66.9c6.8-1.7,13-3.7,14.7-4.2c3.1-1.1,13.8-1.4,20,0
+            C250.5,255.9,249.6,252.8,248.5,251.7z"/>
+        <path id="cadre" fill="#7F7F7F" d="M373.6,341.2c-0.3-0.6-1.1-1.1-1.7-1.1l-137,6.2c-1.1,0-1.7,0.8-2,1.7c0,1.1,0.6,2,1.7,2
+            l116.6,23.7h0.3c0.6,0,1.1-0.3,1.7-0.8l20.6-29.9C373.9,342.9,373.9,342,373.6,341.2z"/>
+        <path id="chaine" d="M269.7,536.6c-4.2,0-11.6-2-11.9-2.3l-140.3-44.1l0,0c-4-1.7-6.8-5.6-6.8-9.9c0-5.9,4.8-10.7,10.7-10.7
+            l149.4,0.8l0,0c17.8,0.6,32.2,15.2,32.2,33C303,521.6,288,536.6,269.7,536.6z M118.9,489.1l139.2,44.1c0,0,7.3,2,11.3,2
+            c17.5,0,31.9-14.1,31.9-31.9c0-17.5-14.1-31.6-31.6-31.6h-0.8l0,0l-147.4-0.8c-5.1,0-9.3,4.2-9.3,9.3c0,4,2.5,7.6,6.2,8.8
+            L118.9,489.1L118.9,489.1z"/>
         </svg>
+            </div>
 
-        <p>Le centre du cercle (<strong>&lt;circle&gt;</strong>) est positionné dans le SVG avec <strong>cx</strong> et
-            <strong>cy</strong>. <strong>r</strong> définit la taille du rayon.</p>
+            <p>On place dans une variable le code svg qui sera appelé en arrière-plan :</p>
+            <code class="codeBlock">
+                <span class="codeBlockElement"><mark class="codeExergue">$velo</mark>: '&lt;svg&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">...</span>
+                        <span class="codeBlockElement codeBlockElement--tab1">&lt;path id="rayons_droite" <mark
+                            class="codeExergue">stroke="#07a5e0"</mark> stroke-width="10" d="M588......"/&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">...</span>
+            <span class="codeBlockElement codeBlockElement--tab1">&lt;path id="cadre" <mark
+                class="codeExergue">fill="#7F7F7F"</mark> d="M373......"/&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">...</span>
+                <span class="codeBlockElement">&lt;/svg&gt;';</span>
+            </code>
 
-        <code class="codeBlock">
-            &lt;<mark class="codeExergue">ellipse</mark>
-            cx="60" cy="60" rx="60" ry="30" /&gt;
-        </code>
+            <p>Utilisation d'une mixin pour remplacer les caractères spéciaux :</p>
 
-        <svg height="100px">
-            <ellipse cx="60" cy="60" rx="60" ry="30"/>
-        </svg>
+            <code class="codeBlock">
+                <span class="codeBlockElement">.image {</span>
+                <span class="codeBlockElement codeBlockElement--tab1">background-image: <mark class="codeExergue">svg-url</mark>($velo);</span>
+                <span class="codeBlockElement">}</span>
+            </code>
 
-        <p>Pour l'ovale, (<strong>&lt;ellipse&gt;</strong>), il y a deux rayons, correspondant au grand et petit axe.
-        </p>
+            <p>On a maintenant un code exploitable sur tout navigateur, dont on va pouvoir <a
+                href="http://www.sassmeister.com/gist/1b4f2da5527830088e4d">modifier</a> les attributs
+                (<code>fill</code>,
+                <code>stroke</code>...).</p>
 
+            <code class="codeBlock">$velo-orange: str-replace($velo, stroke="#07a5e0", stroke="orange");</code>
 
-        <h4 class="smallestTitle">Polygone</h4>
+            <div class="svgVisualExemples svgVisualExemples--data-replace"></div>
 
-        <code class="codeBlock">
-            &lt;<mark class="codeExergue">polygon</mark>
-            points="50 15, 100 100, 0 100 /&gt;
-        </code>
+            <p>Voire utiliser une mixin qui cible directement les couleurs, peu importe l'attribut.</p>
 
-        <svg height="100px">
-            <polygon points="50 15, 100 100, 0 100"/>
-        </svg>
+            <code class="codeBlock">
+                <span class="codeBlockElement">@function svg-replace-fill($svg, $fill-to-replace, $new-fill...) {</span>
+                        <span class="codeBlockElement codeBlockElement--tab1">$replaced-svg: <a
+                            href="http://www.sassmeister.com/gist/1b4f2da5527830088e4d">str-replace</a>($svg, $fill-to-replace, $new-fill);</span>
+                        <span class="codeBlockElement codeBlockElement--tab1">$replaced-svg-url: <a
+                            href="http://codepen.io/jakob-e/pen/doMoML">svg-url</a>(('#{$replaced-svg}');</span>
+                <span class="codeBlockElement codeBlockElement--tab1">@return $replaced-svg-url;</span>
+                <span class="codeBlockElement">}</span>
+            </code>
 
-        <p>Chaque paire de coordonnées, séparée par des virgules, correspond à un point du polygone
-            (<strong>&lt;polygon&gt;</strong>), représentant <strong>x</strong> et <strong>y</strong>.</p>
+            <code class="codeBlock">background-image: svg-replace-fill(
+                <mark class="codeExergue">$velo</mark>
+                , '
+                <mark class="codeExergue">#7F7F7F</mark>
+                ', '
+                <mark class="codeExergue">red</mark>
+                ');</code>
 
-        <p>Les virgules ne sont pas obligatoires, et ne servent qu'au confort visuel du code.</p>
+            <div class="svgVisualExemples svgVisualExemples--data-replace-final"></div>
 
+            <p>Si cette technique permet d'approcher une certaine maîtrise des styles d'un SVG, on en voit vite les
+                faiblesses.
+                Si plusieurs chemins ont d'origine la même couleur déclarée, tous seront modifiés ensemble, sans
+                distinction.</p>
+            <p>Il convient avant toute modification d'appliquer un maximum de couleurs, ou tout du moins à toute partie du
+                svg susceptible d'être modifiée.</p>
 
-        <h4 class="smallestTitle">Ligne et polyligne</h4>
+        </section>
 
-        <code class="codeBlock">
-            &lt;<mark class="codeExergue">line</mark>
-            x1="50" y1="0" x2="150" y2="100" stroke="black" /&gt;
-        </code>
+        <section class="etude">
 
-        <svg height="100px">
-            <line x1="50" y1="0" x2="150" y2="100" stroke="black"/>
-        </svg>
+            <h2 class="secondaryTitle" id="viewbox">Le viewPort et la viewBox</h2>
+            <h3 class="smallTitle">Définition</h3>
+            <p>Le viewPort est simplement la taille du svg, définie par les attributs "width" et "height".</p>
+            <p>La viewBox va préciser la place que vont prendre les éléments graphiques à l'intérieur de ce conteneur.</p>
+            <p>Les coordonnées indiquent respectivement les deux points d'origine de la viewBox, et ses points d'arrivée sur les axes X et Y :</p>
 
-        <p>La ligne (<strong>&lt;line&gt;</strong>) est tracée grâce aux coordonnées de départ
-            (<strong>x1</strong> et
-            <strong>y1</strong>) et d'arrivée (<strong>x2</strong> et <strong>y2</strong>). Une couleur doit être
-            définie.
-        </p>
+            <code class="codeBlock">
+                <span class="codeBlockElement">&lt;svg width="400" height="200" viewBox="0 0 <mark class="codeExergue">400 200</mark>"&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;circle cx="200" cy="100" r="80"fill="blue" /&gt;</span>
+                <span class="codeBlockElement">&lt;/svg&gt;</span>
+            </code>
 
-        <code class="codeBlock">
-            &lt;<mark class="codeExergue">polyline</mark>
-            points="0 100, 100 0, 150 50, 110 50, 180 0" fill="transparent" stroke="black /&gt;
-        </code>
+            <p>NB: par défaut, l'unité utilisée est le pixel. Dans un contexte responsif, la taille n'a plus d'importance, seul le ratio viewBox/viewPort compte.</p>
 
-        <svg height="100px">
-            <polyline points="0 100, 100 0, 150 50, 110 50, 180 0" fill="transparent" stroke="black"/>
-        </svg>
+            <div class="svgVisualExemples svgVisualExemples--viewbox">
+                <svg width="400" height="200" viewBox="0 0 400 200">
+                    <circle cx="200" cy="100" r="80"fill="blue" />
+                </svg>
+            </div>
 
-        <p>La polyligne (<strong>&lt;polyline&gt;</strong>) peut être considérée comme un polygone non fermée. Il est
-            "rempli" d'une couleur par défaut (fill), et son tracé transparent.</p>
+            <p>Par défaut, les points d'arrivée de la viewBox correspondent à la taille du viewPort. Dans ce cas, le ratio est de 1/1.</p>
 
-        <!--<div class="svgVisualExemples">
-            <object class="svgExemple" type="image/svg+xml" data="img/pacman_face.svg">
-            </object>
-        </div>
-        <div class="svgVisualExemples">
-            <object class="svgExemple" type="image/svg+xml" data="img/pacman_profile.svg">
-            </object>
-        </div>-->
+            <p>Dans l'exemple ci-dessus, notre disque de 80px de rayon affiche bien 160px de diamètre dans son conteneur.</p>
 
-        <h4 class="smallestTitle">Chemin</h4>
+            <h3 class="smallTitle">Relation et manipulation</h3>
 
-        <code class="codeBlock">&lt;
-            <mark class="codeExergue">path</mark>
-            d="
-            <mark class="codeExergue">M
-            </mark>
-            0,100
-            <mark class="codeExergue">L
-            </mark>
-            100,0 L 180,50 L 220,0
-            <mark class="codeExergue">l</mark>
-            40,80 l -60 5" style="fill:none; stroke:black" /&gt;
-        </code>
+            <p>Si les points d'arrivée de la viewBox sont réduits, le ratio viewBox/viewPort est modifié d'autant.</p>
 
-        <svg height="100px">
-            <path d="M 0,100 L 100,0 L 180,50 L 220,0 l 40,80 l -60 5" style="fill:none; stroke:black"/>
-        </svg>
+            <p>Dans l'exemple ci-dessous, les valeurs de la viewBox sont deux fois plus petites que celles du viewPort. Conséquence, le ratio de 2/1 va doubler l'affichage de son contenu
+                (qui n'apparaitra donc plus qu'en partie, puisque le viewPort reste inchangé) :</p>
 
-        <p>Le chemin est peut-être la balise la plus importante (et la plus représentée dans votre
-            SVG), puisqu'elle permet de tracer tout ce qui n'est pas défini ci-dessus.
-        </p>
-
-        <code class="codeBlock">&lt;
-            <mark class="codeExergue">path</mark>
-            d="M 5 40
-            <mark class="codeExergue">a</mark>
-            55 30 0 0 0 155 0
-            <mark class="codeExergue">A</mark>
-            80 10 0 0 0 5 40 z" fill="transparent" stroke="black" /&gt;</path>
-        </code>
-
-        <svg height="100px">
-            <path d="M 5 40 a 55 30 0 0 0 155 0 A 80 10 0 0 0 5 40 z" fill="transparent" stroke="black"></path>
-        </svg>
-
-        <p>Le chemin ci-dessus utilise des courbes (A), définies par 7 paramètres : </p>
-        <ol class="etude_orderedList">
-            <li class="etude_orderedList_element">
-                Le rayon de x
-            </li>
-            <li class="etude_orderedList_element">
-                Le rayon de y
-            </li>
-            <li class="etude_orderedList_element">
-                L'axe de rotation de démarrage
-            </li>
-            <li class="etude_orderedList_element">
-                Le large flag (0 (petit), ou 1 (grand))
-            </li>
-            <li class="etude_orderedList_element">
-                Le sweep-flag (0 (sens anti-horaire), ou 1 (sens horaire))
-            </li>
-
-            <li class="etude_orderedList_element">
-                Le point d'arrivée x
-            </li>
-            <li class="etude_orderedList_element">
-                Le point d'arrivée 7
-            </li>
-        </ol>
+            <code class="codeBlock">
+                <span class="codeBlockElement">&lt;svg width="400" height="200" viewBox="0 0 <mark class="codeExergue">200 100</mark>"&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;circle cx="200" cy="100" r="80"fill="blue" /&gt;</span>
+                <span class="codeBlockElement">&lt;/svg&gt;</span>
+            </code>
 
 
-    </section>
+            <div class="svgVisualExemples svgVisualExemples--viewbox">
+                <svg width="400" height="200" viewBox="0 0 200 100">
+                    <circle cx="200" cy="100" r="80"fill="blue" />
+                </svg>
+            </div>
+
+            <p>A l'inverse, plus la taille de la viewBox est supérieure à celle du viewPort, plus son contenu apparaitra proportionnellement petit.</p>
+
+            <p>Ici, le ratio viewBox/viewPort affiche notre forme à 50% de sa taille :</p>
+
+            <code class="codeBlock">
+                <span class="codeBlockElement">&lt;svg width="400" height="200" viewBox="0 0 <mark class="codeExergue">800 400</mark>"&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;circle cx="200" cy="100" r="80"fill="blue" /&gt;</span>
+                <span class="codeBlockElement">&lt;/svg&gt;</span>
+            </code>
 
 
-    <section class="etude">
-        <h2 class="secondaryTitle" id="integration">Intégration</h2>
+            <div class="svgVisualExemples svgVisualExemples--viewbox">
+                <svg width="400" height="200" viewBox="0 0 800 400">
+                    <circle cx="200" cy="100" r="80"fill="blue" />
+                </svg>
+            </div>
 
-        <p>Les exemples suivants intégrent le même code svg. La roue de
-            <mark class="codeExergue codeExergue--blue">gauche</mark>
-            , en bleu, utilise des styles internes. La roue de
-            <mark class="codeExergue">droite</mark>
-            , en rouge, appelle une css externe.
-        </p>
-        <p>En plus de toutes les solutions de fallback proposées, <a href="https://modernizr.com/">Modernizr</a> reste un outil complémentaire
-            très utile pour gérer l'affichage des textes ou images alternatifs. </p>
+            <p>En modifiant les points d'origine, on en touche plus au ratio, qui va définir la proportion de la forme, mais on précise quelle portion on va afficher :</p>
 
-        <h3 class="smallTitle">Intégration via balise SVG</h3>
+            <code class="codeBlock">
+                <span class="codeBlockElement">&lt;svg width="400" height="200" viewBox="<mark class="codeExergue">200 100</mark> 400 200"&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;circle cx="200" cy="100" r="80"fill="blue" /&gt;</span>
+                <span class="codeBlockElement">&lt;/svg&gt;</span>
+            </code>
 
-        <code class="codeBlock">
-            &lt;
-            <mark class="codeExergue">svg</mark>
-            &gt;...&lt;/
-            <mark class="codeExergue">svg</mark>
-            &gt;
-        </code>
+            <div class="svgVisualExemples svgVisualExemples--viewbox">
+                <svg width="400" height="200" viewBox="200 100 400 200">
+                    <circle cx="200" cy="100" r="80"fill="blue" />
+                </svg>
+            </div>
 
-        <div class="svgVisualExemples">
-            <svg version="1.1" id="velo" xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 244.1 595.3 354" xml:space="preserve">
+            <p>Ici, notre forme a toujours un ratio de 1/1. Sa taille n'est pas modifiée, mais les points d'origine sont placés à 200px et 100px du viewPort,
+                ce qui réduit d'autant la partie visible du contenu du SVG.</p>
+            <p>La valeur X de la viewBox, ici "200" revient à "décaler" le contenu de 200px vers la gauche. Son conteneur reste identique, créant un blanc supplémentaire sur la droite.</p>
+            <p>Pour bien faire, il faudrait donc réduire également la viewBox ET le viewPort (afin de réduire la taille du svg, sans toucher au ratio) :</p>
 
-    <style type="text/css">
-        #roue_gauche {
-            fill: blue;
-        }
-    </style>
+            <code class="codeBlock">
+                <span class="codeBlockElement">&lt;svg <mark class="codeExergue">width="100" height="100" viewBox="200 100 100 100"</mark>&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;circle cx="200" cy="100" r="80"fill="blue" /&gt;</span>
+                <span class="codeBlockElement">&lt;/svg&gt;</span>
+            </code>
 
-    <title>Vélo SVG</title>
-    <desc>Un beau vélo vectoriel</desc>
+            <div class="svgVisualExemples svgVisualExemples--viewbox">
+                <svg width="100" height="100" viewBox="200 100 100 100">
+                    <circle cx="200" cy="100" r="80"fill="blue" />
+                </svg>
+            </div>
 
-    <g id="roue_droite">
-        <path id="rayons_droite" d="M588.5,477.6c-0.6-29.4-12.4-57-33.6-77.9c-20.9-20.7-48.9-32-78.2-32l0,0c-0.6,0-1.4,0-2,0
-            c-61.6,1.1-111,52.2-109.9,113.8c0.6,29.4,12.4,57,33.6,77.9c20.9,20.6,48.9,31.9,78.2,31.9c0.6,0,1.4,0,2,0
-            c29.9-0.6,57.6-12.7,78.5-34.2C578.1,535.7,589.1,507.5,588.5,477.6z M484.9,578.7L484.9,578.7c-0.6,0-0.8,0-1.1-0.3
-            c-0.3-0.3-0.6-0.6-0.6-1.1l-0.6-87c0-0.6,0.3-0.8,0.6-1.1c0.3-0.3,0.8-0.3,1.4-0.3l83.3,26.5c0.3,0,0.8,0.3,0.8,0.8
-            c0.3,0.3,0.3,0.8,0,1.1c-4.8,11.6-11.6,22.3-20.6,31.3C531.5,566,508.9,576.7,484.9,578.7z M405.2,410.6c1.7-1.7,3.4-3.4,5.4-5.1
-            c0.3-0.3,0.8-0.3,1.1-0.3c0.6,0,0.8,0.3,1.1,0.6l49.7,66.9c0.3,0.3,0.3,0.8,0.3,1.4c-0.3,0.6-0.6,0.8-0.8,0.8l-79.9,26.5
-            c-0.3,0-0.3,0-0.6,0c-0.3,0-0.6,0-0.8-0.3c-0.3-0.3-0.6-0.6-0.8-1.1c-1.4-6.2-2-12.7-2.3-19.2C377,454.7,386.9,429.6,405.2,410.6
-            L405.2,410.6z M385.2,516.3c0.3-0.3,0.6-0.6,0.8-0.8l80.2-26.8c0.6-0.3,0.8,0,1.4,0.3c0.3,0.3,0.6,0.8,0.6,1.1l0.6,86.7
-            c0,0.6-0.3,0.8-0.6,1.1c-0.3,0.3-0.6,0.3-1.1,0.3c0,0,0,0-0.3,0c-22.9-2.3-43.5-11.9-59.9-28c-9.6-9.6-17.2-20.6-22.3-32.8
-            C384.9,517.1,384.9,516.8,385.2,516.3z M475.3,464.9L475.3,464.9c-0.6,0-0.8-0.3-1.1-0.6l-49.4-67.2c-0.3-0.3-0.3-0.8-0.3-1.1
-            c0-0.3,0.3-0.8,0.6-1.1c15-9.3,32.5-14.4,50.3-14.7c0.6,0,1.1,0,1.7,0l0,0c16.9,0,33.9,4.5,48.6,12.7c0.3,0.3,0.6,0.6,0.8,1.1
-            c0,0.3,0,0.8-0.3,1.1l-49.7,69.2C476.1,464.6,475.8,464.9,475.3,464.9z M574.1,500.2c0,0.3-0.3,0.8-0.8,1.1c-0.3,0-0.6,0.3-0.8,0.3
-            s-0.3,0-0.6,0l-83-26.3c-0.6-0.3-0.8-0.6-0.8-0.8c-0.3-0.6,0-0.8,0.3-1.4l49.7-69.5c0.3-0.3,0.6-0.6,1.1-0.6c0.6,0,0.8,0,1.1,0.3
-            c2.3,1.7,4.2,3.7,6.2,5.6c18.6,18.4,29.4,42.9,29.7,69.2C576.4,485.2,575.5,492.8,574.1,500.2z"/>
-        <path id="pneu_droite" d="M477,369.1L477,369.1c29.1,0,56.5,11.3,77.4,31.6c20.9,20.3,32.5,47.7,33,76.8
-            c0.6,29.4-10.4,57.3-31.1,78.8c-20.6,21.2-48,33.3-77.7,33.6c-0.6,0-1.4,0-2,0c-29.1,0-56.5-11.3-77.4-31.6
-            c-20.9-20.3-32.5-47.7-33-76.8c-0.6-29.4,10.4-57.3,31.1-78.8c20.6-21.2,48-33.3,77.4-33.6C475.5,369.1,476.1,369.1,477,369.1
-             M477,361.2c-0.8,0-1.4,0-2.3,0c-65.2,1.1-117.5,55.1-116.1,120.6c1.1,64.7,53.9,116.3,118.3,116.3c0.8,0,1.4,0,2.3,0
-            c65.2-1.1,117.5-55.1,116.1-120.3C593.9,412.9,541.3,361.2,477,361.2L477,361.2z"/>
-    </g>
+            <p>En conclusion, tout ceci est un peu théorique, et peu utile à retenir. En effet, il est conseillé de supprimer purement et simplement les valeurs de viewPort.</p>
+            <p>Ainsi, la taille de celui-ci sera celle de son conteneur. Dès lors, plus de raison de se soucier de la taille de notre forme, qui sera confortablement définie en css.</p>
 
-    <g id="roue_gauche">
-        <path id="rayons_gauche" d="M199.1,556.9c20.3-21.2,31.6-49.1,31.1-78.8c-0.3-29.4-12.1-57-32.8-77.9l0,0c-0.6-0.6-0.8-0.8-1.4-1.4
-            c-44.3-42.6-115.5-41.2-158.1,3.1C17.5,423.1,6.2,451,6.8,480.7c0.3,29.4,12.1,57,32.8,77.9c0.6,0.6,0.8,0.8,1.4,1.4
-            c21.5,20.6,49.7,31.6,79.6,31.1C150.5,590.8,178.2,578.7,199.1,556.9z M54.2,555.5C54.2,555.5,54.2,555.2,54.2,555.5
-            c-0.3-0.3-0.6-0.8-0.6-1.1s0-0.8,0.6-1.1l61-62.1c0.3-0.3,0.8-0.6,1.4-0.6s0.8,0.3,1.1,0.8l40.4,77.4c0.3,0.3,0.3,0.8,0,1.1
-            s-0.6,0.8-0.8,0.8c-11.6,4.8-24,7.6-36.7,7.9C96,579.2,72.6,571,54.2,555.5z M116.3,380.1c2.5,0,5.1,0,7.3,0c0.6,0,0.8,0.3,1.1,0.6
-            c0.3,0.3,0.3,0.8,0.3,1.1l-12,82.8c0,0.6-0.3,0.8-0.8,1.1c-0.6,0.3-0.8,0.3-1.4,0l-75.4-37.6c-0.3,0-0.3-0.3-0.3-0.3
-            c-0.3-0.3-0.3-0.3-0.3-0.6s0-0.8,0.3-1.1c3.4-5.4,7.6-10.4,12.1-15.2C64.9,391.7,89.8,380.7,116.3,380.1L116.3,380.1z M27.4,440.9
-            c0.3-0.3,0.8,0,1.1,0l75.7,37.8c0.6,0.3,0.8,0.6,0.8,1.1c0,0.6,0,0.8-0.3,1.4L44,543c-0.3,0.3-0.8,0.6-1.1,0.6
-            c-0.3,0-0.8-0.3-1.1-0.6l0,0c-14.7-17.5-22.6-39-22.6-62.1c-0.3-13.8,2.3-26.8,7.3-39.3C26.5,441.4,26.8,441.1,27.4,440.9z
-             M127.6,468L127.6,468c-0.3-0.3-0.6-0.8-0.6-1.1l12.4-82.5c0-0.3,0.3-0.8,0.6-1.1c0.3-0.3,0.8-0.3,1.1-0.3
-            c17.2,4,33,12.7,45.7,25.1c0.6,0.3,0.8,0.8,1.4,1.4l0,0c12.1,12.1,20.9,27.1,25.4,43.2c0,0.3,0,0.8-0.3,1.1
-            c-0.3,0.3-0.6,0.6-1.1,0.6l-83.9,14.1C128.5,468.5,127.9,468.5,127.6,468z M172.5,562.8c-0.3,0.3-0.8,0.3-1.1,0.3
-            c-0.3,0-0.6-0.3-0.6-0.3l-0.3-0.3l-40.4-77.7c-0.3-0.6-0.3-0.8,0-1.4c0.3-0.6,0.6-0.8,1.1-0.8l84.2-14.1c0.3,0,0.8,0,1.1,0.3
-            c0.3,0.3,0.6,0.6,0.6,1.1c0.3,2.8,0.6,5.6,0.6,8.5c0.3,26.3-9.6,51.1-27.7,70C184.7,553.8,179,558.6,172.5,562.8z"/>
-        <path id="pneu_gauche" d="M118.3,369.1L118.3,369.1c28.5,0,55.9,11,76.5,30.8c21.2,20.3,33.3,48,33.9,77.4s-10.4,57.3-30.8,78.8
-            C177,577.8,148.5,590,118.3,590c-28.5,0-55.9-11-76.5-30.8C-2,517.1-3.4,447.1,38.7,403C59.6,381.3,88.1,369.1,118.3,369.1
-             M118.3,361.2c-31.1,0-62.1,12.1-85.3,36.4c-45.2,47.2-43.8,122,3.4,167.5c22.9,22,52.5,33,81.9,33c31.1,0,62.1-12.1,85.3-36.4
-            c45.2-47.2,43.8-122-3.4-167.5C177.3,372.2,148,361.2,118.3,361.2L118.3,361.2z"/>
-    </g>
+            <p>Reprenons notre dernier exemple, sans les déclarations de hauteur et de largeur :</p>
 
-    <path id="structure" d="M477.5,470.2l-44.6-96.3c-2.5-5.4-3.4-15.2-3.7-21.2l0.6-1.1l-7.1-30.5c0,0-0.3,0-0.6,0V320h0.8
-        c0.8,0,1.4-0.8,1.4-1.7l-0.3-3.4c0-0.8-0.8-1.4-1.7-1.4h-0.6v-5.1c12.7-4,26.8-9.6,28.2-16.1l0,0c0.8-1.1,1.4-2.5,1.4-4.2
-        c0-4-3.1-7.1-7.1-7.1c-4,0-7.1,3.1-7.1,7.1l-39.5,12.4c-0.8,0.3-1.4,1.1-1.1,2l3.1,10.4c0.3,0.8,1.1,1.4,2,1.1c0,0,2-0.3,5.1-1.1v2
-        h-0.3c-0.8,0-1.4,0.8-1.4,1.7l0.3,3.4c0,0.8,0.8,1.4,1.4,1.4v0.8c-46.6,2.5-177.9,9.9-183.3,10.2c-6.2,0.3-12.4,5.6-12.4,5.6
-        L97.7,493.7l180.4,17.8l124.5-142.6c5.4-6.2,9.6-8.8,13.6-10.2c0.8,1.7,1.7,3.4,1.7,4.2c0.3,2,3.1,5.6,0.8,6.8
-        c-2.3,1.2-1.7,4.5-1.1,7.9l50,97.1c-0.6,1.4-1.1,2.8-1.1,4.2c0,5.1,4.2,9.3,9.3,9.3c5.1,0,9.3-4.2,9.3-9.3
-        C485.4,474.7,482,470.8,477.5,470.2z M334.6,399.3l-57.9,81l-142-3.4c0,0,76.8-94.3,83.9-103.1c7.1-8.8,18.9-8.8,24.3-7.6
-        c0,0,85.8,16.9,85,16.7C337.2,385.5,338.6,394.3,334.6,399.3z"/>
-    <path id="pedalier" d="M345.1,508.1l-0.8-2.5c-0.3-0.8-1.1-1.4-2-1.1l-10.2,2.8l-29.9-4c0-2.3-0.3-4.8-0.8-7.1
-        c-2-8.5-7.1-15.5-14.4-20c-5.1-3.4-11-5.1-17.2-5.1c-2,0-4,0.3-5.9,0.6l0,0l-0.8,0.3c-0.3,0-0.3,0-0.6,0c-8.5,2-15.5,7.1-20,14.4
-        s-5.9,16.1-4,24.6c2,8.5,7.1,15.5,14.4,20c5.1,3.4,11,5.1,17.2,5.1l0,0c2.3,0,4.8-0.3,7.1-0.8h0.6c8.5-2,15.5-7.1,20-14.4
-        c1.4-2.3,2.5-4.8,3.4-7.3l7.9,0.6h-0.6c-0.8,0.3-1.4,1.1-1.1,2l0.8,2.5c0.3,0.8,1.1,1.4,2,1.1l34.2-9.6
-        C344.8,509.8,345.4,508.9,345.1,508.1z M283,484.1c4.8,3.4,8.5,8.2,9.9,14.1c0.3,0.8,0.3,1.7,0.6,2.5l-16.7-1.4L283,484.1z
-         M264.3,480.7h0.3l0,0c3.1-0.6,6.2-0.8,9-0.3l-5.9,15L255.8,485C258.4,482.9,261.2,481.5,264.3,480.7z M247.1,508.9
-        c-1.4-5.6-0.6-11.6,2.3-16.9l11.9,10.4l-13.8,8.2C247.4,510,247.4,509.5,247.1,508.9z M269.7,527c-4.2,0-8.5-1.1-12.4-3.7
-        c-2-1.1-3.7-2.5-5.1-4.2l13.8-8.2L269.7,527L269.7,527z M289.7,515.7c-2.5,4.2-6.2,7.3-10.4,9l-3.1-13.6l15.2,1.1
-        C290.9,513.7,290.3,514.8,289.7,515.7z"/>
-    <path id="selle" d="M248.5,251.7c-1.1-1.1-5.1-7.6-11-7.6H172c-5.1,0-4.2,4-2,5.6c2.3,1.7,16.4,11.9,25.4,11.9c0.8,0,1.4,0,2.5,0
-        l16.7,64.9h-5.9v7.1h7.6l2.3,8.2l11.6-2.8l-1.4-5.6h1.7v-7.1H227l-17.5-66.9c6.8-1.7,13-3.7,14.7-4.2c3.1-1.1,13.8-1.4,20,0
-        C250.5,255.9,249.6,252.8,248.5,251.7z"/>
-    <path id="cadre" fill="#7F7F7F" d="M373.6,341.2c-0.3-0.6-1.1-1.1-1.7-1.1l-137,6.2c-1.1,0-1.7,0.8-2,1.7c0,1.1,0.6,2,1.7,2
-        l116.6,23.7h0.3c0.6,0,1.1-0.3,1.7-0.8l20.6-29.9C373.9,342.9,373.9,342,373.6,341.2z"/>
-    <path id="chaine" d="M269.7,536.6c-4.2,0-11.6-2-11.9-2.3l-140.3-44.1l0,0c-4-1.7-6.8-5.6-6.8-9.9c0-5.9,4.8-10.7,10.7-10.7
-        l149.4,0.8l0,0c17.8,0.6,32.2,15.2,32.2,33C303,521.6,288,536.6,269.7,536.6z M118.9,489.1l139.2,44.1c0,0,7.3,2,11.3,2
-        c17.5,0,31.9-14.1,31.9-31.9c0-17.5-14.1-31.6-31.6-31.6h-0.8l0,0l-147.4-0.8c-5.1,0-9.3,4.2-9.3,9.3c0,4,2.5,7.6,6.2,8.8
-        L118.9,489.1L118.9,489.1z"/>
-    </svg>
-        </div>
-        <p>Intégrer le SVG directement dans le code html reste la méthode la plus simple, et la plus flexible.</p>
-        <p>Elle évite des requêtes http supplémentaires</p>
-        <p>On peut facilement atteindre et manipuler via css ou javascript les noeuds qui le composent, utiliser les intéractions css (type ":focus), des animations css,
-            ajouter des liens...</p>
+            <code class="codeBlock">
+                <span class="codeBlockElement">&lt;svg <mark class="codeExergue">viewBox="200 100 100 100"</mark>&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;circle cx="200" cy="100" r="80"fill="blue" /&gt;</span>
+                <span class="codeBlockElement">&lt;/svg&gt;</span>
+            </code>
 
-        <p>Inconviénients  : peu maintenable, augmentation de la taille du fichier html, à réserver si le svg est utilisé une unique fois sur le site.</p>
-        <p>On peut s'affranchir de ces inconvénients en utilisant, selon les possibilités, des méthodes d'appel tel que <code>
-            &lt;?php include("bike.svg"); ?&gt;</code>, ou <code>ng-include="'bike.svg'"</code>.</p>
+            <div class="svgVisualExemples svgVisualExemples--viewbox svgVisualExemples--viewbox_responsive">
+                <svg viewBox="200 100 100 100">
+                    <circle cx="200" cy="100" r="80"fill="blue" />
+                </svg>
+            </div>
 
-        <h4 class="smallestTitle">Fallback</h4>
-        <p>L'intégration d'un contenu alternatif peut se faire au coeur du svg dans une balise &lt;<code>foreignObject</code>&gt;,
-            mais son contenu sera chargé par tous les navigateurs, qu'ils comprennent ou non le format svg.</p>
-        <p>Au pire, le contenu de la balise <code>&lt;desc&gt;</code> s'affichera à la place du svg, s'il n'est pas lu.</p>
+            <p>C'est pareil, mais en mieux ! Prêt à être intégré dans un environnement responsif.</p>
+
+            <h3 class="smallTitle">L'attribut preserveAspectRatio</h3>
+            <p>La seule utilité de le déclarer est si le viewport et la viewBox ont des valeurs différentes (ou pour être
+                plus
+                précis, pas le même ratio largeur et hauteur).</p>
+            <p>Dans ce cas, la propriété <code>preserveAspectRatio</code> permet de conserver une image entière, et non
+                déformée.</p>
+
+            <h4 class="smallestTitle">L'alignement</h4>
+            <p>Il est déclaré avec une syntaxe de type <code>xMinYMid</code>.</p>
+            <p>Dans cet exemple, la viewBox est positionnée au début de l'axe des abscisses (xMin) et centré sur l'axe des
+                ordonnées (YMid) (<a href="https://www.w3.org/TR/SVG/coords.html#PreserveAspectRatioAttribute">Liste
+                    exhaustive
+                    des attributs</a>).</p>
+
+            <h4 class="smallestTitle">L'étirement</h4>
+            <p>En plus de l'alignement, on peut préciser comment va être interprété le ratio d'aspect. Par défaut, la valeur
+                est
+                fixée à <code>meet</code>.
+                La viewBox va être redimensionnée pour remplir autant que possible le viewPort. A <code>slice</code>,
+                elle va
+                l'afficher à sa taille déclarée, et couper ce qui dépasse du viewport.
+                Enfin, <code>none</code> essaie de remplir le viewPort avec la viewBox, mais sans respecter le ratio
+                hauteur/largeur, pouvant déformer le résultat obtenu.
+            </p>
+
+        </section>
 
 
-        <h3 class="smallTitle">Via la balise &lt;img&gt;</h3>
+        <section class="etude">
+            <h2 class="secondaryTitle" id="crop">Recadrer une partie du svg (fragment).</h2>
 
-        <code class="codeBlock">
-            &lt;
-            <mark class="codeExergue">img</mark>
-            src="img/bike.svg" alt="un beau vélo" &gt;
-        </code>
+            <p>Si la déclaration du viewPort est à éviter, celle de la viewBox reste indispensable pour rendre le svg responsif.</p>
+            <p>Par ailleurs, choisir grâce à elle de n'afficher qu'une partie du svg, ce qu'on appelle de la custom viewBox, peut être très utile, notamment pour une feuille de sprites :</p>
 
-        <div class="svgVisualExemples">
-            <img class="svgExemple" src="img/bike.svg" alt="Un beau vélo vectoriel">
-        </div>
-        <p>L'intégration dans une balise IMG est également facile, peut-être plus claire et plus intuitive, mais son contenu est inaccessible au javascript,
-        et son CSS doit être inclus dans le code SVG.</p>
+            <div class="svgVisualExemples">
+                <img class="svgExemple" src="img/sprites/view/pictos_digiposte.svg">
+            </div>
 
-        <h4 class="smallestTitle">Fallback</h4>
-        <p>Le fallback de cette méthode d'intégration est la plus ardue. Pour aller au plus simple, on peut se reposer sur l'attribut alt que nous permet cette balise.</p>
-        <p>On peut aussi recourir à la balise <code>&lt;srcset&gt;</code> pour
-        proposer une image alternative (<code>&lt;img src="bike.png" srcset="bike.svg"/&gt;</code>), mais cela demandera l'utilisation d'un <a href="http://scottjehl.github.io/picturefill/">polyfill</a>.</p>
-        <p>On peut aussi recourir à des librairies javascript, comme <a href="https://dirkgroenen.github.io/SVGMagic/">SVGMagic</a>.</p>
+            <h3 class="smallTitle">Dans le html</h3>
 
+            <p>
+                <code class="codeBlock">
+                    &lt;img&nbsp;src="sprites.svg#svgView(viewBox(3,48,26,2))"&gt;
+                </code>
+            </p>
 
-        <h3 class="smallTitle">En arrière-plan (css)</h3>
+            <div class="svgVisualExemples">
+                <img class="svgExemple svgExemple--pictoSize"
+                     src="img/sprites/view/pictos_digiposte.svg#svgView(viewBox(175.145 33.044 35.029 33.044))">
+            </div>
 
-        <code class="codeBlock">
-            <mark class="codeExergue">background</mark>
-            : url("bike.svg");
-        </code>
-
-        <div class="svgVisualExemples bike-css"></div>
-
-        <p>L'intégration en css est semblable à la balise &lt;img&gt; (avantages comme inconvénients), en dissociant un peu plus le fond de la forme.</p>
-
-        <h4 class="smallestTitle">Fallback</h4>
-        <p>On a ici recours a une petite ruse. Si le navigateur sait interpréter les dégradés linéaires ET les arrière-plan multiples, il connait aussi le format SVG.</p>
-        <p>S'il ne connait pas cette syntaxe, il revient en arrière sur la valeur déclarée précédemment.</p>
-        <code class="codeBlock">
-            <span class="codeBlockElement">background: url("bike.<mark class="codeExergue">png</mark>");</span>
-            <span class="codeBlockElement">background: url("bike.<mark class="codeExergue">svg</mark>"), <mark class="codeExergue">linear-gradient(transparent, transparent)</mark>;</span>
-        </code>
+            <p>C'est au moment de l'appel du svg qu'on précise avec les bonnes coordonnées, quelle portion du svg on souhaite afficher.</p>
 
 
-        <h3 class="smallTitle">Dans une balise OBJECT</h3>
 
-        <code class="codeBlock">
-            <span class="codeBlockElement">&lt;<mark class="codeExergue">object</mark> type="image/svg+xml" data="img/bike.svg"&gt;</span>
+            <h3 class="smallTitle">Dans le SVG</h3>
+
+            <p><code class="svgExemple_legend_code">
+                &lt;img&nbsp;src="sprites.svg#identifiant"&gt;</code>
+            </p>
+
+            <div class="svgVisualExemples">
+                <img class="svgExemple svgExemple--pictoSize"
+                     src="img/sprites/view/pictos_digiposte.svg#dgp_icon_premium">
+            </div>
+
+            <p>Les portions sur lesquelles la viewBox va se concentrer sont déclarées dans le fichier, en dehors de la balise &lt;svg&gt;, via la balise <code
+                class="svgExemple_legend_code">view</code>, à laquelle on ajoute un identifiant, qui sera utilisé lors de l'appel du fichier.</p>
+
+            <code class="codeBlock">&lt;view id='identifiant' viewBox='3,48,26,2'/&gt;</code>
+                <p>C'est évidemment plus propre, et maintenable.</p>
+
+            <h3 class="smallTitle">Cas pratique : menu responsif</h3>
+
+            <p>En combinant des unités de polices déclarées en vw, et nos pictogrammes dénués de viewPort et utilisant des custom viewBox, on obtient un menu vectoriel, responsif et homogène.</p>
+
+            <ul class="menuSvg">
+                <li class="menuSvg_item">Element de menu</li>
+                <li class="menuSvg_item menuSvg_item--2">Element de menu 2</li>
+                <li class="menuSvg_item menuSvg_item--3">Element de menu 3</li>
+                <li class="menuSvg_item menuSvg_item--4">Element de menu 4</li>
+            </ul>
+
+            <code class="codeBlock">background: url("sprite.svg#identifiant");</code>
+
+            <h3 class="smallTitle">Générateur de sprites svg</h3>
+
+            <p>Le fichier de sprites de ces exemples a été réalisé grâce à <a href="https://github.com/jkphl/svg-sprite">svg-sprite</a>, un outil qui compile tous les
+                fichiers svg d'un dossier en un seul sprite, en ajoutant la viewBox pour chacun.</p>
+            <p>L'utilisation des custom viewBox s'en trouve grandement simplifiée.</p>
+
+
+        </section>
+
+
+        <section class="etude">
+            <h2 class="secondaryTitle" id="models">Les modèles</h2>
+
+            <p>Il est possible de créer des modèles réutilisables, afin d'éviter la redondance du code.</p>
+
+            <h3 class="smallTitle">La balise &lt;defs&gt;</h3>
+            <p>
+                C'est le conteneur de tous les modèles que l'on "définit". Le code entre l'ouverture et la fermeture de
+                cette
+                balise est invisible, et est appelé par la balise &lt;use&gt;.
+            </p>
+
+            <code class="codeBlock">
+                <span class="codeBlockElement">&lt;<mark class="codeExergue">defs</mark>&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;g id="modele1"&gt;...&lt;/g&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;g id="modele2"&gt;...&lt;/g&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;g id="modele3"&gt;...&lt;/g&gt;</span>
+                <span class="codeBlockElement">&lt;/<mark class="codeExergue">defs</mark>&gt;</span>
+            </code>
+
+
+            <h3 class="smallTitle">La balise &lt;use&gt;</h3>
+
+            <p>
+                Elle appelle les éléments "stoqués" dans la balise &lt;defs&gt;, et les positionne.
+            </p>
+
+
+            <code class="codeBlock">
+                &lt;<mark class="codeExergue">use</mark>
+                xlink:href="#modele1" x="20" y="50" /&gt;
+            </code>
+
+            <p>Une autre utilisation courante est la création d'un seul fichier SVG avec toutes les icones d'un site, et
+                masquées. On les appelle selon les besoins,
+                via <code>use</code>, soit à la fin du svg, soit depuis le html. Dans ce dernier cas, les styles
+                internes ne
+                seront pas embarqués.</p>
+            <p>On peut aussi y stocker des "effets", comme des dégradés, ou des filtres SVG, prêts à être utilisés sur
+                d'autres
+                éléments</p>
+
+
+            <h3 class="smallTitle">La balise &lt;symbol&gt;</h3>
+            <p>Version étendue de &lt;defs&gt;, elle regroupe plusieurs éléments cachés, et les affiche via &lt;use&gt;. En
+                clair, elle compose un nouveau dessin en combinant plusieurs formes.</p>
+            <p>On peut y indiquer directement la taille de la viewBox, ainsi qu'un titre et une description.</p>
+
+
+            <h3 class="smallTitle">Cas pratique : répétition d'un motif (la roue d'un vélo)</h3>
+
+            <code class="codeBlock">
+                <span class="codeBlockElement">&lt;<mark class="codeExergue">defs</mark>&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;g id="roue"&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab2">&lt;path&gt;...&lt;/path&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;/g&gt;</span>
+                <span class="codeBlockElement">&lt;/<mark class="codeExergue">defs</mark>&gt;</span>
+
+                <span class="codeBlockElement">&lt;g id="structure_velo"&gt;...&lt;/g&gt;</span>
+
+                <br>
+
+            <span class="codeBlockElement">&lt;<mark
+                class="codeExergue">use</mark> xlink:href="#roue" x="-380" y="10" /&gt;</span>
+                <span class="codeBlockElement">&lt;<mark class="codeExergue">use
+                </mark> xlink:href="#roue" x="0" y="10" /&gt;</span>
+            </code>
+
+
+            <div class="svgVisualExemples">
+                <img class="svgExemple" src="img/bike_with_def.svg#roue">
+            </div>
+
+            <h3 class="smallTitle">Cas pratique : affichage d'un picto depuis une grille de sprites</h3>
+
+            <p>En fait de grille, les multiples calques des icones superposés dans illustrator sont laissés tels quels.
+                On obtient un svg avec tous les pictos les uns sur les autres, même viewBox, mêmes coordonnées, chacun
+                dans une
+                balise <code>symbol</code>.
+                L'appel de la bonne icone, via son identifiant, va se faire depuis le html.
+            </p>
+
+            <h4 class="smallestTitle">Dans le svg :</h4>
+
+            <code class="codeBlock">
+                <span class="codeBlockElement">&lt;<mark class="codeExergue">svg</mark>&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="picto1" viewBox="0 0 32 32"&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab2">&lt;path&gt;...&lt;/path&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;/symbol&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="picto2" viewBox="0 0 32 32"&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab2">&lt;path&gt;...&lt;/path&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;/symbol&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="<mark class="codeExergue">calendrier</mark>" viewBox="0 0 32 32"&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab2">&lt;path&gt;...&lt;/path&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;/symbol&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="picto..." viewBox="0 0 32 32"&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab2">&lt;path&gt;...&lt;/path&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;/symbol&gt;</span>
+                <span class="codeBlockElement">&lt;/<mark class="codeExergue">svg</mark>&gt;</span>
+            </code>
+
+            <h4 class="smallestTitle">Dans le html :</h4>
+
+            <code class="codeBlock">
+                <span class="codeBlockElement">&lt;<mark class="codeExergue">svg</mark>&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;<mark class="codeExergue">use</mark> xlink:href="img/pictos_symbol.svg#<mark
+                    class="codeExergue">calendrier</mark>" /&gt;</span>
+                <span class="codeBlockElement">&lt;/<mark class="codeExergue">svg</mark>&gt;</span>
+            </code>
+
+            <div class="svgVisualExemples">
+                <svg class="_is_responsive">
+                    <use xlink:href="img/pictos_symbol.svg#calendrier"/>
+                </svg>
+            </div>
+
+        </section>
+
+
+        <section class="etude">
+            <h2 class="secondaryTitle" id="styles">Styles CSS</h2>
+
+            <h3 class="smallTitle">Principaux attributs de présentation</h3>
+
+            <dl>
+                <dt>stroke</dt>
+                <dd>Couleur du contour</dd>
+                <dt>fill</dt>
+                <dd>Couleur de remplissage</dd>
+                <dt>stroke-opacity</dt>
+                <dd>Opacité du contour (de 0 à 1)</dd>
+                <dt>fill-opacity</dt>
+                <dd>Opacité du remplissage (de 9 à 1)</dd>
+                <dt>stroke-width</dt>
+                <dd>Epaisseur du contour</dd>
+            </dl>
+
+            <p>liste complète visible sur <a href="https://www.w3.org/TR/SVG2/styling.html#SVGStylingProperties">la page du W3C dédiée aux SVG</a>.
+            </p>
+
+            <p>Le contour, si une couleur est déclarée, fait 1px par défaut. Au delà, il s'étend autant à l'intérieur qu'à
+                l'extérieur, contrairement aux bordures css. Privilégier donc des valeurs multiples de 2. Si elle est
+                définie en
+                pourcentage, cette valeur est relative au viewport, non à la viewBox.</p>
+
+            <svg width="140" height="140" viewBox="0 0 140 140">
+                <circle cx="60" cy="70" r="50" stroke="red" fill="blue" stroke-opacity="0.5" fill-opacity="0.8"
+                        stroke-width="20"/>
+            </svg>
+
+
+            <code class="codeBlock">
+                &lt;circle cx="60" cy="70" r="50" <strong>stroke</strong>="red" <strong>fill</strong>="blue"
+                <strong>stroke-opacity</strong>="0.5"
+                <strong>fill-opacity</strong>="0.8" <strong>stroke-width</strong>="20" /&gt;
+            </code>
+
+            <h3 class="smallTitle">Les styles en ligne</h3>
+
+            <p>Ils sont déclarés avec l'attribut <code>style</code>, et prennent le pas sur la déclaration faite via fill.</p>
+            <p>Il n'y a pas vraiment d'intéret à utiliser les styles en ligne, sachant que <code>fill="yellow"</code> est
+                équivalent à <code>style="fill: yellow;"</code></p>
+
+
+            <h3 class="smallTitle">Les styles internes</h3>
+
+            <p>Comme en html, on peut déclarer une feuille de style interne, via la balise <code>&lt;style&gt;</code></p>
+            <p>ils ne sont pas embarqués lors de l'intégration d'un <code>symbol</code> avec la balise <code>
+                &lt;use&gt;</code>
+                dans le html.</p>
+
+            <code class="codeBlock">
+                <span class="codeBlockElement">&lt;svg height="100px"&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;<mark class="codeExergue">style</mark> type="text/css"&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab2">#rectangle {</span>
+                <span class="codeBlockElement codeBlockElement--tab3">fill : yellow;</span>
+                <span class="codeBlockElement codeBlockElement--tab2">}</span>
+                        <span class="codeBlockElement codeBlockElement--tab1">&lt;/<mark
+                            class="codeExergue">style</mark>&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;rect x="10px" y="10x" width="100" height="50" id="rectangle" /&gt;</span>
+                <span class="codeBlockElement">&lt;/svg&gt;</span>
+            </code>
+
+
+            <h3 class="smallTitle">Les styles externes</h3>
+
+            <p>Comme en html, le dernier des cas de figure, en théorie plus maintenable, est l'appel d'une feuille de style
+                externe, via xml.</p>
+
+            <code class="codeBlock">
+                <span class="codeBlockElement">&lt;?xml-stylesheet type="text/css" href="css/svg.css"?&gt;</span>
+                <span class="codeBlockElement">&lt;svg&gt;...&lt;/svg&gt;</span>
+            </code>
+
+
+            <h3 class="smallTitle">Les dégradés en SVG</h3>
+
+            <p>On peut les stocker dans des balises &lt;defs&gt;, et les appliquer au bon motif (ou à son contour. Soit
+                <code>fill</code>
+                ou <code>stroke</code>).</p>
+
+            <h4 class="smallestTitle">Dégradé linéaire</h4>
+
+            <p>Les attributs x1 x2 y1 et y2 précisent les début et fin du dégradé, ainsi que leur orientation.
+                Les <code>&lt;stop&gt;</code> définissent la répartition des couleurs (à quelle position la couleur
+                atteint 100%
+                de saturation (0% de mélange)).</p>
+
+            <h4 class="smallestTitle">Dégradé radial</h4>
+
+            <p>Les attributes cx et cy positionnent le dégradé sur l'axe des abscisses et des ordonnées.</p>
+            <p>Les points fx et fy déplacent, à l'intérieur de ce dégradé radial, le cercle le plus à l'intérieur (par
+                défaut,
+                mêmes coordonnées que cx et cy).</p>
+
+            <div class="svgVisualExemples">
+                <img class="svgExemple" src="img/bike_gradient.svg">
+            </div>
+
+
+            <h3 class="smallTitle">Responsive et media-queries</h3>
+            <p>Il vaut mieux ne pas déclarer de hauteur ni de largeur au svg, pour un meilleur contrôle en css (il fera alors 100% de son conteneur).</p>
+            <p>Quand cela n'est pas possible, préciser au moins <code>background-size: 100%;</code> (ou <code>background-size: cover;</code>), si le svg
+                est en
+                arrière-plan,
+                ou passer le conteneur (<code>img</code>, <code>object</code>...) à 100% dans les autres cas de figure.
+            </p>
+
+            <p>Les media queries peuvent être intégrées directement au svg, pour en modifier l'affichage.</p>
+            <p>La taille de référence n'est plus le navigateur, mais le SVG lui-même (le viewPort).</p>
+
+            <code class="codeBlock">
+                <span class="codeBlockElement">&lt;svg viewBox="0 0 184.252 112.089"&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;style&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab2">
+                    <mark class="codeExergue codeExergue--alt">.bike-light</mark> {</span>
+                <span class="codeBlockElement codeBlockElement--tab3">display: none;</span>
+                <span class="codeBlockElement codeBlockElement--tab2">}</span>
+                <span class="codeBlockElement codeBlockElement--tab2">
+                    <mark class="codeExergue codeExergue--alt">.bike-full</mark> {</span>
+                <span class="codeBlockElement codeBlockElement--tab3">display: none;</span>
+                <span class="codeBlockElement codeBlockElement--tab2">}</span>
+                <span class="codeBlockElement codeBlockElement--tab2">
+                    <mark class="codeExergue">@media all and (max-width: 300px)</mark> {
+                </span>
+                <span class="codeBlockElement codeBlockElement--tab3">
+                    <mark class="codeExergue codeExergue--alt">.bike-light</mark> {</span>
+                <span class="codeBlockElement codeBlockElement--tab4">display: block;</span>
+                <span class="codeBlockElement codeBlockElement--tab3">}</span>
+                <span class="codeBlockElement codeBlockElement--tab2">}</span>
+                <span class="codeBlockElement codeBlockElement--tab2">
+                    <mark class="codeExergue">@media all and (min-width: 301px)</mark> {
+                </span>
+                <span class="codeBlockElement codeBlockElement--tab3">
+                    <mark class="codeExergue codeExergue--alt">.bike-full</mark> {</span>
+                <span class="codeBlockElement codeBlockElement--tab4">display: block;</span>
+                <span class="codeBlockElement codeBlockElement--tab3">}</span>
+                <span class="codeBlockElement codeBlockElement--tab2">}</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;/style&gt;</span>
+
+                <br>
+
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;path class="<mark
+                    class="codeExergue codeExergue--alt">bike-light</mark>" ... /&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;path class="<mark
+                    class="codeExergue codeExergue--alt">bike-full</mark>" ... /&gt;</span>
+
+                <br>
+
+                <span class="codeBlockElement">&lt;/svg&gt;</span>
+            </code>
+
+            <div class="svgVisualExemples svgVisualExemples--mediaqueries">
+                <img class="svgExemple" src="img/bike-light.svg">
+            </div>
+
+        </section>
+
+
+        <section class="etude">
+            <h2 class="secondaryTitle" id="hover">Modifier l'apparence svg au survol</h2>
+
+            <h3 class="smallTitle">La solution la plus flexible</h3>
+
+            <p>On crée simplement un sprite, de préférence sur une seule ligne verticale. Chaque dessin, ainsi que sa
+                variante
+                colorée, est un <code>symbol</code>, appelé
+                via <code>use</code>, et positionné sur l'axe des ordonnées l'un sous l'autre.</p>
+            <p>Ils sont ensuite intégrés en css sous forme d'arrière plan.</p>
+
+            <img src="img/pictos_hover.svg">
+
+            <p>Dans le svg :</p>
+            <code class="codeBlock">
+                <span class="codeBlockElement">&lt;svg viewBox="<mark class="codeExergue">0 0 32 192</mark>" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;stylel&gt;</span>
+                        <span class="codeBlockElement codeBlockElement--tab2"><mark
+                            class="codeExergue">.myFigure</mark> {</span>
+                <span class="codeBlockElement codeBlockElement--tab3">fill: red;</span>
+                <span class="codeBlockElement codeBlockElement--tab2">}</span>
+                <span class="codeBlockElement codeBlockElement--tab2"><mark class="codeExergue">.mySecondFigure</mark> {</span>
+                <span class="codeBlockElement codeBlockElement--tab3">fill: green;</span>
+                <span class="codeBlockElement codeBlockElement--tab2">}</span>
+            <span class="codeBlockElement codeBlockElement--tab2"><mark
+                class="codeExergue codeExergue--alt">.myFigure-hover</mark> {</span>
+                <span class="codeBlockElement codeBlockElement--tab3">fill: blue;</span>
+                <span class="codeBlockElement codeBlockElement--tab2">}</span>
+                <span class="codeBlockElement codeBlockElement--tab2"><mark class="codeExergue codeExergue--alt">.mySecondFigure-hover</mark> {</span>
+                <span class="codeBlockElement codeBlockElement--tab3">fill: yellow;</span>
+                <span class="codeBlockElement codeBlockElement--tab2">}</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;/stylel&gt;</span>
+                <br>
+                        <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="<mark
+                            class="codeExergue">icon1</mark>"&gt;</span>
+                        <span class="codeBlockElement codeBlockElement--tab2">&lt;path class="<mark
+                            class="codeExergue">myFigure</mark>".../&gt;</span>
+            <span class="codeBlockElement codeBlockElement--tab2">&lt;path class="<mark
+                class="codeExergue">mySecondFigure</mark>".../&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;/symbol&gt;</span>
+                        <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="<mark
+                            class="codeExergue codeExergue--alt">icon1-hover</mark>"&gt;</span>
+                        <span class="codeBlockElement codeBlockElement--tab2">&lt;path class="<mark
+                            class="codeExergue codeExergue--alt">myFigure-hover</mark>".../&gt;</span>
+                        <span class="codeBlockElement codeBlockElement--tab2">&lt;path class="<mark
+                            class="codeExergue codeExergue--alt">mySecondFigure-hover</mark>".../&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;/symbol&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon2">...&lt;/symbol&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon2-hover">...&lt;/symbol&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon3">...&lt;/symbol&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon3-hover">...&lt;/symbol&gt;</span>
+                <br>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="<mark
+                    class="codeExergue">#icon1</mark>"/&gt;</span>
+                        <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="<mark
+                            class="codeExergue codeExergue--alt">#icon1-hover</mark>" y="<mark
+                            class="codeExergue codeExergue--alt">32</mark>" /&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon2" y="64" /&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon2-hover" y="96" /&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon3" y="128" /&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon3-hover" y="160" c/&gt;</span>
+                <span class="codeBlockElement">&lt;/svg&gt;</span>
+            </code>
+
+            <p>Chaque forme à modifier est doublée (l'original plus la version colorisée,
+                via styles en ligne ou ses attributs internes modifiés), ce qui alourdit le poids de la page.</p>
+
+            <h3 class="smallTitle">La solution la plus propre</h3>
+
+            <p>La démarche est la même, à ceci près que chaque forme sera unique. On va rentabiliser <code>use</code> en
+                appelant deux fois chaque forme,
+                et en les modifiant à ce moment-là grâce à l'ajout d'une classe.</p>
+
+            <p>Dans le svg :</p>
+            <code class="codeBlock">
+                <span class="codeBlockElement">&lt;svg viewBox="<mark class="codeExergue">0 0 32 192</mark>" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;stylel&gt;</span>
+                        <span class="codeBlockElement codeBlockElement--tab2"><mark
+                            class="codeExergue">.icon1_hover</mark> {</span>
+                <span class="codeBlockElement codeBlockElement--tab3">fill: red;</span>
+                <span class="codeBlockElement codeBlockElement--tab2">}</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;/stylel&gt;</span>
+                <br>
+                        <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="<mark
+                            class="codeExergue">icon1</mark>">...&lt;/symbol&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon2">...&lt;/symbol&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon3">...&lt;/symbol&gt;</span>
+                <br>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon1"/&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="<mark
+                    class="codeExergue">#icon1</mark>" y="<mark class="codeExergue">32</mark>" class="<mark
+                    class="codeExergue">icon1_hover</mark>"/&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon2" y="64" /&gt;</span>
             <span
-            class="codeBlockElement codeBlockElement--tab1">Ce texte est affiché si le navigateur de peut pas lire le SVG.</span>
-            &lt;/
-            <mark class="codeExergue">object</mark>
-            &gt;
-        </code>
-
-        <div class="svgVisualExemples">
-            <a href="http://www.google.fr" target="_blank" class="toto">
-            <object class="svgExemple" type="image/svg+xml" data="img/bike.svg">
-                <img src="img/bike.png" alt="Un beau vélo" />
-            </object>
-                </a>
-        </div>
-        <p>Cette solution n'a en apparence qu'un seul vrai désavantage, l'impossibilité d'en faire un lien.</p>
-        <p>C'est en réalité un problème facilement contournable. On peut nativement intégrer des liens dirèctement à l'intérieur du svg (en précisant la cible (target)
-        afin que la page ne s'ouvre pas dans l' "object").</p>
-        <p>On peut également utiliser du CSS pour rendre fonctionnel le lien englobant notre balise object :</p>
-
-        <code class="codeBlock">
-            <span class="codeBlockElement">.mon-lien::after {</span>
-            <span class="codeBlockElement codeBlockElement--tab1">content: "";</span>
-            <span class="codeBlockElement codeBlockElement--tab1">position: absolute;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">top: 0;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">right: 0;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">bottom: 0;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">left: 0;</span>
-            <span class="codeBlockElement">}</span>
-        </code>
-
-        <p>NB: oui, sans préciser une position relative sur le lien lui-même...</p>
-
-        <h4 class="smallestTitle">Fallback</h4>
-        <p>Du contenu alternatif (png, texte...) peut-être intégré simplement entre les balises d'ouverture et de fermeture.
-            Il sera malheureusement aussi chargé (mais non affiché) par les navigateurs comprenant le format svg.</p>
-
-
-        <h3 class="smallTitle">dans une iframe</h3>
-
-        <code class="codeBlock">
-            <span class="codeBlockElement">&lt;<mark class="codeExergue">iframe</mark> src="bike.svg"&gt;</span>
+                class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon2" y="96" class="icon2_hover"/&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon3" y="128" /&gt;</span>
             <span
-                class="codeBlockElement codeBlockElement--tab1">&lt;img src="bike.png" alt="Un beau vélo"/&gt;</span>
-            &lt;/
-            <mark class="codeExergue">iframe</mark>
-            &gt;
-        </code>
-
-        <div class="svgVisualExemples">
-            <iframe class="svgExemple" src="img/bike.svg" sandbox>
-                <img src="img/bike.png" alt="Un beau vélo" />
-            </iframe>
-        </div>
-
-        <p>Lorsqu'on a le choix, il n'y a pas vraiment d'intéret à choisir d'intégrer un svg dans une iframe. Cette solution n'apporte rien de plus.</p>
-        <p>Pas de css externe, et pas de manipulation en javascript, sauf si le SVG et la page web actuelle ont la même origine.</p>
-
-        <h4 class="smallestTitle">Fallback</h4>
-        <p>Pas de fallback connu. L'image alternative entre les balises d'ouverture et de fermeture de l'iframe ne sont interprétées que si l'iframe elle-même n'est pas prise en charge.</p>
-
-
-        <h3 class="smallTitle">via balise EMBED</h3>
-
-        <p>Plus aucun intéret aujourd'hui.</p>
-
-    </section>
-
-    <section class="etude">
-        <h2 class="secondaryTitle" id="data">Le format Data URI</h2>
-        <p>Quel que soit le mode d'intégration choisi, on peut embarquer les données du SVG
-            directement dans le html via le format <code>Data URI</code>.</p>
-
-        <p>Le premier avantage de ce format, qui n'est pas nouveau, est de limiter les requêtes HTTP, mais l'appliquer
-            aux
-            svg nous offre de nouvelles possibilités.</p>
-        <p>L'exemple suivant reprend notre vélo, avec la bordure de la roue droite grossie et teintée (<code>stroke="#07a5e0"
-            stroke-width="10"</code>).</p>
-
-        <div class="svgVisualExemples svgVisualExemples--data"></div>
-
-        <code class="codeBlock">
-            background-image: url('data:image/svg+xml;
-            <mark class="codeExergue">utf8</mark>
-            ,
-            <mark class="codeExergue">&lt;svg&gt;...&lt;/svg&gt;</mark>
-            ');
-        </code>
-
-        <p>Cela ne marche actuellement ni sur Firefox, ni sur Internet Explorer. Il faut d'abord convertir les
-            caractères
-            spéciaux.</p>
-        <p>Plusieurs mixins Sass existent comme <a href="http://codepen.io/jakob-e/pen/doMoML">svg-url</a></p>
-
-        <div class="svgVisualExemples svgVisualExemples--data-svg"></div>
-
-        <p>On peut maintenant réunir les avantages des deux mondes : utilisation de background pour la maintenabilité du
-            code (dissociation fond/forme), et modification des styles du svg.</p>
-
-        <h3 class="smallTitle">Application avec le préprocesseur Sass</h3>
-
-        <p>SVG d'origine :</p>
-        <div class="svgVisualExemples">
-            <svg version="1.1" id="velo" xmlns="http://www.w3.org/2000/svg" viewBox="0 244.1 595.3 354" xml:space="preserve">
-
-    <g id="roue_droit">
-        <path id="rayons_droite" stroke="#07a5e0" stroke-width="10" d="M588.5,477.6c-0.6-29.4-12.4-57-33.6-77.9c-20.9-20.7-48.9-32-78.2-32l0,0c-0.6,0-1.4,0-2,0
-            c-61.6,1.1-111,52.2-109.9,113.8c0.6,29.4,12.4,57,33.6,77.9c20.9,20.6,48.9,31.9,78.2,31.9c0.6,0,1.4,0,2,0
-            c29.9-0.6,57.6-12.7,78.5-34.2C578.1,535.7,589.1,507.5,588.5,477.6z M484.9,578.7L484.9,578.7c-0.6,0-0.8,0-1.1-0.3
-            c-0.3-0.3-0.6-0.6-0.6-1.1l-0.6-87c0-0.6,0.3-0.8,0.6-1.1c0.3-0.3,0.8-0.3,1.4-0.3l83.3,26.5c0.3,0,0.8,0.3,0.8,0.8
-            c0.3,0.3,0.3,0.8,0,1.1c-4.8,11.6-11.6,22.3-20.6,31.3C531.5,566,508.9,576.7,484.9,578.7z M405.2,410.6c1.7-1.7,3.4-3.4,5.4-5.1
-            c0.3-0.3,0.8-0.3,1.1-0.3c0.6,0,0.8,0.3,1.1,0.6l49.7,66.9c0.3,0.3,0.3,0.8,0.3,1.4c-0.3,0.6-0.6,0.8-0.8,0.8l-79.9,26.5
-            c-0.3,0-0.3,0-0.6,0c-0.3,0-0.6,0-0.8-0.3c-0.3-0.3-0.6-0.6-0.8-1.1c-1.4-6.2-2-12.7-2.3-19.2C377,454.7,386.9,429.6,405.2,410.6
-            L405.2,410.6z M385.2,516.3c0.3-0.3,0.6-0.6,0.8-0.8l80.2-26.8c0.6-0.3,0.8,0,1.4,0.3c0.3,0.3,0.6,0.8,0.6,1.1l0.6,86.7
-            c0,0.6-0.3,0.8-0.6,1.1c-0.3,0.3-0.6,0.3-1.1,0.3c0,0,0,0-0.3,0c-22.9-2.3-43.5-11.9-59.9-28c-9.6-9.6-17.2-20.6-22.3-32.8
-            C384.9,517.1,384.9,516.8,385.2,516.3z M475.3,464.9L475.3,464.9c-0.6,0-0.8-0.3-1.1-0.6l-49.4-67.2c-0.3-0.3-0.3-0.8-0.3-1.1
-            c0-0.3,0.3-0.8,0.6-1.1c15-9.3,32.5-14.4,50.3-14.7c0.6,0,1.1,0,1.7,0l0,0c16.9,0,33.9,4.5,48.6,12.7c0.3,0.3,0.6,0.6,0.8,1.1
-            c0,0.3,0,0.8-0.3,1.1l-49.7,69.2C476.1,464.6,475.8,464.9,475.3,464.9z M574.1,500.2c0,0.3-0.3,0.8-0.8,1.1c-0.3,0-0.6,0.3-0.8,0.3
-            s-0.3,0-0.6,0l-83-26.3c-0.6-0.3-0.8-0.6-0.8-0.8c-0.3-0.6,0-0.8,0.3-1.4l49.7-69.5c0.3-0.3,0.6-0.6,1.1-0.6c0.6,0,0.8,0,1.1,0.3
-            c2.3,1.7,4.2,3.7,6.2,5.6c18.6,18.4,29.4,42.9,29.7,69.2C576.4,485.2,575.5,492.8,574.1,500.2z"/>
-        <path id="pneu_droite" d="M477,369.1L477,369.1c29.1,0,56.5,11.3,77.4,31.6c20.9,20.3,32.5,47.7,33,76.8
-            c0.6,29.4-10.4,57.3-31.1,78.8c-20.6,21.2-48,33.3-77.7,33.6c-0.6,0-1.4,0-2,0c-29.1,0-56.5-11.3-77.4-31.6
-            c-20.9-20.3-32.5-47.7-33-76.8c-0.6-29.4,10.4-57.3,31.1-78.8c20.6-21.2,48-33.3,77.4-33.6C475.5,369.1,476.1,369.1,477,369.1
-             M477,361.2c-0.8,0-1.4,0-2.3,0c-65.2,1.1-117.5,55.1-116.1,120.6c1.1,64.7,53.9,116.3,118.3,116.3c0.8,0,1.4,0,2.3,0
-            c65.2-1.1,117.5-55.1,116.1-120.3C593.9,412.9,541.3,361.2,477,361.2L477,361.2z"/>
-    </g>
-
-    <g id="roue_gauch">
-        <path id="rayons_gauche" d="M199.1,556.9c20.3-21.2,31.6-49.1,31.1-78.8c-0.3-29.4-12.1-57-32.8-77.9l0,0c-0.6-0.6-0.8-0.8-1.4-1.4
-            c-44.3-42.6-115.5-41.2-158.1,3.1C17.5,423.1,6.2,451,6.8,480.7c0.3,29.4,12.1,57,32.8,77.9c0.6,0.6,0.8,0.8,1.4,1.4
-            c21.5,20.6,49.7,31.6,79.6,31.1C150.5,590.8,178.2,578.7,199.1,556.9z M54.2,555.5C54.2,555.5,54.2,555.2,54.2,555.5
-            c-0.3-0.3-0.6-0.8-0.6-1.1s0-0.8,0.6-1.1l61-62.1c0.3-0.3,0.8-0.6,1.4-0.6s0.8,0.3,1.1,0.8l40.4,77.4c0.3,0.3,0.3,0.8,0,1.1
-            s-0.6,0.8-0.8,0.8c-11.6,4.8-24,7.6-36.7,7.9C96,579.2,72.6,571,54.2,555.5z M116.3,380.1c2.5,0,5.1,0,7.3,0c0.6,0,0.8,0.3,1.1,0.6
-            c0.3,0.3,0.3,0.8,0.3,1.1l-12,82.8c0,0.6-0.3,0.8-0.8,1.1c-0.6,0.3-0.8,0.3-1.4,0l-75.4-37.6c-0.3,0-0.3-0.3-0.3-0.3
-            c-0.3-0.3-0.3-0.3-0.3-0.6s0-0.8,0.3-1.1c3.4-5.4,7.6-10.4,12.1-15.2C64.9,391.7,89.8,380.7,116.3,380.1L116.3,380.1z M27.4,440.9
-            c0.3-0.3,0.8,0,1.1,0l75.7,37.8c0.6,0.3,0.8,0.6,0.8,1.1c0,0.6,0,0.8-0.3,1.4L44,543c-0.3,0.3-0.8,0.6-1.1,0.6
-            c-0.3,0-0.8-0.3-1.1-0.6l0,0c-14.7-17.5-22.6-39-22.6-62.1c-0.3-13.8,2.3-26.8,7.3-39.3C26.5,441.4,26.8,441.1,27.4,440.9z
-             M127.6,468L127.6,468c-0.3-0.3-0.6-0.8-0.6-1.1l12.4-82.5c0-0.3,0.3-0.8,0.6-1.1c0.3-0.3,0.8-0.3,1.1-0.3
-            c17.2,4,33,12.7,45.7,25.1c0.6,0.3,0.8,0.8,1.4,1.4l0,0c12.1,12.1,20.9,27.1,25.4,43.2c0,0.3,0,0.8-0.3,1.1
-            c-0.3,0.3-0.6,0.6-1.1,0.6l-83.9,14.1C128.5,468.5,127.9,468.5,127.6,468z M172.5,562.8c-0.3,0.3-0.8,0.3-1.1,0.3
-            c-0.3,0-0.6-0.3-0.6-0.3l-0.3-0.3l-40.4-77.7c-0.3-0.6-0.3-0.8,0-1.4c0.3-0.6,0.6-0.8,1.1-0.8l84.2-14.1c0.3,0,0.8,0,1.1,0.3
-            c0.3,0.3,0.6,0.6,0.6,1.1c0.3,2.8,0.6,5.6,0.6,8.5c0.3,26.3-9.6,51.1-27.7,70C184.7,553.8,179,558.6,172.5,562.8z"/>
-        <path id="pneu_gauche" d="M118.3,369.1L118.3,369.1c28.5,0,55.9,11,76.5,30.8c21.2,20.3,33.3,48,33.9,77.4s-10.4,57.3-30.8,78.8
-            C177,577.8,148.5,590,118.3,590c-28.5,0-55.9-11-76.5-30.8C-2,517.1-3.4,447.1,38.7,403C59.6,381.3,88.1,369.1,118.3,369.1
-             M118.3,361.2c-31.1,0-62.1,12.1-85.3,36.4c-45.2,47.2-43.8,122,3.4,167.5c22.9,22,52.5,33,81.9,33c31.1,0,62.1-12.1,85.3-36.4
-            c45.2-47.2,43.8-122-3.4-167.5C177.3,372.2,148,361.2,118.3,361.2L118.3,361.2z"/>
-    </g>
-
-    <path fill="#000000" id="structure" d="M477.5,470.2l-44.6-96.3c-2.5-5.4-3.4-15.2-3.7-21.2l0.6-1.1l-7.1-30.5c0,0-0.3,0-0.6,0V320h0.8
-        c0.8,0,1.4-0.8,1.4-1.7l-0.3-3.4c0-0.8-0.8-1.4-1.7-1.4h-0.6v-5.1c12.7-4,26.8-9.6,28.2-16.1l0,0c0.8-1.1,1.4-2.5,1.4-4.2
-        c0-4-3.1-7.1-7.1-7.1c-4,0-7.1,3.1-7.1,7.1l-39.5,12.4c-0.8,0.3-1.4,1.1-1.1,2l3.1,10.4c0.3,0.8,1.1,1.4,2,1.1c0,0,2-0.3,5.1-1.1v2
-        h-0.3c-0.8,0-1.4,0.8-1.4,1.7l0.3,3.4c0,0.8,0.8,1.4,1.4,1.4v0.8c-46.6,2.5-177.9,9.9-183.3,10.2c-6.2,0.3-12.4,5.6-12.4,5.6
-        L97.7,493.7l180.4,17.8l124.5-142.6c5.4-6.2,9.6-8.8,13.6-10.2c0.8,1.7,1.7,3.4,1.7,4.2c0.3,2,3.1,5.6,0.8,6.8
-        c-2.3,1.2-1.7,4.5-1.1,7.9l50,97.1c-0.6,1.4-1.1,2.8-1.1,4.2c0,5.1,4.2,9.3,9.3,9.3c5.1,0,9.3-4.2,9.3-9.3
-        C485.4,474.7,482,470.8,477.5,470.2z M334.6,399.3l-57.9,81l-142-3.4c0,0,76.8-94.3,83.9-103.1c7.1-8.8,18.9-8.8,24.3-7.6
-        c0,0,85.8,16.9,85,16.7C337.2,385.5,338.6,394.3,334.6,399.3z"/>
-    <path id="pedalier" d="M345.1,508.1l-0.8-2.5c-0.3-0.8-1.1-1.4-2-1.1l-10.2,2.8l-29.9-4c0-2.3-0.3-4.8-0.8-7.1
-        c-2-8.5-7.1-15.5-14.4-20c-5.1-3.4-11-5.1-17.2-5.1c-2,0-4,0.3-5.9,0.6l0,0l-0.8,0.3c-0.3,0-0.3,0-0.6,0c-8.5,2-15.5,7.1-20,14.4
-        s-5.9,16.1-4,24.6c2,8.5,7.1,15.5,14.4,20c5.1,3.4,11,5.1,17.2,5.1l0,0c2.3,0,4.8-0.3,7.1-0.8h0.6c8.5-2,15.5-7.1,20-14.4
-        c1.4-2.3,2.5-4.8,3.4-7.3l7.9,0.6h-0.6c-0.8,0.3-1.4,1.1-1.1,2l0.8,2.5c0.3,0.8,1.1,1.4,2,1.1l34.2-9.6
-        C344.8,509.8,345.4,508.9,345.1,508.1z M283,484.1c4.8,3.4,8.5,8.2,9.9,14.1c0.3,0.8,0.3,1.7,0.6,2.5l-16.7-1.4L283,484.1z
-         M264.3,480.7h0.3l0,0c3.1-0.6,6.2-0.8,9-0.3l-5.9,15L255.8,485C258.4,482.9,261.2,481.5,264.3,480.7z M247.1,508.9
-        c-1.4-5.6-0.6-11.6,2.3-16.9l11.9,10.4l-13.8,8.2C247.4,510,247.4,509.5,247.1,508.9z M269.7,527c-4.2,0-8.5-1.1-12.4-3.7
-        c-2-1.1-3.7-2.5-5.1-4.2l13.8-8.2L269.7,527L269.7,527z M289.7,515.7c-2.5,4.2-6.2,7.3-10.4,9l-3.1-13.6l15.2,1.1
-        C290.9,513.7,290.3,514.8,289.7,515.7z"/>
-    <path id="selle" d="M248.5,251.7c-1.1-1.1-5.1-7.6-11-7.6H172c-5.1,0-4.2,4-2,5.6c2.3,1.7,16.4,11.9,25.4,11.9c0.8,0,1.4,0,2.5,0
-        l16.7,64.9h-5.9v7.1h7.6l2.3,8.2l11.6-2.8l-1.4-5.6h1.7v-7.1H227l-17.5-66.9c6.8-1.7,13-3.7,14.7-4.2c3.1-1.1,13.8-1.4,20,0
-        C250.5,255.9,249.6,252.8,248.5,251.7z"/>
-    <path id="cadre" fill="#7F7F7F" d="M373.6,341.2c-0.3-0.6-1.1-1.1-1.7-1.1l-137,6.2c-1.1,0-1.7,0.8-2,1.7c0,1.1,0.6,2,1.7,2
-        l116.6,23.7h0.3c0.6,0,1.1-0.3,1.7-0.8l20.6-29.9C373.9,342.9,373.9,342,373.6,341.2z"/>
-    <path id="chaine" d="M269.7,536.6c-4.2,0-11.6-2-11.9-2.3l-140.3-44.1l0,0c-4-1.7-6.8-5.6-6.8-9.9c0-5.9,4.8-10.7,10.7-10.7
-        l149.4,0.8l0,0c17.8,0.6,32.2,15.2,32.2,33C303,521.6,288,536.6,269.7,536.6z M118.9,489.1l139.2,44.1c0,0,7.3,2,11.3,2
-        c17.5,0,31.9-14.1,31.9-31.9c0-17.5-14.1-31.6-31.6-31.6h-0.8l0,0l-147.4-0.8c-5.1,0-9.3,4.2-9.3,9.3c0,4,2.5,7.6,6.2,8.8
-        L118.9,489.1L118.9,489.1z"/>
-    </svg>
-        </div>
-
-        <p>On place dans une variable le code svg qui sera appelé en arrière-plan :</p>
-        <code class="codeBlock">
-            <span class="codeBlockElement"><mark class="codeExergue">$velo</mark>: '&lt;svg&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">...</span>
-                    <span class="codeBlockElement codeBlockElement--tab1">&lt;path id="rayons_droite" <mark
-                        class="codeExergue">stroke="#07a5e0"</mark> stroke-width="10" d="M588......"/&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">...</span>
-        <span class="codeBlockElement codeBlockElement--tab1">&lt;path id="cadre" <mark
-            class="codeExergue">fill="#7F7F7F"</mark> d="M373......"/&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">...</span>
-            <span class="codeBlockElement">&lt;/svg&gt;';</span>
-        </code>
-
-        <p>Utilisation d'une mixin pour remplacer les caractères spéciaux :</p>
-
-        <code class="codeBlock">
-            <span class="codeBlockElement">.image {</span>
-            <span class="codeBlockElement codeBlockElement--tab1">background-image: <mark class="codeExergue">svg-url</mark>($velo);</span>
-            <span class="codeBlockElement">}</span>
-        </code>
-
-        <p>On a maintenant un code exploitable sur tout navigateur, dont on va pouvoir <a
-            href="http://www.sassmeister.com/gist/1b4f2da5527830088e4d">modifier</a> les attributs
-            (<code>fill</code>,
-            <code>stroke</code>...).</p>
-
-        <code class="codeBlock">$velo-orange: str-replace($velo, stroke="#07a5e0", stroke="orange");</code>
-
-        <div class="svgVisualExemples svgVisualExemples--data-replace"></div>
-
-        <p>Voire utiliser une mixin qui cible directement les couleurs, peu importe l'attribut.</p>
-
-        <code class="codeBlock">
-            <span class="codeBlockElement">@function svg-replace-fill($svg, $fill-to-replace, $new-fill...) {</span>
-                    <span class="codeBlockElement codeBlockElement--tab1">$replaced-svg: <a
-                        href="http://www.sassmeister.com/gist/1b4f2da5527830088e4d">str-replace</a>($svg, $fill-to-replace, $new-fill);</span>
-                    <span class="codeBlockElement codeBlockElement--tab1">$replaced-svg-url: <a
-                        href="http://codepen.io/jakob-e/pen/doMoML">svg-url</a>(('#{$replaced-svg}');</span>
-            <span class="codeBlockElement codeBlockElement--tab1">@return $replaced-svg-url;</span>
-            <span class="codeBlockElement">}</span>
-        </code>
-
-        <code class="codeBlock">background-image: svg-replace-fill(
-            <mark class="codeExergue">$velo</mark>
-            , '
-            <mark class="codeExergue">#7F7F7F</mark>
-            ', '
-            <mark class="codeExergue">red</mark>
-            ');</code>
-
-        <div class="svgVisualExemples svgVisualExemples--data-replace-final"></div>
-
-        <p>Si cette technique permet d'approcher une certaine maîtrise des styles d'un SVG, on en voit vite les
-            faiblesses.
-            Si plusieurs chemins ont d'origine la même couleur déclarée, tous seront modifiés ensemble, sans
-            distinction.</p>
-        <p>Il convient avant toute modification d'appliquer un maximum de couleurs, ou tout du moins à toute partie du
-            svg susceptible d'être modifiée.</p>
-
-    </section>
-
-    <section class="etude">
-
-        <h2 class="secondaryTitle" id="viewbox">Le viewPort et la viewBox</h2>
-        <h3 class="smallTitle">Définition</h3>
-        <p>Le viewPort est simplement la taille du svg, définie par les attributs "width" et "height".</p>
-        <p>La viewBox va préciser la place que vont prendre les éléments graphiques à l'intérieur de ce conteneur.</p>
-        <p>Les coordonnées indiquent respectivement les deux points d'origine de la viewBox, et ses points d'arrivée sur les axes X et Y :</p>
-
-        <code class="codeBlock">
-            <span class="codeBlockElement">&lt;svg width="400" height="200" viewBox="0 0 <mark class="codeExergue">400 200</mark>"&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;circle cx="200" cy="100" r="80"fill="blue" /&gt;</span>
-            <span class="codeBlockElement">&lt;/svg&gt;</span>
-        </code>
-
-        <p>NB: par défaut, l'unité utilisée est le pixel. Dans un contexte responsif, la taille n'a plus d'importance, seul le ratio viewBox/viewPort compte.</p>
-
-        <div class="svgVisualExemples svgVisualExemples--viewbox">
-            <svg width="400" height="200" viewBox="0 0 400 200">
-                <circle cx="200" cy="100" r="80"fill="blue" />
-            </svg>
-        </div>
-
-        <p>Par défaut, les points d'arrivée de la viewBox correspondent à la taille du viewPort. Dans ce cas, le ratio est de 1/1.</p>
-
-        <p>Dans l'exemple ci-dessus, notre disque de 80px de rayon affiche bien 160px de diamètre dans son conteneur.</p>
-
-        <h3 class="smallTitle">Relation et manipulation</h3>
-
-        <p>Si les points d'arrivée de la viewBox sont réduits, le ratio viewBox/viewPort est modifié d'autant.</p>
-
-        <p>Dans l'exemple ci-dessous, les valeurs de la viewBox sont deux fois plus petites que celles du viewPort. Conséquence, le ratio de 2/1 va doubler l'affichage de son contenu
-            (qui n'apparaitra donc plus qu'en partie, puisque le viewPort reste inchangé) :</p>
-
-        <code class="codeBlock">
-            <span class="codeBlockElement">&lt;svg width="400" height="200" viewBox="0 0 <mark class="codeExergue">200 100</mark>"&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;circle cx="200" cy="100" r="80"fill="blue" /&gt;</span>
-            <span class="codeBlockElement">&lt;/svg&gt;</span>
-        </code>
-
-
-        <div class="svgVisualExemples svgVisualExemples--viewbox">
-            <svg width="400" height="200" viewBox="0 0 200 100">
-                <circle cx="200" cy="100" r="80"fill="blue" />
-            </svg>
-        </div>
-
-        <p>A l'inverse, plus la taille de la viewBox est supérieure à celle du viewPort, plus son contenu apparaitra proportionnellement petit.</p>
-
-        <p>Ici, le ratio viewBox/viewPort affiche notre forme à 50% de sa taille :</p>
-
-        <code class="codeBlock">
-            <span class="codeBlockElement">&lt;svg width="400" height="200" viewBox="0 0 <mark class="codeExergue">800 400</mark>"&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;circle cx="200" cy="100" r="80"fill="blue" /&gt;</span>
-            <span class="codeBlockElement">&lt;/svg&gt;</span>
-        </code>
-
-
-        <div class="svgVisualExemples svgVisualExemples--viewbox">
-            <svg width="400" height="200" viewBox="0 0 800 400">
-                <circle cx="200" cy="100" r="80"fill="blue" />
-            </svg>
-        </div>
-
-        <p>En modifiant les points d'origine, on en touche plus au ratio, qui va définir la proportion de la forme, mais on précise quelle portion on va afficher :</p>
-
-        <code class="codeBlock">
-            <span class="codeBlockElement">&lt;svg width="400" height="200" viewBox="<mark class="codeExergue">200 100</mark> 400 200"&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;circle cx="200" cy="100" r="80"fill="blue" /&gt;</span>
-            <span class="codeBlockElement">&lt;/svg&gt;</span>
-        </code>
-
-        <div class="svgVisualExemples svgVisualExemples--viewbox">
-            <svg width="400" height="200" viewBox="200 100 400 200">
-                <circle cx="200" cy="100" r="80"fill="blue" />
-            </svg>
-        </div>
-
-        <p>Ici, notre forme a toujours un ratio de 1/1. Sa taille n'est pas modifiée, mais les points d'origine sont placés à 200px et 100px du viewPort,
-            ce qui réduit d'autant la partie visible du contenu du SVG.</p>
-        <p>La valeur X de la viewBox, ici "200" revient à "décaler" le contenu de 200px vers la gauche. Son conteneur reste identique, créant un blanc supplémentaire sur la droite.</p>
-        <p>Pour bien faire, il faudrait donc réduire également la viewBox ET le viewPort (afin de réduire la taille du svg, sans toucher au ratio) :</p>
-
-        <code class="codeBlock">
-            <span class="codeBlockElement">&lt;svg <mark class="codeExergue">width="100" height="100" viewBox="200 100 100 100"</mark>&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;circle cx="200" cy="100" r="80"fill="blue" /&gt;</span>
-            <span class="codeBlockElement">&lt;/svg&gt;</span>
-        </code>
-
-        <div class="svgVisualExemples svgVisualExemples--viewbox">
-            <svg width="100" height="100" viewBox="200 100 100 100">
-                <circle cx="200" cy="100" r="80"fill="blue" />
-            </svg>
-        </div>
-
-        <p>En conclusion, tout ceci est un peu théorique, et peu utile à retenir. En effet, il est conseillé de supprimer purement et simplement les valeurs de viewPort.</p>
-        <p>Ainsi, la taille de celui-ci sera celle de son conteneur. Dès lors, plus de raison de se soucier de la taille de notre forme, qui sera confortablement définie en css.</p>
-
-        <p>Reprenons notre dernier exemple, sans les déclarations de hauteur et de largeur :</p>
-
-        <code class="codeBlock">
-            <span class="codeBlockElement">&lt;svg <mark class="codeExergue">viewBox="200 100 100 100"</mark>&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;circle cx="200" cy="100" r="80"fill="blue" /&gt;</span>
-            <span class="codeBlockElement">&lt;/svg&gt;</span>
-        </code>
-
-        <div class="svgVisualExemples svgVisualExemples--viewbox svgVisualExemples--viewbox_responsive">
-            <svg viewBox="200 100 100 100">
-                <circle cx="200" cy="100" r="80"fill="blue" />
-            </svg>
-        </div>
-
-        <p>C'est pareil, mais en mieux ! Prêt à être intégré dans un environnement responsif.</p>
-
-        <h3 class="smallTitle">L'attribut preserveAspectRatio</h3>
-        <p>La seule utilité de le déclarer est si le viewport et la viewBox ont des valeurs différentes (ou pour être
-            plus
-            précis, pas le même ratio largeur et hauteur).</p>
-        <p>Dans ce cas, la propriété <code>preserveAspectRatio</code> permet de conserver une image entière, et non
-            déformée.</p>
-
-        <h4 class="smallestTitle">L'alignement</h4>
-        <p>Il est déclaré avec une syntaxe de type <code>xMinYMid</code>.</p>
-        <p>Dans cet exemple, la viewBox est positionnée au début de l'axe des abscisses (xMin) et centré sur l'axe des
-            ordonnées (YMid) (<a href="https://www.w3.org/TR/SVG/coords.html#PreserveAspectRatioAttribute">Liste
-                exhaustive
-                des attributs</a>).</p>
-
-        <h4 class="smallestTitle">L'étirement</h4>
-        <p>En plus de l'alignement, on peut préciser comment va être interprété le ratio d'aspect. Par défaut, la valeur
-            est
-            fixée à <code>meet</code>.
-            La viewBox va être redimensionnée pour remplir autant que possible le viewPort. A <code>slice</code>,
-            elle va
-            l'afficher à sa taille déclarée, et couper ce qui dépasse du viewport.
-            Enfin, <code>none</code> essaie de remplir le viewPort avec la viewBox, mais sans respecter le ratio
-            hauteur/largeur, pouvant déformer le résultat obtenu.
-        </p>
-
-    </section>
-
-
-    <section class="etude">
-        <h2 class="secondaryTitle" id="crop">Recadrer une partie du svg (fragment).</h2>
-
-        <p>Si la déclaration du viewPort est à éviter, celle de la viewBox reste indispensable pour rendre le svg responsif.</p>
-        <p>Par ailleurs, choisir grâce à elle de n'afficher qu'une partie du svg, ce qu'on appelle de la custom viewBox, peut être très utile, notamment pour une feuille de sprites :</p>
-
-        <div class="svgVisualExemples">
-            <img class="svgExemple" src="img/sprites/view/pictos_digiposte.svg">
-        </div>
-
-        <h3 class="smallTitle">Dans le html</h3>
-
-        <p>
-            <code class="svgExemple_legend_code">
-                &lt;img&nbsp;src="sprites.svg#svgView(viewBox(3,48,26,2))"&gt;</code>
-        </p>
-
-        <div class="svgVisualExemples">
-            <img class="svgExemple svgExemple--pictoSize"
-                 src="img/sprites/view/pictos_digiposte.svg#svgView(viewBox(175.145 33.044 35.029 33.044))">
-        </div>
-
-        <p>C'est au moment de l'appel du svg qu'on précise avec les bonnes coordonnées, quelle portion du svg on souhaite afficher.</p>
-
-
-
-        <h3 class="smallTitle">Dans le SVG</h3>
-
-        <p><code class="svgExemple_legend_code">
-            &lt;img&nbsp;src="sprites.svg#identifiant"&gt;</code>
-        </p>
-
-        <div class="svgVisualExemples">
-            <img class="svgExemple svgExemple--pictoSize"
-                 src="img/sprites/view/pictos_digiposte.svg#dgp_icon_premium">
-        </div>
-
-        <p>Les portions sur lesquelles la viewBox va se concentrer sont déclarées dans le fichier, en dehors de la balise &lt;svg&gt;, via la balise <code
-            class="svgExemple_legend_code">view</code>, à laquelle on ajoute un identifiant, qui sera utilisé lors de l'appel du fichier.</p>
-
-        <code class="codeBlock">&lt;view id='identifiant' viewBox='3,48,26,2'/&gt;</code>
-            <p>C'est évidemment plus propre, et maintenable.</p>
-
-        <h3 class="smallTitle">Cas pratique : menu responsif</h3>
-
-        <p>En combinant des unités de polices déclarées en vw, et nos pictogrammes dénués de viewPort et utilisant des custom viewBox, on obtient un menu vectoriel, responsif et homogène.</p>
-
-        <ul class="menuSvg">
-            <li class="menuSvg_item">Element de menu</li>
-            <li class="menuSvg_item menuSvg_item--2">Element de menu 2</li>
-            <li class="menuSvg_item menuSvg_item--3">Element de menu 3</li>
-            <li class="menuSvg_item menuSvg_item--4">Element de menu 4</li>
-        </ul>
-
-        <code class="codeBlock">background: url("sprite.svg#identifiant");</code>
-
-        <h3 class="smallTitle">Générateur de sprites svg</h3>
-
-        <p>Le fichier de sprites de ces exemples a été réalisé grâce à <a href="https://github.com/jkphl/svg-sprite">svg-sprite</a>, un outil qui compile tous les
-            fichiers svg d'un dossier en un seul sprite, en ajoutant la viewBox pour chacun.</p>
-        <p>L'utilisation des custom viewBox s'en trouve grandement simplifiée.</p>
-
-
-    </section>
-
-
-    <section class="etude">
-        <h2 class="secondaryTitle" id="models">Les modèles</h2>
-
-        <p>Il est possible de créer des modèles réutilisables, afin d'éviter la redondance du code.</p>
-
-        <h3 class="smallTitle">La balise &lt;defs&gt;</h3>
-        <p>
-            C'est le conteneur de tous les modèles que l'on "définit". Le code entre l'ouverture et la fermeture de
-            cette
-            balise est invisible, et est appelé par la balise &lt;use&gt;.
-        </p>
-
-        <code class="codeBlock">
-            <span class="codeBlockElement">&lt;<mark class="codeExergue">defs</mark>&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;g id="modele1"&gt;...&lt;/g&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;g id="modele2"&gt;...&lt;/g&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;g id="modele3"&gt;...&lt;/g&gt;</span>
-            <span class="codeBlockElement">&lt;/<mark class="codeExergue">defs</mark>&gt;</span>
-        </code>
-
-
-        <h3 class="smallTitle">La balise &lt;use&gt;</h3>
-
-        <p>
-            Elle appelle les éléments "stoqués" dans la balise &lt;defs&gt;, et les positionne.
-        </p>
-
-
-        <code class="codeBlock">
-            &lt;<mark class="codeExergue">use</mark>
-            xlink:href="#modele1" x="20" y="50" /&gt;
-        </code>
-
-        <p>Une autre utilisation courante est la création d'un seul fichier SVG avec toutes les icones d'un site, et
-            masquées. On les appelle selon les besoins,
-            via <code>use</code>, soit à la fin du svg, soit depuis le html. Dans ce dernier cas, les styles
-            internes ne
-            seront pas embarqués.</p>
-        <p>On peut aussi y stocker des "effets", comme des dégradés, ou des filtres SVG, prêts à être utilisés sur
-            d'autres
-            éléments</p>
-
-
-        <h3 class="smallTitle">La balise &lt;symbol&gt;</h3>
-        <p>Version étendue de &lt;defs&gt;, elle regroupe plusieurs éléments cachés, et les affiche via &lt;use&gt;. En
-            clair, elle compose un nouveau dessin en combinant plusieurs formes.</p>
-        <p>On peut y indiquer directement la taille de la viewBox, ainsi qu'un titre et une description.</p>
-
-
-        <h3 class="smallTitle">Cas pratique : répétition d'un motif (la roue d'un vélo)</h3>
-
-        <code class="codeBlock">
-            <span class="codeBlockElement">&lt;<mark class="codeExergue">defs</mark>&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;g id="roue"&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab2">&lt;path&gt;...&lt;/path&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;/g&gt;</span>
-            <span class="codeBlockElement">&lt;/<mark class="codeExergue">defs</mark>&gt;</span>
-
-            <span class="codeBlockElement">&lt;g id="structure_velo"&gt;...&lt;/g&gt;</span>
-
-            <br>
-
-        <span class="codeBlockElement">&lt;<mark
-            class="codeExergue">use</mark> xlink:href="#roue" x="-380" y="10" /&gt;</span>
-            <span class="codeBlockElement">&lt;<mark class="codeExergue">use
-            </mark> xlink:href="#roue" x="0" y="10" /&gt;</span>
-        </code>
-
-
-        <div class="svgVisualExemples">
-            <img class="svgExemple" src="img/bike_with_def.svg#roue">
-        </div>
-
-        <h3 class="smallTitle">Cas pratique : affichage d'un picto depuis une grille de sprites</h3>
-
-        <p>En fait de grille, les multiples calques des icones superposés dans illustrator sont laissés tels quels.
-            On obtient un svg avec tous les pictos les uns sur les autres, même viewBox, mêmes coordonnées, chacun
-            dans une
-            balise <code>symbol</code>.
-            L'appel de la bonne icone, via son identifiant, va se faire depuis le html.
-        </p>
-
-        <h4 class="smallestTitle">Dans le svg :</h4>
-
-        <code class="codeBlock">
-            <span class="codeBlockElement">&lt;<mark class="codeExergue">svg</mark>&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="picto1" viewBox="0 0 32 32"&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab2">&lt;path&gt;...&lt;/path&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;/symbol&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="picto2" viewBox="0 0 32 32"&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab2">&lt;path&gt;...&lt;/path&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;/symbol&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="<mark class="codeExergue">calendrier</mark>" viewBox="0 0 32 32"&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab2">&lt;path&gt;...&lt;/path&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;/symbol&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="picto..." viewBox="0 0 32 32"&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab2">&lt;path&gt;...&lt;/path&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;/symbol&gt;</span>
-            <span class="codeBlockElement">&lt;/<mark class="codeExergue">svg</mark>&gt;</span>
-        </code>
-
-        <h4 class="smallestTitle">Dans le html :</h4>
-
-        <code class="codeBlock">
-            <span class="codeBlockElement">&lt;<mark class="codeExergue">svg</mark>&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;<mark class="codeExergue">use</mark> xlink:href="img/pictos_symbol.svg#<mark
-                class="codeExergue">calendrier</mark>" /&gt;</span>
-            <span class="codeBlockElement">&lt;/<mark class="codeExergue">svg</mark>&gt;</span>
-        </code>
-
-        <div class="svgVisualExemples">
-            <svg class="_is_responsive">
-                <use xlink:href="img/pictos_symbol.svg#calendrier"/>
-            </svg>
-        </div>
-
-    </section>
-
-
-    <section class="etude">
-        <h2 class="secondaryTitle" id="styles">Styles CSS</h2>
-
-        <h3 class="smallTitle">Principaux attributs de présentation</h3>
-
-        <dl>
-            <dt>stroke</dt>
-            <dd>Couleur du contour</dd>
-            <dt>fill</dt>
-            <dd>Couleur de remplissage</dd>
-            <dt>stroke-opacity</dt>
-            <dd>Opacité du contour (de 0 à 1)</dd>
-            <dt>fill-opacity</dt>
-            <dd>Opacité du remplissage (de 9 à 1)</dd>
-            <dt>stroke-width</dt>
-            <dd>Epaisseur du contour</dd>
-        </dl>
-
-        <p>liste complète visible sur <a href="https://www.w3.org/TR/SVG2/styling.html#SVGStylingProperties">https://www.w3.org/TR/SVG2/styling.html#SVGStylingProperties</a>.
-        </p>
-
-        <p>Le contour, si une couleur est déclarée, fait 1px par défaut. Au delà, il s'étend autant à l'intérieur qu'à
-            l'extérieur, contrairement aux bordures css. Privilégier donc des valeurs multiples de 2. Si elle est
-            définie en
-            pourcentage, cette valeur est relative au viewport, non à la viewBox.</p>
-
-        <svg width="140" height="140" viewBox="0 0 140 140">
-            <circle cx="60" cy="70" r="50" stroke="red" fill="blue" stroke-opacity="0.5" fill-opacity="0.8"
-                    stroke-width="20"/>
-        </svg>
-
-
-        <code class="codeBlock">
-            &lt;circle cx="60" cy="70" r="50" <strong>stroke</strong>="red" <strong>fill</strong>="blue"
-            <strong>stroke-opacity</strong>="0.5"
-            <strong>fill-opacity</strong>="0.8" <strong>stroke-width</strong>="20" /&gt;
-        </code>
-
-        <h3 class="smallTitle">Les styles en ligne</h3>
-
-        <p>Ils sont déclarés avec l'attribut <code>style</code>, et prennent le pas sur la déclaration faite via fill.</p>
-        <p>Il n'y a pas vraiment d'intéret à utiliser les styles en ligne, sachant que <code>fill="yellow"</code> est
-            équivalent à <code>style="fill: yellow;"</code></p>
-
-
-        <h3 class="smallTitle">Les styles internes</h3>
-
-        <p>Comme en html, on peut déclarer une feuille de style interne, via la balise <code>&lt;style&gt;</code></p>
-        <p>ils ne sont pas embarqués lors de l'intégration d'un <code>symbol</code> avec la balise <code>
-            &lt;use&gt;</code>
-            dans le html.</p>
-
-        <code class="codeBlock">
-            <span class="codeBlockElement">&lt;svg height="100px"&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;<mark class="codeExergue">style</mark> type="text/css"&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab2">#rectangle {</span>
-            <span class="codeBlockElement codeBlockElement--tab3">fill : yellow;</span>
-            <span class="codeBlockElement codeBlockElement--tab2">}</span>
-                    <span class="codeBlockElement codeBlockElement--tab1">&lt;/<mark
-                        class="codeExergue">style</mark>&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;rect x="10px" y="10x" width="100" height="50" id="rectangle" /&gt;</span>
-            <span class="codeBlockElement">&lt;/svg&gt;</span>
-        </code>
-
-
-        <h3 class="smallTitle">Les styles externes</h3>
-
-        <p>Comme en html, le dernier des cas de figure, en théorie plus maintenable, est l'appel d'une feuille de style
-            externe, via xml.</p>
-
-        <code class="codeBlock">
-            <span class="codeBlockElement">&lt;?xml-stylesheet type="text/css" href="css/svg.css"?&gt;</span>
-            <span class="codeBlockElement">&lt;svg&gt;...&lt;/svg&gt;</span>
-        </code>
-
-
-        <h3 class="smallTitle">Les dégradés en SVG</h3>
-
-        <p>On peut les stocker dans des balises &lt;defs&gt;, et les appliquer au bon motif (ou à son contour. Soit
-            <code>fill</code>
-            ou <code>stroke</code>).</p>
-
-        <h4 class="smallestTitle">Dégradé linéaire</h4>
-
-        <p>Les attributs x1 x2 y1 et y2 précisent les début et fin du dégradé, ainsi que leur orientation.
-            Les <code>&lt;stop&gt;</code> définissent la répartition des couleurs (à quelle position la couleur
-            atteint 100%
-            de saturation (0% de mélange)).</p>
-
-        <h4 class="smallestTitle">Dégradé radial</h4>
-
-        <p>Les attributes cx et cy positionnent le dégradé sur l'axe des abscisses et des ordonnées.</p>
-        <p>Les points fx et fy déplacent, à l'intérieur de ce dégradé radial, le cercle le plus à l'intérieur (par
-            défaut,
-            mêmes coordonnées que cx et cy).</p>
-
-        <div class="svgVisualExemples">
-            <img class="svgExemple" src="img/bike_gradient.svg">
-        </div>
-
-
-        <h3 class="smallTitle">Responsive et media-queries</h3>
-        <p>Il vaut mieux ne pas déclarer de hauteur ni de largeur au svg, pour un meilleur contrôle en css (il fera alors 100% de son conteneur).</p>
-        <p>Quand cela n'est pas possible, préciser au moins <code>background-size: 100%;</code> (ou <code>background-size: cover;</code>), si le svg
-            est en
-            arrière-plan,
-            ou passer le conteneur (<code>img</code>, <code>object</code>...) à 100% dans les autres cas de figure.
-        </p>
-
-        <p>Les media queries peuvent être intégrées directement au svg, pour en modifier l'affichage.</p>
-        <p>La taille de référence n'est plus le navigateur, mais le SVG lui-même (le viewPort).</p>
-
-        <code class="codeBlock">
-            <span class="codeBlockElement">&lt;svg viewBox="0 0 184.252 112.089"&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;style&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab2">
-                <mark class="codeExergue codeExergue--alt">.bike-light</mark> {</span>
-            <span class="codeBlockElement codeBlockElement--tab3">display: none;</span>
-            <span class="codeBlockElement codeBlockElement--tab2">}</span>
-            <span class="codeBlockElement codeBlockElement--tab2">
-                <mark class="codeExergue codeExergue--alt">.bike-full</mark> {</span>
-            <span class="codeBlockElement codeBlockElement--tab3">display: none;</span>
-            <span class="codeBlockElement codeBlockElement--tab2">}</span>
-            <span class="codeBlockElement codeBlockElement--tab2">
-                <mark class="codeExergue">@media all and (max-width: 300px)</mark> {
-            </span>
-            <span class="codeBlockElement codeBlockElement--tab3">
-                <mark class="codeExergue codeExergue--alt">.bike-light</mark> {</span>
-            <span class="codeBlockElement codeBlockElement--tab4">display: block;</span>
-            <span class="codeBlockElement codeBlockElement--tab3">}</span>
-            <span class="codeBlockElement codeBlockElement--tab2">}</span>
-            <span class="codeBlockElement codeBlockElement--tab2">
-                <mark class="codeExergue">@media all and (min-width: 301px)</mark> {
-            </span>
-            <span class="codeBlockElement codeBlockElement--tab3">
-                <mark class="codeExergue codeExergue--alt">.bike-full</mark> {</span>
-            <span class="codeBlockElement codeBlockElement--tab4">display: block;</span>
-            <span class="codeBlockElement codeBlockElement--tab3">}</span>
-            <span class="codeBlockElement codeBlockElement--tab2">}</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;/style&gt;</span>
-
-            <br>
-
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;path class="<mark
-                class="codeExergue codeExergue--alt">bike-light</mark>" ... /&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;path class="<mark
-                class="codeExergue codeExergue--alt">bike-full</mark>" ... /&gt;</span>
-
-            <br>
-
-            <span class="codeBlockElement">&lt;/svg&gt;</span>
-        </code>
-
-        <div class="svgVisualExemples svgVisualExemples--mediaqueries">
-            <img class="svgExemple" src="img/bike-light.svg">
-        </div>
-
-    </section>
-
-
-    <section class="etude">
-        <h2 class="secondaryTitle" id="hover">Modifier l'apparence svg au survol</h2>
-
-        <h3 class="smallTitle">La solution la plus flexible</h3>
-
-        <p>On crée simplement un sprite, de préférence sur une seule ligne verticale. Chaque dessin, ainsi que sa
-            variante
-            colorée, est un <code>symbol</code>, appelé
-            via <code>use</code>, et positionné sur l'axe des ordonnées l'un sous l'autre.</p>
-        <p>Ils sont ensuite intégrés en css sous forme d'arrière plan.</p>
-
-        <img src="img/pictos_hover.svg">
-
-        <p>Dans le svg :</p>
-        <code class="codeBlock">
-            <span class="codeBlockElement">&lt;svg viewBox="<mark class="codeExergue">0 0 32 192</mark>" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;stylel&gt;</span>
-                    <span class="codeBlockElement codeBlockElement--tab2"><mark
-                        class="codeExergue">.myFigure</mark> {</span>
-            <span class="codeBlockElement codeBlockElement--tab3">fill: red;</span>
-            <span class="codeBlockElement codeBlockElement--tab2">}</span>
-            <span class="codeBlockElement codeBlockElement--tab2"><mark class="codeExergue">.mySecondFigure</mark> {</span>
-            <span class="codeBlockElement codeBlockElement--tab3">fill: green;</span>
-            <span class="codeBlockElement codeBlockElement--tab2">}</span>
-        <span class="codeBlockElement codeBlockElement--tab2"><mark
-            class="codeExergue codeExergue--alt">.myFigure-hover</mark> {</span>
-            <span class="codeBlockElement codeBlockElement--tab3">fill: blue;</span>
-            <span class="codeBlockElement codeBlockElement--tab2">}</span>
-            <span class="codeBlockElement codeBlockElement--tab2"><mark class="codeExergue codeExergue--alt">.mySecondFigure-hover</mark> {</span>
-            <span class="codeBlockElement codeBlockElement--tab3">fill: yellow;</span>
-            <span class="codeBlockElement codeBlockElement--tab2">}</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;/stylel&gt;</span>
-            <br>
-                    <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="<mark
-                        class="codeExergue">icon1</mark>"&gt;</span>
-                    <span class="codeBlockElement codeBlockElement--tab2">&lt;path class="<mark
-                        class="codeExergue">myFigure</mark>".../&gt;</span>
-        <span class="codeBlockElement codeBlockElement--tab2">&lt;path class="<mark
-            class="codeExergue">mySecondFigure</mark>".../&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;/symbol&gt;</span>
-                    <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="<mark
-                        class="codeExergue codeExergue--alt">icon1-hover</mark>"&gt;</span>
-                    <span class="codeBlockElement codeBlockElement--tab2">&lt;path class="<mark
-                        class="codeExergue codeExergue--alt">myFigure-hover</mark>".../&gt;</span>
-                    <span class="codeBlockElement codeBlockElement--tab2">&lt;path class="<mark
-                        class="codeExergue codeExergue--alt">mySecondFigure-hover</mark>".../&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;/symbol&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon2">...&lt;/symbol&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon2-hover">...&lt;/symbol&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon3">...&lt;/symbol&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon3-hover">...&lt;/symbol&gt;</span>
-            <br>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="<mark
-                class="codeExergue">#icon1</mark>"/&gt;</span>
-                    <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="<mark
-                        class="codeExergue codeExergue--alt">#icon1-hover</mark>" y="<mark
-                        class="codeExergue codeExergue--alt">32</mark>" /&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon2" y="64" /&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon2-hover" y="96" /&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon3" y="128" /&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon3-hover" y="160" c/&gt;</span>
-            <span class="codeBlockElement">&lt;/svg&gt;</span>
-        </code>
-
-        <p>Chaque forme à modifier est doublée (l'original plus la version colorisée,
-            via styles en ligne ou ses attributs internes modifiés), ce qui alourdit le poids de la page.</p>
-
-        <h3 class="smallTitle">La solution la plus propre</h3>
-
-        <p>La démarche est la même, à ceci près que chaque forme sera unique. On va rentabiliser <code>use</code> en
-            appelant deux fois chaque forme,
-            et en les modifiant à ce moment-là grâce à l'ajout d'une classe.</p>
-
-        <p>Dans le svg :</p>
-        <code class="codeBlock">
-            <span class="codeBlockElement">&lt;svg viewBox="<mark class="codeExergue">0 0 32 192</mark>" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;stylel&gt;</span>
-                    <span class="codeBlockElement codeBlockElement--tab2"><mark
-                        class="codeExergue">.icon1_hover</mark> {</span>
-            <span class="codeBlockElement codeBlockElement--tab3">fill: red;</span>
-            <span class="codeBlockElement codeBlockElement--tab2">}</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;/stylel&gt;</span>
-            <br>
-                    <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="<mark
-                        class="codeExergue">icon1</mark>">...&lt;/symbol&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon2">...&lt;/symbol&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;symbol id="icon3">...&lt;/symbol&gt;</span>
-            <br>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon1"/&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="<mark
-                class="codeExergue">#icon1</mark>" y="<mark class="codeExergue">32</mark>" class="<mark
-                class="codeExergue">icon1_hover</mark>"/&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon2" y="64" /&gt;</span>
-        <span
-            class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon2" y="96" class="icon2_hover"/&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon3" y="128" /&gt;</span>
-        <span
-            class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon3" y="160" class="icon3_hover"/&gt;</span>
-            <span class="codeBlockElement">&lt;/svg&gt;</span>
-        </code>
-
-        <p>Le fichier SVG est alors plus clair, plus facilement maintenable. Problème, à cause du <a
-            href="https://www.w3.org/TR/shadow-dom/">shadow dom</a>,
-            on ne peut plus cibler les classes des différents éléments (<code>path</code>, etc.) en css.</p>
-        <p>Du coup, notre css va impacter tout le symbol, sans pouvoir faire de détail.</p>
-        <p>On peut néanmoins minimiser (un peu) le problème en ajoutant <code>fill="currentColor"</code> à un ou
-            plusieurs éléments du SVG.
-            Cela nous permet de modifier deux paramètres, au lieu d'un seul :</p>
-
-        <code class="codeBlock">
-            <span class="codeBlockElement">&lt;stylel&gt;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">.icon1_hover {</span>
-            <span class="codeBlockElement codeBlockElement--tab2">fill: red;</span>
-                    <span class="codeBlockElement codeBlockElement--tab2"><mark
-                        class="codeExergue">color</mark>: blue;</span>
-            <span class="codeBlockElement codeBlockElement--tab1">}</span>
-            <span class="codeBlockElement">&lt;/stylel&gt;</span>
-        </code>
-
-        <p>Tout dépend donc du besoin, mais quelle que soit la méthode choisie, le css (externe) de la page est le
-            suivant :</p>
-        <code class="codeBlock">
-            <span class="codeBlockElement">.icon1 {</span>
-            <span class="codeBlockElement codeBlockElement--tab1">background-image: url(icons.svg);</span>
-            <span class="codeBlockElement codeBlockElement--tab1">background-size: <mark
-                class="codeExergue">cover</mark>;</span>
-                    <span class="codeBlockElement codeBlockElement--tab1">background-position: 0 <mark
-                        class="codeExergue">0</mark>;</span>
-            <span class="codeBlockElement">}</span>
-            <br>
-            <span class="codeBlockElement">.icon1:hover {</span>
-            <span class="codeBlockElement codeBlockElement--tab1">background-position: 0 <mark
-                class="codeExergue">-100%</mark>;</span>
-            <span class="codeBlockElement">}</span>
-            <br>
-            <span class="codeBlockElement">.icon2 {</span>
-            <span class="codeBlockElement codeBlockElement--tab1">background-position: 0 <mark
-                class="codeExergue">-200%</mark>;</span>
-            <span class="codeBlockElement">}</span>
-            <br>
-            <span class="codeBlockElement">.icon2:hover {</span>
-            <span class="codeBlockElement codeBlockElement--tab1">background-position: 0 <mark
-                class="codeExergue">-300%</mark>;</span>
-            <span class="codeBlockElement">}</span>
-            etc.
-        </code>
-
-        <ul class="svgLink_list">
-            <li><a href="#" class="svgLink svgLink--image">Hover me</a></li>
-            <li><a href="#" class="svgLink svgLink--validate">Hover me</a></li>
-            <li><a href="#" class="svgLink svgLink--delete">Hover me</a></li>
-        </ul>
-
-    </section>
-
-
-    <section class="etude">
-        <h2 class="secondaryTitle" id="ie">Le cas Internet Explorer (IE9 jusqu'à Edge)</h2>
-
-        <h3 class="smallTitle">SVG responsive</h3>
-
-        <h4 class="smallestTitle">Le problème :</h4>
-        <p>Dans une balise &lt;img&gt; ou &lt;object&gt;, la suppression (justifiée !) des dimensions (width et height) du svg est interprétée différemment sur Internet Explorer. Le svg prend alors alors
-             automatiquement 150px de haut et 300px de large.
-            Sinon, height 150px et width 300px.</p>
-
-        <h4 class="smallestTitle">La solution :</h4>
-        <p>Attribuer à ces éléments une largeur de 100% en css.</p>
-
-        <code class="codeBlock">
-            <span class="codeBlockElement">img, object {</span>
-            <span class="codeBlockElement codeBlockElement--tab1"><mark class="codeExergue">width: 100%</mark>;</span>
-            <span class="codeBlockElement">}</span>
-        </code>
-
-    </section>
+                class="codeBlockElement codeBlockElement--tab1">&lt;use xlink:href="#icon3" y="160" class="icon3_hover"/&gt;</span>
+                <span class="codeBlockElement">&lt;/svg&gt;</span>
+            </code>
+
+            <p>Le fichier SVG est alors plus clair, plus facilement maintenable. Problème, à cause du <a
+                href="https://www.w3.org/TR/shadow-dom/">shadow dom</a>,
+                on ne peut plus cibler les classes des différents éléments (<code>path</code>, etc.) en css.</p>
+            <p>Du coup, notre css va impacter tout le symbol, sans pouvoir faire de détail.</p>
+            <p>On peut néanmoins minimiser (un peu) le problème en ajoutant <code>fill="currentColor"</code> à un ou
+                plusieurs éléments du SVG.
+                Cela nous permet de modifier deux paramètres, au lieu d'un seul :</p>
+
+            <code class="codeBlock">
+                <span class="codeBlockElement">&lt;stylel&gt;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">.icon1_hover {</span>
+                <span class="codeBlockElement codeBlockElement--tab2">fill: red;</span>
+                        <span class="codeBlockElement codeBlockElement--tab2"><mark
+                            class="codeExergue">color</mark>: blue;</span>
+                <span class="codeBlockElement codeBlockElement--tab1">}</span>
+                <span class="codeBlockElement">&lt;/stylel&gt;</span>
+            </code>
+
+            <p>Tout dépend donc du besoin, mais quelle que soit la méthode choisie, le css (externe) de la page est le
+                suivant :</p>
+            <code class="codeBlock">
+                <span class="codeBlockElement">.icon1 {</span>
+                <span class="codeBlockElement codeBlockElement--tab1">background-image: url(icons.svg);</span>
+                <span class="codeBlockElement codeBlockElement--tab1">background-size: <mark
+                    class="codeExergue">cover</mark>;</span>
+                        <span class="codeBlockElement codeBlockElement--tab1">background-position: 0 <mark
+                            class="codeExergue">0</mark>;</span>
+                <span class="codeBlockElement">}</span>
+                <br>
+                <span class="codeBlockElement">.icon1:hover {</span>
+                <span class="codeBlockElement codeBlockElement--tab1">background-position: 0 <mark
+                    class="codeExergue">-100%</mark>;</span>
+                <span class="codeBlockElement">}</span>
+                <br>
+                <span class="codeBlockElement">.icon2 {</span>
+                <span class="codeBlockElement codeBlockElement--tab1">background-position: 0 <mark
+                    class="codeExergue">-200%</mark>;</span>
+                <span class="codeBlockElement">}</span>
+                <br>
+                <span class="codeBlockElement">.icon2:hover {</span>
+                <span class="codeBlockElement codeBlockElement--tab1">background-position: 0 <mark
+                    class="codeExergue">-300%</mark>;</span>
+                <span class="codeBlockElement">}</span>
+                etc.
+            </code>
+
+            <ul class="svgLink_list">
+                <li><a href="#" class="svgLink svgLink--image">Hover me</a></li>
+                <li><a href="#" class="svgLink svgLink--validate">Hover me</a></li>
+                <li><a href="#" class="svgLink svgLink--delete">Hover me</a></li>
+            </ul>
+
+        </section>
+
+
+        <section class="etude">
+            <h2 class="secondaryTitle" id="ie">Le cas Internet Explorer (IE9 jusqu'à Edge)</h2>
+
+            <h3 class="smallTitle">SVG responsive</h3>
+
+            <h4 class="smallestTitle">Le problème :</h4>
+            <p>Dans une balise &lt;img&gt; ou &lt;object&gt;, la suppression (justifiée !) des dimensions (width et height) du svg est interprétée différemment sur Internet Explorer. Le svg prend alors alors
+                 automatiquement 150px de haut et 300px de large.
+                Sinon, height 150px et width 300px.</p>
+
+            <h4 class="smallestTitle">La solution :</h4>
+            <p>Attribuer à ces éléments une largeur de 100% en css.</p>
+
+            <code class="codeBlock">
+                <span class="codeBlockElement">img, object {</span>
+                <span class="codeBlockElement codeBlockElement--tab1"><mark class="codeExergue">width: 100%</mark>;</span>
+                <span class="codeBlockElement">}</span>
+            </code>
+
+        </section>
+
+    </main>
+
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="build/assets/js/built.js"></script>
 
     </body>
 
