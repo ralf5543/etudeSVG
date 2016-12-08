@@ -46,12 +46,11 @@ module.exports = function (grunt) {
             }
         },
         copy: {
-            options: {
-                // generic options go here.
-            },
-            dist: {
-                src: ['node_modules/jquery/dist/jquery.min.js'],
-                dest: 'build/assets/js/jquery.min.js'
+            main: {
+                files: [
+                    {expand: true, src: ['node_modules/jquery/dist/jquery.min.js'], dest: 'build/assets/js', filter: 'isFile', flatten: true},
+                    {expand: true, src: ['assets/css/styleSVG-bike.css'], dest: 'build/assets/css', filter: 'isFile', flatten: true},
+                ]
             }
         },
         svg_sprite: {
@@ -94,5 +93,6 @@ module.exports = function (grunt) {
 
 // 4. Nous disons à Grunt quoi faire lorsque nous tapons "grunt" dans la console.
     grunt.registerTask('default', ['sass']);
-    grunt.registerTask('sprite', ['svg_sprite']);
+    grunt.registerTask('sprite', ['svg_sprite']);//Genere une feuille de sprites
+    grunt.registerTask('build', ['concat', 'uglify', 'copy']);//Prépare els fichiers pour le build (js concaténés/uglifiés, css déplacés).
 };
