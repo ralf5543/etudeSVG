@@ -140,29 +140,34 @@
                 <span class="codeBlockElement">&lt;/svg&gt;</span>
             </code>
 
-            <p>Exemple avec la création d'un SVG composé de trois formes. Croper la forme au plus près, pour faciliter manipulation. Laisser quelques pixels autour peut-être judicieux, pour antciper des modifications de contour.
-                L'ordre des calques est respecté (même si visuellement inversé, entre calques et code xml). Les groupes
+            <p>Exemple avec la création d'un SVG composé de trois formes. Bien qu'on essaie de croper la forme au plus près, pour faciliter la manipulation, laisser quelques pixels autour peut-être judicieux, pour anticiper des modifications de contour.
+                L'ordre des calques est respecté (même si visuellement inversé, entre calques et code xml).</p>
+            <p>Les groupes
                 de calques sont aussi convertis,
                 et les noms des calques (groupes et racine) convertis en Identifiants (auquels se greffent un chiffre si le même ID est présent plusieurs fois dans le code).
                 Les formes simples ont aussi été converties en langage xml.</p>
 
             <p>Il est important d'éviter les aller-retour dans illustrator. Celui-ci manipulera automatiquement votre code en supprimant les css, les classes, en rajoutant une taille, en changeant la
-                viewbox...</p>
+                viewBox...</p>
 
-            <p>Utiliser le menu Objet - Associer / Dissocier pour cleaner les groupes.</p>
+            <p>Utiliser le menu Objet - Associer / Dissocier pour nettoyer les groupes.</p>
 
             <p>Une fois le SVG exporté, utiliser au moins <a href="https://jakearchibald.github.io/svgomg/">svgomg</a> pour nettoyer le code.</p>
-            <p>Il peut-être aussi judicieux de supprimer les propriétés height et width, pour renre le SVG facilement "responsive".</p>
+            <p>Il peut-être aussi judicieux de supprimer les propriétés height et width, pour rendre le SVG facilement "responsive".</p>
 
             <p>S'il n'est pas utilisé (comme pour l'appel d'une feuille de style), supprimer aussi la déclaration xml et le doctype.</p>
+
+            <p>Le namespace svg doit être ajouté dans la balise d'ouverture, si le svg est dans un fichier externe, et non intégré directement dans le code html :</p>
+
+            <code class="codeBlock">&lt;svg ... <mark class="codeExergue">xmlns="http://www.w3.org/2000/svg"</mark>&gt;</code>
+
+            <p>Les balises <code>title</code> et <code>desc</code>, bien que facultatives, sont notamment utiles pour le référencement et certains agents
+                utilisateurs.</p>
 
             <code class="codeBlock">
                 <span class="codeBlockElement">&lt;title>Titre du SVG&lt;/title&gt;</span>
                 <span class="codeBlockElement">&lt;desc>Description du SVG&lt;/desc&gt;</span>
             </code>
-
-            <p>Facultatives, ces balises sont notamment utiles pour le référencement et certains agents
-                utilisateurs.</p>
 
 
             <h3 class="smallTitle">Construction et modification du SVG</h3>
@@ -838,7 +843,7 @@
             <p>C'est pareil, mais en mieux ! Prêt à être intégré dans un environnement responsif.</p>
 
             <h3 class="smallTitle">L'attribut preserveAspectRatio</h3>
-            <p>La seule utilité de le déclarer est si le viewport et la viewBox ont des valeurs différentes (ou pour être
+            <p>La seule utilité de le déclarer est si le viewPort et la viewBox ont des valeurs différentes (ou pour être
                 plus
                 précis, pas le même ratio largeur et hauteur).</p>
             <p>Dans ce cas, la propriété <code>preserveAspectRatio</code> permet de conserver une image entière, et non
@@ -857,7 +862,7 @@
                 fixée à <code>meet</code>.
                 La viewBox va être redimensionnée pour remplir autant que possible le viewPort. A <code>slice</code>,
                 elle va
-                l'afficher à sa taille déclarée, et couper ce qui dépasse du viewport.
+                l'afficher à sa taille déclarée, et couper ce qui dépasse du viewPort.
                 Enfin, <code>none</code> essaie de remplir le viewPort avec la viewBox, mais sans respecter le ratio
                 hauteur/largeur, pouvant déformer le résultat obtenu.
             </p>
@@ -959,11 +964,14 @@
                 Elle appelle les éléments "stoqués" dans la balise &lt;defs&gt;, et les positionne.
             </p>
 
-
             <code class="codeBlock">
                 &lt;<mark class="codeExergue">use</mark>
                 xlink:href="#modele1" x="20" y="50" /&gt;
             </code>
+
+            <p>Notons l'attribut <code>xlink:href</code> avec l'ID de l'élément comme valeur.</p>
+            <p>Il faut par ailleurs ajouter le namespace <em>xlink</em> dans la balise d'ouverture du svg :</p>
+            <code class="codeBlock">&lt;svg ... <mark class="codeExergue">xmlns:xlink="http://www.w3.org/1999/xlink"</mark>&gt;</code>
 
             <p>Une autre utilisation courante est la création d'un seul fichier SVG avec toutes les icones d'un site, et
                 masquées. On les appelle selon les besoins,
@@ -1069,13 +1077,13 @@
                 <dd>Epaisseur du contour</dd>
             </dl>
 
-            <p>liste complète visible sur <a href="https://www.w3.org/TR/SVG2/styling.html#SVGStylingProperties">la page du W3C dédiée aux SVG</a>.
+            <p>La liste complète est visible sur <a href="https://www.w3.org/TR/SVG2/styling.html#SVGStylingProperties">la page du W3C dédiée aux SVG</a>.
             </p>
 
             <p>Le contour, si une couleur est déclarée, fait 1px par défaut. Au delà, il s'étend autant à l'intérieur qu'à
                 l'extérieur, contrairement aux bordures css. Privilégier donc des valeurs multiples de 2. Si elle est
                 définie en
-                pourcentage, cette valeur est relative au viewport, non à la viewBox.</p>
+                pourcentage, cette valeur est relative au viewPort, non à la viewBox.</p>
 
             <svg width="140" height="140" viewBox="0 0 140 140">
                 <circle cx="60" cy="70" r="50" stroke="red" fill="blue" stroke-opacity="0.5" fill-opacity="0.8"
@@ -1093,13 +1101,13 @@
 
             <p>Ils sont déclarés avec l'attribut <code>style</code>, et prennent le pas sur la déclaration faite via fill.</p>
             <p>Il n'y a pas vraiment d'intéret à utiliser les styles en ligne, sachant que <code>fill="yellow"</code> est
-                équivalent à <code>style="fill: yellow;"</code></p>
+                équivalent à <code>style="fill: yellow;"</code>.</p>
 
 
             <h3 class="smallTitle">Les styles internes</h3>
 
-            <p>Comme en html, on peut déclarer une feuille de style interne, via la balise <code>&lt;style&gt;</code></p>
-            <p>ils ne sont pas embarqués lors de l'intégration d'un <code>symbol</code> avec la balise <code>
+            <p>Comme en html, on peut déclarer une feuille de style interne, via la balise <code>&lt;style&gt;</code>.</p>
+            <p>Lls ne sont pas embarqués lors de l'intégration d'un <code>symbol</code> avec la balise <code>
                 &lt;use&gt;</code>
                 dans le html.</p>
 
@@ -1203,6 +1211,8 @@
 
                 <span class="codeBlockElement">&lt;/svg&gt;</span>
             </code>
+
+            <p>Notre vélo affiche désormais deux états selon la taille du viewPort :</p>
 
             <div class="svgVisualExemples svgVisualExemples--mediaqueries">
                 <img class="svgExemple" src="img/bike-light.svg">
@@ -1373,7 +1383,7 @@
             <h3 class="smallTitle">SVG responsive</h3>
 
             <h4 class="smallestTitle">Le problème :</h4>
-            <p>Dans une balise &lt;img&gt; ou &lt;object&gt;, la suppression (justifiée !) des dimensions (width et height) du svg est interprétée différemment sur Internet Explorer. Le svg prend alors alors
+            <p>Dans une balise &lt;img&gt; ou &lt;object&gt;, la suppression (justifiée !) des dimensions (width et height) du svg est interprétée différemment sur Internet Explorer. Le svg prend alors
                  automatiquement 150px de haut et 300px de large.
                 Sinon, height 150px et width 300px.</p>
 

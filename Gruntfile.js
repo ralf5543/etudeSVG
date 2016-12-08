@@ -94,5 +94,5 @@ module.exports = function (grunt) {
 // 4. Nous disons à Grunt quoi faire lorsque nous tapons "grunt" dans la console.
     grunt.registerTask('default', ['sass']);
     grunt.registerTask('sprite', ['svg_sprite']);//Genere une feuille de sprites
-    grunt.registerTask('build', ['concat', 'uglify', 'copy']);//Prépare els fichiers pour le build (js concaténés/uglifiés, css déplacés).
+    grunt.registerTask('build', ['concat', 'uglify', 'copy', 'sass']);//Prépare els fichiers pour le build (js concaténés/uglifiés, css déplacés).
 };

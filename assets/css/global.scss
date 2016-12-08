@@ -769,6 +769,7 @@ table.support .no-support {
     }
 }
 
+
 /*======Listes=======*/
 .etude_orderedList_element {
     font-size: 1.4rem;
@@ -785,7 +786,7 @@ dt {
 }
 
 dd {
-    @include font-size(12);
+    @include font-size(14);
     padding-left: 10px;
     margin: 0 0 15px 0;
 }
