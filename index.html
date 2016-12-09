@@ -75,7 +75,7 @@
             <h2 class="secondaryTitle" id="browsers">Compatibilité navigateurs</h2>
 
             <p>Les svg sont aujourd'hui reconnus par tous les navigateurs modernes. Pour les plus anciens, des solutions de fallback existent,
-                et remplacent le svg par un fichier image plus classique (jpeg, png...).</p>
+                et remplacent le svg par un fichier image plus classique (jpeg, png, ...).</p>
 
             <p>Ci-dessous une liste précisant à partir de quelle version les principaux navigateurs ont interpreté totalement ce format :</p>
 
@@ -140,20 +140,20 @@
                 <span class="codeBlockElement">&lt;/svg&gt;</span>
             </code>
 
-            <p>Exemple avec la création d'un SVG composé de trois formes. Bien qu'on essaie de croper la forme au plus près, pour faciliter la manipulation, laisser quelques pixels autour peut-être judicieux, pour anticiper des modifications de contour.
+            <p>Exemple avec la création d'un SVG composé de trois formes. Bien qu'on essaie de croper la forme au plus près, pour faciliter la manipulation, laisser quelques pixels autour peut être judicieux, pour anticiper des modifications de contour.
                 L'ordre des calques est respecté (même si visuellement inversé, entre calques et code xml).</p>
             <p>Les groupes
                 de calques sont aussi convertis,
-                et les noms des calques (groupes et racine) convertis en Identifiants (auquels se greffent un chiffre si le même ID est présent plusieurs fois dans le code).
+                et les noms des calques (groupes et racine) convertis en Identifiants (auquels se greffe un chiffre si le même ID est présent plusieurs fois dans le code).
                 Les formes simples ont aussi été converties en langage xml.</p>
 
-            <p>Il est important d'éviter les aller-retour dans illustrator. Celui-ci manipulera automatiquement votre code en supprimant les css, les classes, en rajoutant une taille, en changeant la
+            <p>Il est important d'éviter les allers-retours dans illustrator. Celui-ci manipulera automatiquement votre code en supprimant les css, les classes, en rajoutant une taille, en changeant la
                 viewBox...</p>
 
             <p>Utiliser le menu Objet - Associer / Dissocier pour nettoyer les groupes.</p>
 
             <p>Une fois le SVG exporté, utiliser au moins <a href="https://jakearchibald.github.io/svgomg/">svgomg</a> pour nettoyer le code.</p>
-            <p>Il peut-être aussi judicieux de supprimer les propriétés height et width, pour rendre le SVG facilement "responsive".</p>
+            <p>Il peut aussi être judicieux de supprimer les propriétés height et width, pour rendre le SVG facilement "responsive".</p>
 
             <p>S'il n'est pas utilisé (comme pour l'appel d'une feuille de style), supprimer aussi la déclaration xml et le doctype.</p>
 
@@ -184,7 +184,7 @@
             </svg>
 
             <p>Le rectangle utilise la balise <strong>&lt;rect&gt;</strong>, les coordonnées <strong>x</strong> et
-                <strong>y</strong> et les déclarations de dimensions <strong>width</strong> et <strong>height</strong>.
+                <strong>y</strong>, et les déclarations de dimensions <strong>width</strong> et <strong>height</strong>.
             </p>
 
             <h4 class="smallestTitle">Cercle et ovale</h4>
@@ -198,7 +198,7 @@
                 <circle cx="60" cy="50" r="50"/>
             </svg>
 
-            <p>Le centre du cercle (<strong>&lt;circle&gt;</strong>) est positionné dans le SVG avec <strong>cx</strong> et
+            <p>Le centre du cercle (<strong>&lt;circle&gt;</strong>) est positionné dans le SVG avec <strong>cx</strong>, et
                 <strong>cy</strong>. <strong>r</strong> définit la taille du rayon.</p>
 
             <code class="codeBlock">
@@ -257,8 +257,8 @@
                 <polyline points="0 100, 100 0, 150 50, 110 50, 180 0" fill="transparent" stroke="black"/>
             </svg>
 
-            <p>La polyligne (<strong>&lt;polyline&gt;</strong>) peut être considérée comme un polygone non fermée. Il est
-                "rempli" d'une couleur par défaut (fill), et son tracé transparent.</p>
+            <p>La polyligne (<strong>&lt;polyline&gt;</strong>) peut être considérée comme un polygone non fermé. Il est
+                "rempli" d'une couleur par défaut (fill), et son tracé est transparent.</p>
 
             <h4 class="smallestTitle">Chemin</h4>
 
@@ -318,7 +318,7 @@
                     Le point d'arrivée x
                 </li>
                 <li class="etude_orderedList_element">
-                    Le point d'arrivée 7
+                    Le point d'arrivée y
                 </li>
             </ol>
 
@@ -329,7 +329,7 @@
         <section class="etude">
             <h2 class="secondaryTitle" id="integration">Intégration</h2>
 
-            <p>Les exemples suivants intégrent le même code svg. La roue de
+            <p>Les exemples suivants intègrent le même code svg. La roue de
                 <mark class="codeExergue codeExergue--blue">gauche</mark>
                 , en bleu, utilise des styles internes. La roue de
                 <mark class="codeExergue">droite</mark>
@@ -432,19 +432,19 @@
             L118.9,489.1L118.9,489.1z"/>
         </svg>
             </div>
-            <p>Intégrer le SVG directement dans le code html reste la méthode la plus simple, et la plus flexible.</p>
-            <p>Elle évite des requêtes http supplémentaires</p>
-            <p>On peut facilement atteindre et manipuler via css ou javascript les noeuds qui le composent, utiliser les intéractions css (type ":focus), des animations css,
-                ajouter des liens...</p>
+            <p>Intégrer le SVG directement dans le code html reste la méthode la plus simple et la plus flexible.</p>
+            <p>Elle évite des requêtes http supplémentaires.</p>
+            <p>On peut facilement atteindre et manipuler, via css ou javascript, les noeuds qui le composent, utiliser les intéractions css (type ":focus"), des animations css,
+                ajouter des liens, ...</p>
 
-            <p>Inconviénients  : peu maintenable, augmentation de la taille du fichier html, à réserver si le svg est utilisé une unique fois sur le site.</p>
-            <p>On peut s'affranchir de ces inconvénients en utilisant, selon les possibilités, des méthodes d'appel tel que <code>
-                &lt;?php include("bike.svg"); ?&gt;</code>, ou <code>ng-include="'bike.svg'"</code>.</p>
+            <p>Inconviénients  : peu maintenable, augmentation de la taille du fichier html; à réserver si le svg est utilisé une unique fois sur le site.</p>
+            <p>On peut s'affranchir de ces inconvénients en utilisant, selon les possibilités, des méthodes d'appel telles que <code>
+                &lt;?php include("bike.svg"); ?&gt;</code> ou <code>ng-include="'bike.svg'"</code>.</p>
 
             <h4 class="smallestTitle">Fallback</h4>
             <p>L'intégration d'un contenu alternatif peut se faire au coeur du svg dans une balise &lt;<code>foreignObject</code>&gt;,
-                mais son contenu sera chargé par tous les navigateurs, qu'ils comprennent ou non le format svg.</p>
-            <p>Au pire, le contenu de la balise <code>&lt;desc&gt;</code> s'affichera à la place du svg, s'il n'est pas lu.</p>
+                mais son contenu sera chargé par tous les navigateurs, qu'ils soient capables ou non d'interpréter le format svg.</p>
+            <p>Au pire, le contenu de la balise <code>&lt;desc&gt;</code> s'affichera à la place du svg s'il n'est pas lu.</p>
 
 
             <h3 class="smallTitle">Via la balise &lt;img&gt;</h3>
@@ -462,7 +462,7 @@
             et son CSS doit être inclus dans le code SVG.</p>
 
             <h4 class="smallestTitle">Fallback</h4>
-            <p>Le fallback de cette méthode d'intégration est la plus ardue. Pour aller au plus simple, on peut se reposer sur l'attribut alt que nous permet cette balise.</p>
+            <p>Le fallback de cette méthode d'intégration est la plus ardue. Pour aller au plus simple, on peut se reposer sur l'attribut "alt" que nous permet cette balise.</p>
             <p>On peut aussi recourir à la balise <code>&lt;srcset&gt;</code> pour
             proposer une image alternative (<code>&lt;img src="bike.png" srcset="bike.svg"/&gt;</code>), mais cela demandera l'utilisation d'un <a href="http://scottjehl.github.io/picturefill/">polyfill</a>.</p>
             <p>On peut aussi recourir à des librairies javascript, comme <a href="https://dirkgroenen.github.io/SVGMagic/">SVGMagic</a>.</p>
@@ -477,10 +477,10 @@
 
             <div class="svgVisualExemples bike-css"></div>
 
-            <p>L'intégration en css est semblable à la balise &lt;img&gt; (avantages comme inconvénients), en dissociant un peu plus le fond de la forme.</p>
+            <p>L'intégration en css est semblable à la balise &lt;img&gt; (avantages comme inconvénients) en dissociant un peu plus le fond de la forme.</p>
 
             <h4 class="smallestTitle">Fallback</h4>
-            <p>On a ici recours a une petite ruse. Si le navigateur sait interpréter les dégradés linéaires ET les arrière-plan multiples, il connait aussi le format SVG.</p>
+            <p>On a ici recours à une petite ruse. Si le navigateur sait interpréter les dégradés linéaires ET les arrière-plans multiples, il connait aussi le format SVG.</p>
             <p>S'il ne connait pas cette syntaxe, il revient en arrière sur la valeur déclarée précédemment.</p>
             <code class="codeBlock">
                 <span class="codeBlockElement">background: url("bike.<mark class="codeExergue">png</mark>");</span>
@@ -507,7 +507,7 @@
                     </a>
             </div>
             <p>Cette solution n'a en apparence qu'un seul vrai désavantage, l'impossibilité d'en faire un lien.</p>
-            <p>C'est en réalité un problème facilement contournable. On peut nativement intégrer des liens dirèctement à l'intérieur du svg (en précisant la cible (target)
+            <p>C'est en réalité un problème facilement contournable. On peut nativement intégrer des liens directement à l'intérieur du svg (en précisant la cible (target)
             afin que la page ne s'ouvre pas dans l' "object").</p>
             <p>On peut également utiliser du CSS pour rendre fonctionnel le lien englobant notre balise object :</p>
 
@@ -522,10 +522,10 @@
                 <span class="codeBlockElement">}</span>
             </code>
 
-            <p>NB: oui, sans préciser une position relative sur le lien lui-même...</p>
+            <p>NB : oui, sans préciser une position relative sur le lien lui-même...</p>
 
             <h4 class="smallestTitle">Fallback</h4>
-            <p>Du contenu alternatif (png, texte...) peut-être intégré simplement entre les balises d'ouverture et de fermeture.
+            <p>Du contenu alternatif (png, texte, ...) peut être intégré simplement entre les balises d'ouverture et de fermeture.
                 Il sera malheureusement aussi chargé (mais non affiché) par les navigateurs comprenant le format svg.</p>
 
 
@@ -546,16 +546,16 @@
                 </iframe>
             </div>
 
-            <p>Lorsqu'on a le choix, il n'y a pas vraiment d'intéret à choisir d'intégrer un svg dans une iframe. Cette solution n'apporte rien de plus.</p>
+            <p>Lorsqu'on a le choix, il n'y a pas vraiment d'intérêt à choisir d'intégrer un svg dans une iframe. Cette solution n'apporte rien de plus.</p>
             <p>Pas de css externe, et pas de manipulation en javascript, sauf si le SVG et la page web actuelle ont la même origine.</p>
 
             <h4 class="smallestTitle">Fallback</h4>
-            <p>Pas de fallback connu. L'image alternative entre les balises d'ouverture et de fermeture de l'iframe ne sont interprétées que si l'iframe elle-même n'est pas prise en charge.</p>
+            <p>Pas de fallback connu. L'image alternative entre les balises d'ouverture et de fermeture de l'iframe n'est interprétée que si l'iframe elle-même n'est pas prise en charge.</p>
 
 
             <h3 class="smallTitle">via balise EMBED</h3>
 
-            <p>Plus aucun intéret aujourd'hui.</p>
+            <p>Plus aucun intérêt aujourd'hui.</p>
 
         </section>
 
@@ -583,7 +583,7 @@
             <p>Cela ne marche actuellement ni sur Firefox, ni sur Internet Explorer. Il faut d'abord convertir les
                 caractères
                 spéciaux.</p>
-            <p>Plusieurs mixins Sass existent comme <a href="http://codepen.io/jakob-e/pen/doMoML">svg-url</a></p>
+            <p>Plusieurs mixins Sass existent comme <a href="http://codepen.io/jakob-e/pen/doMoML">svg-url</a>.</p>
 
             <div class="svgVisualExemples svgVisualExemples--data-svg"></div>
 
@@ -689,7 +689,7 @@
                 <span class="codeBlockElement">}</span>
             </code>
 
-            <p>On a maintenant un code exploitable sur tout navigateur, dont on va pouvoir <a
+            <p>On a maintenant un code exploitable sur tous les navigateurs, et dont on va pouvoir <a
                 href="http://www.sassmeister.com/gist/1b4f2da5527830088e4d">modifier</a> les attributs
                 (<code>fill</code>,
                 <code>stroke</code>...).</p>
@@ -698,7 +698,7 @@
 
             <div class="svgVisualExemples svgVisualExemples--data-replace"></div>
 
-            <p>Voire utiliser une mixin qui cible directement les couleurs, peu importe l'attribut.</p>
+            <p>On peut aussi utiliser une mixin qui cible directement les couleurs, peu importe l'attribut :</p>
 
             <code class="codeBlock">
                 <span class="codeBlockElement">@function svg-replace-fill($svg, $fill-to-replace, $new-fill...) {</span>
@@ -724,7 +724,7 @@
                 faiblesses.
                 Si plusieurs chemins ont d'origine la même couleur déclarée, tous seront modifiés ensemble, sans
                 distinction.</p>
-            <p>Il convient avant toute modification d'appliquer un maximum de couleurs, ou tout du moins à toute partie du
+            <p>Il convient, avant toute modification, d'appliquer un maximum de couleurs ou tout du moins à toute partie du
                 svg susceptible d'être modifiée.</p>
 
         </section>
@@ -743,7 +743,7 @@
                 <span class="codeBlockElement">&lt;/svg&gt;</span>
             </code>
 
-            <p>NB: par défaut, l'unité utilisée est le pixel. Dans un contexte responsif, la taille n'a plus d'importance, seul le ratio viewBox/viewPort compte.</p>
+            <p>NB : par défaut, l'unité utilisée est le pixel. Dans un contexte responsif, la taille n'a plus d'importance, seul le ratio viewBox/viewPort compte.</p>
 
             <div class="svgVisualExemples svgVisualExemples--viewbox">
                 <svg width="400" height="200" viewBox="0 0 400 200">
@@ -792,7 +792,7 @@
                 </svg>
             </div>
 
-            <p>En modifiant les points d'origine, on en touche plus au ratio, qui va définir la proportion de la forme, mais on précise quelle portion on va afficher :</p>
+            <p>En modifiant les points d'origine, on ne touche plus au ratio, qui va définir la proportion de la forme, mais on précise quelle portion on va afficher :</p>
 
             <code class="codeBlock">
                 <span class="codeBlockElement">&lt;svg width="400" height="200" viewBox="<mark class="codeExergue">200 100</mark> 400 200"&gt;</span>
@@ -860,7 +860,7 @@
             <p>En plus de l'alignement, on peut préciser comment va être interprété le ratio d'aspect. Par défaut, la valeur
                 est
                 fixée à <code>meet</code>.
-                La viewBox va être redimensionnée pour remplir autant que possible le viewPort. A <code>slice</code>,
+                La viewBox va être redimensionnée pour remplir autant que possible le viewPort. Lorsqu'elle est égale à <code>slice</code>,
                 elle va
                 l'afficher à sa taille déclarée, et couper ce qui dépasse du viewPort.
                 Enfin, <code>none</code> essaie de remplir le viewPort avec la viewBox, mais sans respecter le ratio
@@ -944,9 +944,9 @@
 
             <h3 class="smallTitle">La balise &lt;defs&gt;</h3>
             <p>
-                C'est le conteneur de tous les modèles que l'on "définit". Le code entre l'ouverture et la fermeture de
+                C'est le conteneur de tous les modèles que l'on "définit". Le code, entre l'ouverture et la fermeture de
                 cette
-                balise est invisible, et est appelé par la balise &lt;use&gt;.
+                balise, est invisible, et est appelé par la balise &lt;use&gt;.
             </p>
 
             <code class="codeBlock">
@@ -961,7 +961,7 @@
             <h3 class="smallTitle">La balise &lt;use&gt;</h3>
 
             <p>
-                Elle appelle les éléments "stoqués" dans la balise &lt;defs&gt;, et les positionne.
+                Elle appelle les éléments "stockés" dans la balise &lt;defs&gt;, et les positionne.
             </p>
 
             <code class="codeBlock">
@@ -973,8 +973,7 @@
             <p>Il faut par ailleurs ajouter le namespace <em>xlink</em> dans la balise d'ouverture du svg :</p>
             <code class="codeBlock">&lt;svg ... <mark class="codeExergue">xmlns:xlink="http://www.w3.org/1999/xlink"</mark>&gt;</code>
 
-            <p>Une autre utilisation courante est la création d'un seul fichier SVG avec toutes les icones d'un site, et
-                masquées. On les appelle selon les besoins,
+            <p>Une autre utilisation courante est la création d'un seul fichier SVG, avec toutes les icônes du site masquées. On les appelle selon les besoins,
                 via <code>use</code>, soit à la fin du svg, soit depuis le html. Dans ce dernier cas, les styles
                 internes ne
                 seront pas embarqués.</p>
@@ -1015,7 +1014,7 @@
 
             <h3 class="smallTitle">Cas pratique : affichage d'un picto depuis une grille de sprites</h3>
 
-            <p>En fait de grille, les multiples calques des icones superposés dans illustrator sont laissés tels quels.
+            <p>En fait de grille, les multiples calques des icônes superposées dans illustrator sont laissés tels quels.
                 On obtient un svg avec tous les pictos les uns sur les autres, même viewBox, mêmes coordonnées, chacun
                 dans une
                 balise <code>symbol</code>.
@@ -1100,7 +1099,7 @@
             <h3 class="smallTitle">Les styles en ligne</h3>
 
             <p>Ils sont déclarés avec l'attribut <code>style</code>, et prennent le pas sur la déclaration faite via fill.</p>
-            <p>Il n'y a pas vraiment d'intéret à utiliser les styles en ligne, sachant que <code>fill="yellow"</code> est
+            <p>Il n'y a pas vraiment d'intérêt à utiliser les styles en ligne, sachant que <code>fill="yellow"</code> est
                 équivalent à <code>style="fill: yellow;"</code>.</p>
 
 
@@ -1137,20 +1136,20 @@
 
             <h3 class="smallTitle">Les dégradés en SVG</h3>
 
-            <p>On peut les stocker dans des balises &lt;defs&gt;, et les appliquer au bon motif (ou à son contour. Soit
+            <p>On peut les stocker dans des balises &lt;defs&gt;, et les appliquer au bon motif (ou à son contour, soit
                 <code>fill</code>
                 ou <code>stroke</code>).</p>
 
             <h4 class="smallestTitle">Dégradé linéaire</h4>
 
-            <p>Les attributs x1 x2 y1 et y2 précisent les début et fin du dégradé, ainsi que leur orientation.
+            <p>Les attributs x1 x2 y1 et y2 précisent le début et la fin du dégradé, ainsi que leur orientation.
                 Les <code>&lt;stop&gt;</code> définissent la répartition des couleurs (à quelle position la couleur
                 atteint 100%
                 de saturation (0% de mélange)).</p>
 
             <h4 class="smallestTitle">Dégradé radial</h4>
 
-            <p>Les attributes cx et cy positionnent le dégradé sur l'axe des abscisses et des ordonnées.</p>
+            <p>Les attributs cx et cy positionnent le dégradé sur l'axe des abscisses et des ordonnées.</p>
             <p>Les points fx et fy déplacent, à l'intérieur de ce dégradé radial, le cercle le plus à l'intérieur (par
                 défaut,
                 mêmes coordonnées que cx et cy).</p>
@@ -1162,10 +1161,10 @@
 
             <h3 class="smallTitle">Responsive et media-queries</h3>
             <p>Il vaut mieux ne pas déclarer de hauteur ni de largeur au svg, pour un meilleur contrôle en css (il fera alors 100% de son conteneur).</p>
-            <p>Quand cela n'est pas possible, préciser au moins <code>background-size: 100%;</code> (ou <code>background-size: cover;</code>), si le svg
+            <p>Quand cela n'est pas possible, préciser au moins <code>background-size: 100%;</code> (ou <code>background-size: cover;</code>) si le svg
                 est en
                 arrière-plan,
-                ou passer le conteneur (<code>img</code>, <code>object</code>...) à 100% dans les autres cas de figure.
+                ou passer le conteneur (<code>img</code>, <code>object</code>, ...) à 100% dans les autres cas de figure.
             </p>
 
             <p>Les media queries peuvent être intégrées directement au svg, pour en modifier l'affichage.</p>
@@ -1222,7 +1221,7 @@
 
 
         <section class="etude">
-            <h2 class="secondaryTitle" id="hover">Modifier l'apparence svg au survol</h2>
+            <h2 class="secondaryTitle" id="hover">Modifier l'apparence du svg au survol</h2>
 
             <h3 class="smallTitle">La solution la plus flexible</h3>
 
@@ -1285,8 +1284,8 @@
                 <span class="codeBlockElement">&lt;/svg&gt;</span>
             </code>
 
-            <p>Chaque forme à modifier est doublée (l'original plus la version colorisée,
-                via styles en ligne ou ses attributs internes modifiés), ce qui alourdit le poids de la page.</p>
+            <p>Chaque forme à modifier est doublée (l'original et la version colorisée,
+                via des styles en ligne ou ses attributs internes modifiés), ce qui alourdit le poids de la page.</p>
 
             <h3 class="smallTitle">La solution la plus propre</h3>
 
@@ -1324,7 +1323,7 @@
 
             <p>Le fichier SVG est alors plus clair, plus facilement maintenable. Problème, à cause du <a
                 href="https://www.w3.org/TR/shadow-dom/">shadow dom</a>,
-                on ne peut plus cibler les classes des différents éléments (<code>path</code>, etc.) en css.</p>
+                on ne peut plus cibler les classes des différents éléments (<code>path</code>, ...) en css.</p>
             <p>Du coup, notre css va impacter tout le symbol, sans pouvoir faire de détail.</p>
             <p>On peut néanmoins minimiser (un peu) le problème en ajoutant <code>fill="currentColor"</code> à un ou
                 plusieurs éléments du SVG.
@@ -1384,8 +1383,7 @@
 
             <h4 class="smallestTitle">Le problème :</h4>
             <p>Dans une balise &lt;img&gt; ou &lt;object&gt;, la suppression (justifiée !) des dimensions (width et height) du svg est interprétée différemment sur Internet Explorer. Le svg prend alors
-                 automatiquement 150px de haut et 300px de large.
-                Sinon, height 150px et width 300px.</p>
+                 automatiquement 150px de haut et 300px de large.</p>
 
             <h4 class="smallestTitle">La solution :</h4>
             <p>Attribuer à ces éléments une largeur de 100% en css.</p>
